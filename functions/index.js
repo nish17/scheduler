@@ -61,12 +61,29 @@ function setTimeZone() {
 //   );
 // });
 
-// app.intent("findLectureIntent");
+app.intent("findLectureIntent", (conv, name) => {
+  const indianTimeMoment = setTimeZone();
+  let day = indianTimeMoment.day();
+  let today = moment().format("dddd");
+  const t = Object.entries(data[day][today]).find(
+    ([key, value]) => value.Professor === name
+  )[0];
+  if (t === undefined) {
+    return conv.close(`<speak>Today there is no lecture by ${name}</speak>`);
+  } else {
+    return conv.close(
+      `<speak>Yes at ${
+        t[1] - 12 > 0 ? `${t[1] - 12} PM` : `${t[1]} AM`
+      }</speak>`
+    );
+  }
+});
 
-app.intent("currentLectureIntent", conv => {
+app.intent("nextLectureIntent", conv => {
   const indianTimeMoment = setTimeZone();
   const currentHour = indianTimeMoment.hour();
-  let hourCode = "L" + currentHour;
+  let next = currentHour + 1;
+  let hourCode = "L" + next;
   let day = indianTimeMoment.day();
   let today = moment().format("dddd");
   if (workingHours(next)) {
@@ -99,11 +116,10 @@ app.intent("currentLectureIntent", conv => {
   }
 });
 
-app.intent("nextLectureIntent", conv => {
+app.intent("currentLectureIntent", conv => {
   const indianTimeMoment = setTimeZone();
   const currentHour = indianTimeMoment.hour();
-  let next = currentHour + 1;
-  let hourCode = "L" + next;
+  let hourCode = "L" + currentHour;
   let day = indianTimeMoment.day();
   let today = moment().format("dddd");
   if (workingHours(next)) {
