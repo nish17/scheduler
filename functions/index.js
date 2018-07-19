@@ -1,15 +1,7 @@
 "use strict";
-
-// Import the Dialogflow module and response creation dependencies
-// from the Actions on Google client library.
 const { dialogflow, BasicCard, Permission } = require("actions-on-google");
-// Import the firebase-functions package for deployment.
 const functions = require("firebase-functions");
-
-// Instantiate the Dialogflow client.
 const app = dialogflow({ debug: true });
-// { debug: true });
-
 const moment = require("moment");
 var data = require("./newData.json");
 function workingHours(time) {
@@ -69,7 +61,43 @@ function setTimeZone() {
 //   );
 // });
 
-app.intent("cuurentLectureIntent", conv => {});
+// app.intent("findLectureIntent");
+
+app.intent("currentLectureIntent", conv => {
+  const indianTimeMoment = setTimeZone();
+  const currentHour = indianTimeMoment.hour();
+  let hourCode = "L" + currentHour;
+  let day = indianTimeMoment.day();
+  let today = moment().format("dddd");
+  if (workingHours(next)) {
+    if (weekdays(today)) {
+      conv.close(`<speak>Enjoy your weekend Buddy!</speak>`);
+    } else {
+      const classs = data[day][today][hourCode];
+      if (classs.type === "LAB") {
+        conv.close(
+          `<speak> Next you have LAB` +
+            `For H1 Batch:` +
+            `${classs.h1.name} will be taken by ${classs.h1.Professor}` +
+            `For H2 Batch: ` +
+            `${classs.h2.name} will be taken by ${classs.h2.Professor}` +
+            `For H1 Batch: ` +
+            `${classs.h3.name} will be taken by ${classs.h3.Professor}</speak>`
+        );
+      } else if (classs.type === "Lecture") {
+        conv.close(
+          `<speak>Next lecture is ${classs.name} which will be taken by ${
+            classs.Professor
+          }</speak>`
+        );
+      } else if (classs.type === "Free") {
+        conv.close(`<speak>It's your free time</speak>`);
+      }
+    }
+  } else {
+    conv.close(`<speak>Please come back during working college hours</speak>`);
+  }
+});
 
 app.intent("nextLectureIntent", conv => {
   const indianTimeMoment = setTimeZone();
@@ -104,9 +132,7 @@ app.intent("nextLectureIntent", conv => {
       }
     }
   } else {
-    conv.close(
-      `<speak>Please come back during working college hours :${t}</speak>`
-    );
+    conv.close(`<speak>Please come back during working college hours</speak>`);
   }
 });
 

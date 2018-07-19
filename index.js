@@ -15,7 +15,6 @@ function setTimeZone() {
     .utc()
     .add(5, "hours")
     .add(30, "minutes");
-
   return indianTimeZone;
 }
 function nextLectureIntentHandler() {
