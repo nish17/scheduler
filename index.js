@@ -65,10 +65,18 @@ function nextLectureIntentHandler() {
 }
 
 function findLectureIntent(x) {
-  const searchTerm = x;
-  data.filter(data => {
-    return data;
-  });
+  const indianTimeMoment = setTimeZone();
+  const currentHour = indianTimeMoment.hour();
+  let next = currentHour + 1;
+  let hourCode = "L" + next;
+  let day = indianTimeMoment.day();
+  console.log(day);
+  let today = moment().format("dddd");
+  const t = Object.entries(data[day].today).find(
+    ([key, value]) => value.Professor === x
+  );
+  console.log(t);
 }
 
-nextLectureIntentHandler();
+findLectureIntent("Manish Chaturvedi");
+// nextLectureIntentHandler();
