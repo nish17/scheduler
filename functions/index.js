@@ -88,17 +88,17 @@ app.intent("currentLectureIntent", conv => {
       const classs = data[day][today][hourCode];
       if (classs.type === "LAB") {
         conv.close(
-          `<speak> Next you have LAB` +
+          `<speak> Right Now you have LAB` +
             `For H1 Batch:` +
-            `${classs.h1.name} will be taken by ${classs.h1.Professor}` +
+            `It's ${classs.h1.name} LAB taken by ${classs.h1.Professor}` +
             `For H2 Batch: ` +
-            `${classs.h2.name} will be taken by ${classs.h2.Professor}` +
+            `It's ${classs.h2.name} LAB taken by ${classs.h2.Professor}` +
             `For H1 Batch: ` +
-            `${classs.h3.name} will be taken by ${classs.h3.Professor}</speak>`
+            `It's ${classs.h3.name} LAB taken by ${classs.h3.Professor}</speak>`
         );
       } else if (classs.type === "Lecture") {
         conv.close(
-          `<speak>Next lecture is ${classs.name} which will be taken by ${
+          `<speak>Current lecture is ${classs.name} taken by ${
             classs.Professor
           }</speak>`
         );
