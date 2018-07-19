@@ -12,6 +12,21 @@ const app = dialogflow({ debug: true });
 
 const moment = require("moment");
 var data = require("./newData.json");
+function workingHours(time) {
+  if (time >= 9 && time <= 18) return true;
+  else return false;
+}
+function weekdays(day) {
+  if (day === "Saturday" || day === "Sunday") return true;
+  else return false;
+}
+function setTimeZone() {
+  const indianTimeZone = moment
+    .utc()
+    .add(5, "hours")
+    .add(30, "minutes");
+  return indianTimeZone;
+}
 // // Define a mapping of fake color strings to basic card objects.
 // const colorMap = {
 //   "indigo taco": new BasicCard({
@@ -54,14 +69,17 @@ var data = require("./newData.json");
 //   );
 // });
 
+app.intent("cuurentLectureIntent", conv => {});
+
 app.intent("nextLectureIntent", conv => {
-  const currentHour = new Date().getHours();
+  const indianTimeMoment = setTimeZone();
+  const currentHour = indianTimeMoment.hour();
   let next = currentHour + 1;
   let hourCode = "L" + next;
-  let day = new Date().getDay();
+  let day = indianTimeMoment.day();
   let today = moment().format("dddd");
-  if (next >= 9 && next <= 18) {
-    if (today === "Sunday" || today === "Saturday") {
+  if (workingHours(next)) {
+    if (weekdays(today)) {
       conv.close(`<speak>Enjoy your weekend Buddy!</speak>`);
     } else {
       const classs = data[day][today][hourCode];
@@ -86,7 +104,9 @@ app.intent("nextLectureIntent", conv => {
       }
     }
   } else {
-    conv.close(`<speak>Please come back during working college hours</speak>`);
+    conv.close(
+      `<speak>Please come back during working college hours :${t}</speak>`
+    );
   }
 });
 
