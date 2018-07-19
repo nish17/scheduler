@@ -1,22 +1,38 @@
 const moment = require("moment");
-var data = require("./newData.json");
-// console.log(currentHour);
-// const newdata = JSON.parse(data);
-// console.log(data[0]);
-// console.log(day);
+var data = require("./functions/newData.json");
 
+function workingHours(time) {
+  if (time >= 9 && time <= 18) return true;
+  else return false;
+}
+
+function weekdays(day) {
+  if (day === "Saturday" || day === "Sunday") return true;
+  else return false;
+}
+function setTimeZone() {
+  const indianTimeZone = moment
+    .utc()
+    .add(5, "hours")
+    .add(30, "minutes");
+
+  return indianTimeZone;
+}
 function nextLectureIntentHandler() {
-  const currentHour = new Date().getHours();
+  const indianTimeMoment = setTimeZone();
+  const currentHour = indianTimeMoment.hour();
+  // console.log("currentHour: ", currentHour);
   let next = currentHour + 1;
-  // next = 10;
+  // console.log("next: ", next);
   let hourCode = "L" + next;
-  let day = new Date().getDay();
-  // day = 1;
+  // console.log("hourCode", hourCode);
+  let day = indianTimeMoment.day();
+  // console.log("day: ", day);
   let today = moment().format("dddd");
-  // today = "Monday";
-  if (next >= 9 && next <= 18) {
-    if (today === "Sunday" || today === "Saturday") {
-      // console.log(data[day][today]);
+  // console.log("today:", today);
+  // console.log(data[day]);
+  if (workingHours(next)) {
+    if (weekdays(today)) {
       console.log("Enjoy your weekend Buddy!");
     } else {
       const classs = data[day][today][hourCode];
