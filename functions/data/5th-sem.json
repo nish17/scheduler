@@ -1,0 +1,200 @@
+[
+  {
+    "Sunday": {
+      "L*": {
+        "type": "Free"
+      }
+    }
+  },
+  {
+    "Monday": {
+      "L9": {
+        "type": "Lecture",
+        "name": "Software Engineering",
+        "Professor": "Santosh Kumar Bharti"
+      },
+      "L10": {
+        "type": "Lecture",
+        "name": "Operating System",
+        "Professor": "R Jothi"
+      },
+      "L11": {
+        "type": "Lecture",
+        "name": "Radio Frequency Engineering",
+        "Professor": "Ganga Prasad Pandey"
+      },
+      "L12": {
+        "type": "Free"
+      },
+      "L13": {
+        "type": "LAB",
+        "h1": {
+          "name": "Radio Frequency Engineering",
+          "Professor": "Ganga Prasad Pandey"
+        },
+        "h2": {
+          "name": "Operating System Lab",
+          "Professor": "R Jothi"
+        },
+        "h3": {
+          "name": "Database Management System Lab",
+          "Professor": "Reema Patel"
+        }
+      }
+    }
+  },
+  {
+    "Tuesday": {
+      "L9": {
+        "type": "Free"
+      },
+      "L10": {
+        "type": "Lecture",
+        "name": "Radio Frequency Engineering",
+        "Professor": "Ganga Prasad Pandey"
+      },
+      "L11": {
+        "type": "Lecture",
+        "name": "Database Management System",
+        "Professor": "Nishant Doshi"
+      },
+      "L12": {
+        "type": "Free"
+      },
+      "L13": {
+        "type": "Lecture",
+        "name": "Operating System",
+        "Professor": "R Jothi"
+      },
+      "L14": {
+        "type": "Lecture",
+        "name": "Principle of Economics",
+        "Professor": "Prashanta Panda"
+      }
+    }
+  },
+  {
+    "Wednesday": {
+      "L9": {
+        "type": "Free"
+      },
+      "L10": {
+        "type": "Lecture",
+        "name": "Principle of Economics",
+        "Professor": "Prashanta Panda"
+      },
+      "L11": {
+        "type": "Lecture",
+        "name": "Operating System",
+        "Professor": "R Jothi"
+      },
+      "L12": {
+        "type": "Free"
+      },
+      "L13": {
+        "type": "Lecture",
+        "name": "Radio Frequency Engineering",
+        "Professor": "Ganga Prasad Pandey"
+      },
+      "L14": {
+        "type": "Lecture",
+        "name": "Software Engineering",
+        "Professor": "Santosh Kumar Bharti"
+      }
+    }
+  },
+  {
+    "Thursday": {
+      "L9": {
+        "type": "Lecture",
+        "name": "Principle of Economics",
+        "Professor": "Prashanta Panda"
+      },
+      "L10": {
+        "type": "Lecture",
+        "name": "Database Management System",
+        "Professor": "Nishant Doshi"
+      },
+      "L11": {
+        "type": "LAB",
+        "h1": {
+          "name": "Operating System Lab",
+          "Professor": "R Jothi"
+        },
+        "h2": {
+          "name": "Database Management System Lab",
+          "Professor": "Reema Patel"
+        },
+        "h3": {
+          "name": "Radio Frequency Engineering",
+          "Professor": "Ganga Prasad Pandey"
+        }
+      },
+      "L12": {
+        "type": "LAB",
+        "h1": {
+          "name": "Operating System Lab",
+          "Professor": "R Jothi"
+        },
+        "h2": {
+          "name": "Database Management System Lab",
+          "Professor": "Reema Patel"
+        },
+        "h3": {
+          "name": "Radio Frequency Engineering",
+          "Professor": "Ganga Prasad Pandey"
+        }
+      },
+      "L13": {
+        "type": "Free"
+      },
+      "L14": {
+        "type": "Lecture",
+        "name": "Operating System",
+        "Professor": "R Jothi"
+      },
+      "L15": {
+        "type": "Lecture",
+        "name": "Database Management System",
+        "Professor": "Nishant Doshi"
+      }
+    }
+  },
+  {
+    "Friday": {
+      "L9": {
+        "type": "Lecture",
+        "name": "Database Management System",
+        "Professor": "Nishant Doshi"
+      },
+      "L10": {
+        "type": "Lecture",
+        "name": "Software Engineering",
+        "Professor": "Santosh Kumar Bharti"
+      },
+      "L11": {
+        "type": "Lecture",
+        "name": "Radio Frequency Engineering",
+        "Professor": "Ganga Prasad Pandey"
+      },
+      "L12": {
+        "type": "Free"
+      },
+      "L13": {
+        "type": "LAB",
+        "h1": {
+          "name": "Database Management System Lab",
+          "Professor": "Reema Patel"
+        },
+        "h2": {
+          "name": "Radio Frequency Engineering",
+          "Professor": "Ganga Prasad Pandey"
+        },
+        "h3": {
+          "name": "Operating System Lab",
+          "Professor": "R Jothi"
+        }
+      }
+    }
+  }
+]

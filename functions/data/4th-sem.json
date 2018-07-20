@@ -1,0 +1,248 @@
+[
+  {
+    "Sunday": {
+      "L*": {
+        "type": "Free"
+      }
+    }
+  },
+  {
+    "Monday": {
+      "L9": {
+        "type": "Lecture",
+        "name": "Computer Networks",
+        "Professor": "Manish Chaturvedi"
+      },
+      "L10": {
+        "type": "Lecture",
+        "name": "Computer Networks",
+        "Professor": "Manish Chaturvedi"
+      },
+      "L11": {
+        "type": "LAB",
+        "h1": {
+          "name": "ICT LAB",
+          "Professor": "JigarKumar Shah"
+        },
+        "h2": {
+          "name": "Networks LAB",
+          "Professor": "Samir Patel"
+        },
+        "h3": {
+          "name": "Object Oriented Programming Lab",
+          "Professor": "Nishant Doshi"
+        }
+      },
+      "L12": {
+        "type": "LAB",
+        "h1": {
+          "name": "ICT LAB",
+          "Professor": "JigarKumar Shah"
+        },
+        "h2": {
+          "name": "Networks LAB",
+          "Professor": "Samir Patel"
+        },
+        "h3": {
+          "name": "Object Oriented Programming Lab",
+          "Professor": "Nishant Doshi"
+        }
+      },
+      "L13": {
+        "type": "Free"
+      },
+      "L14": {
+        "type": "Lecture",
+        "name": "Computer Organisation and Programming",
+        "Professor": "Samir Patel"
+      },
+      "L15": {
+        "type": "Lecture",
+        "name": "Design and Analysis of Algorithms",
+        "Professor": "Nishant Doshi"
+      },
+      "L16": {
+        "type": "Free"
+      },
+      "L17": {
+        "type": "Free"
+      }
+    }
+  },
+  {
+    "Tuesday": {
+      "L9": {
+        "type": "Lecture",
+        "name": "Computer Networks",
+        "Professor": "Manish Chaturvedi"
+      },
+      "L10": {
+        "type": "Lecture",
+        "name": "Computer Networks",
+        "Professor": "Manish Chaturvedi"
+      },
+      "L11": {
+        "type": "Lecture",
+        "Name": "Communication Systems",
+        "Professor": "JigarKumar Shah"
+      },
+      "L12": {
+        "type": "Free"
+      },
+      "L13": {
+        "type": "Lecture",
+        "name": "Object Oriented Programming",
+        "Professor": "R Jothi"
+      },
+      "L14": {
+        "type": "LAB",
+        "h1": {
+          "name": "Object Oriented Programming Lab",
+          "Professor": "Nishant Doshi"
+        },
+        "h2": {
+          "name": "ICT LAB",
+          "Professor": "JigarKumar Shah"
+        },
+        "h3": {
+          "name": "Networks LAB",
+          "Professor": "Samir Patel"
+        }
+      },
+      "L15": {
+        "type": "LAB",
+        "h1": {
+          "name": "Object Oriented Programming Lab",
+          "Professor": "Nishant Doshi"
+        },
+        "h2": {
+          "name": "ICT LAB",
+          "Professor": "JigarKumar Shah"
+        },
+        "h3": {
+          "name": "Networks LAB",
+          "Professor": "Samir Patel"
+        }
+      },
+      "L16": {
+        "type": "Free"
+      },
+      "L17": {
+        "type": "Free"
+      }
+    }
+  },
+  {
+    "Wednesday": {
+      "L9": {
+        "type": "Lecture",
+        "name": "Object Oriented Programming",
+        "Professor": "R Jothi"
+      },
+      "L10": {
+        "type": "Lecture",
+        "name": "Design and Analysis of Algorithms",
+        "Professor": "Nishant Doshi"
+      },
+      "L11": {
+        "type": "Lecture",
+        "Name": "Communication Systems",
+        "Professor": "JigarKumar Shah"
+      },
+      "L12": {
+        "type": "Free"
+      },
+      "L13": {
+        "type": "Lecture",
+        "name": "Computer Organisation and Programming",
+        "Professor": "Samir Patel"
+      },
+      "L14": {
+        "type": "Free"
+      },
+      "L15": {
+        "type": "Free"
+      },
+      "L16": {
+        "type": "Free"
+      },
+      "L17": {
+        "type": "Free"
+      }
+    }
+  },
+  {
+    "Thursday": {
+      "L9": {
+        "type": "Lecture",
+        "name": "Design and Analysis of Algorithms",
+        "Professor": "Nishant Doshi"
+      },
+      "L10": {
+        "type": "Lecture",
+        "name": "Computer Organisation and Programming",
+        "Professor": "Samir Patel"
+      },
+      "L11": {
+        "type": "Lecture",
+        "Name": "Communication Systems",
+        "Professor": "JigarKumar Shah"
+      },
+      "L12": {
+        "type": "Free"
+      },
+      "L13": {
+        "type": "Free"
+      },
+      "L14": {
+        "type": "LAB",
+        "h1": {
+          "name": "Networks LAB",
+          "Professor": "Samir Patel"
+        },
+        "h2": {
+          "name": "Object Oriented Programming Lab",
+          "Professor": "Nishant Doshi"
+        },
+        "h3": {
+          "name": "ICT LAB",
+          "Professor": "JigarKumar Shah"
+        }
+      }
+    }
+  },
+  {
+    "Friday": {
+      "L9": {
+        "type": "Lecture",
+        "name": "Design and Analysis of Algorithms",
+        "Professor": "Nishant Doshi"
+      },
+      "L10": {
+        "type": "Lecture",
+        "name": "Object Oriented Programming",
+        "Professor": "R Jothi"
+      },
+      "L11": {
+        "type": "Lecture",
+        "Name": "Communication Systems",
+        "Professor": "JigarKumar Shah"
+      },
+      "L12": {
+        "type": "Free"
+      },
+      "L13": {
+        "type": "Lecture",
+        "name": "Computer Organisation and Programming",
+        "Professor": "Samir Patel"
+      }
+    }
+  },
+  {
+    "Saturday": {
+      "L*": {
+        "type": "Free"
+      }
+    }
+  }
+]
