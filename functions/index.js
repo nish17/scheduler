@@ -3,7 +3,7 @@ const { dialogflow, BasicCard, Permission } = require("actions-on-google");
 const functions = require("firebase-functions");
 const app = dialogflow({ debug: true });
 const moment = require("moment");
-var data = require("./newData.json");
+var data = require("./data/5th-sem.json");
 function workingHours(time) {
   if (time >= 9 && time <= 18) return true;
   else return false;
@@ -20,15 +20,18 @@ function setTimeZone() {
   return indianTimeZone;
 }
 
-app.intent("findLectureIntent", (conv, name) => {
+app.intent("findLectureIntent", conv => {
   const indianTimeMoment = setTimeZone();
   let day = indianTimeMoment.day();
+  const profName = conv.body.queryResult.parameter["given-name"][0];
   let today = moment().format("dddd");
   const t = Object.entries(data[day][today]).find(
-    ([key, value]) => value.Professor === name
+    ([key, value]) => value.Professor === profName
   )[0];
   if (t === undefined) {
-    return conv.close(`<speak>Today there is no lecture by ${name}</speak>`);
+    return conv.close(
+      `<speak>Today there is no lecture by ${profName}</speak>`
+    );
   } else {
     return conv.close(
       `<speak>Yes at ${
@@ -81,7 +84,7 @@ app.intent("currentLectureIntent", conv => {
   let hourCode = "L" + currentHour;
   let day = indianTimeMoment.day();
   let today = moment().format("dddd");
-  if (workingHours(next)) {
+  if (workingHours(currentHour)) {
     if (weekdays(today)) {
       conv.close(`<speak>Enjoy your weekend Buddy!</speak>`);
     } else {
