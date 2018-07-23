@@ -41,9 +41,8 @@ app.intent("findLectureIntent", conv => {
   for (let i = 0; i < entries.length; i++) {
     if (
       entries[i][1].type === "Lecture" &&
-      entries[i][1].Professor === profName
+      entries[i][1].Professor.includes(profName)
     ) {
-      // console.log("Found Manish's Lecure at ", entries[i][0]);
       const t = parseInt(entries[i][0].substring(1));
       conv.close(
         `<speak>Yes there is a lecture by ${profName} sir of ${
