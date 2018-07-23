@@ -20,24 +20,41 @@ function setTimeZone() {
   return indianTimeZone;
 }
 
+function toArray(moData) {
+  // console.log(Object.keys(moData));
+  const ownProps = Object.keys(moData);
+  var i = ownProps.length;
+  var resArray = new Array(i);
+  while (i--) resArray[i] = [ownProps[i], moData[ownProps[i]]];
+  return resArray;
+}
+
 app.intent("findLectureIntent", conv => {
-  const indianTimeMoment = setTimeZone();
-  let day = indianTimeMoment.day();
-  const profName = conv.body.queryResult.parameter["given-name"][0];
-  let today = moment().format("dddd");
-  const t = Object.entries(data[day][today]).find(
-    ([key, value]) => value.Professor === profName
-  )[0];
-  if (t === undefined) {
-    return conv.close(
-      `<speak>Today there is no lecture by ${profName}</speak>`
-    );
-  } else {
-    return conv.close(
-      `<speak>Yes at ${
-        t[1] - 12 > 0 ? `${t[1] - 12} PM` : `${t[1]} AM`
-      }</speak>`
-    );
+  // const indianTimeMoment = setTimeZone();
+  let day = moment(conv.body.queryResult.parameters["date"][0]).day();
+  const profName = conv.body.queryResult.parameters["profName"][0];
+  let today = moment(conv.body.queryResult.parameters["date"][0]).format(
+    "dddd"
+  );
+  const entries = toArray(data[day][today]);
+
+  for (let i = 0; i < entries.length; i++) {
+    if (
+      entries[i][1].type === "Lecture" &&
+      entries[i][1].Professor === profName
+    ) {
+      // console.log("Found Manish's Lecure at ", entries[i][0]);
+      const t = parseInt(entries[i][0].substring(1));
+      conv.close(
+        `<speak>Yes there is a lecture by ${profName} sir of ${
+          entries[i][1].name
+        } at ${today} ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} </speak>`
+      );
+      break;
+    } else {
+      conv.close(`<speak>Today there is no lecture by ${profName}</speak>`);
+      break;
+    }
   }
 });
 
