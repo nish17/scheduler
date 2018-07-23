@@ -1,5 +1,5 @@
 const moment = require("moment");
-var data = require("./functions/newData.json");
+var data = require("./functions/data/4th-sem.json");
 
 function workingHours(time) {
   if (time >= 9 && time <= 18) return true;
@@ -72,11 +72,12 @@ function findLectureIntent(x) {
   let day = indianTimeMoment.day();
   console.log(day);
   let today = moment().format("dddd");
-  const t = Object.entries(data[day].today).find(
-    ([key, value]) => value.Professor === x
+  const t = Object.entries(data[day].today).find(([key, value]) =>
+    value.Professor.includes(profName)
   );
   console.log(t);
 }
 
 findLectureIntent("Manish Chaturvedi");
 // nextLectureIntentHandler();
+profName;
