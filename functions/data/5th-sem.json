@@ -65,11 +65,6 @@
         "type": "Lecture",
         "name": "Operating System",
         "Professor": "R Jothi"
-      },
-      "L14": {
-        "type": "Lecture",
-        "name": "Principle of Economics",
-        "Professor": "Prashanta Panda"
       }
     }
   },
@@ -194,6 +189,26 @@
           "name": "Operating System Lab",
           "Professor": "R Jothi"
         }
+      },
+      "L14": {
+        "type": "LAB",
+        "h1": {
+          "name": "Database Management System Lab",
+          "Professor": "Reema Patel"
+        },
+        "h2": {
+          "name": "Radio Frequency Engineering",
+          "Professor": "Ganga Prasad Pandey"
+        },
+        "h3": {
+          "name": "Operating System Lab",
+          "Professor": "R Jothi"
+        }
+      },
+      "L15": {
+        "type": "Lecture",
+        "name": "Principle of Economics",
+        "Professor": "Prashanta Panda"
       }
     }
   }
