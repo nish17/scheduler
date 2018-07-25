@@ -132,4 +132,43 @@ app.intent("currentLectureIntent", conv => {
     conv.close(`<speak>Please come back during working college hours</speak>`);
   }
 });
+
+app.intent("Default Welcome Intent", conv => {
+  if (!conv.surface.capabilities.has("actions.capability.SCREEN_OUTPUT")) {
+    conv.ask(
+      "Sorry, try this on a screen device or select the " +
+        "phone surface in the simulator."
+    );
+    return;
+  }
+  // Create a list
+  conv.ask(
+    new List({
+      title: "Select Department",
+      items: {
+        // Add the first item to the list
+        [SELECTION_KEY_ICT]: {
+          synonyms: [
+            "In which you are studying? ",
+            "May I know you department please?",
+            "Department, please?"
+          ],
+          title: "ICT",
+          description: "ICT 2016 Batch"
+        },
+        // Add the second item to the list
+        [SELECTION_KEY_CE]: {
+          synonyms: [
+            "In which you are studying? ",
+            "May I know you department please?",
+            "Department, please?"
+          ],
+          title: "CE",
+          description: "CE 2016 batch"
+        }
+      }
+    })
+  );
+});
+
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
