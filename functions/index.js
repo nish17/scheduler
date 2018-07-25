@@ -41,18 +41,21 @@ app.intent("findLectureIntent", conv => {
   for (let i = 0; i < entries.length; i++) {
     if (
       entries[i][1].type === "Lecture" &&
-      entries[i][1].Professor.includes(profName)
+      entries[i][1].Professor !== undefined &&
+      entries[i][1].Professor === profName
     ) {
       const t = parseInt(entries[i][0].substring(1));
       conv.close(
         `<speak>Yes there is a lecture by ${profName} sir of ${
           entries[i][1].name
-        } at ${today} ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} </speak>`
+        } at ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} on ${today}</speak>`
       );
       break;
     } else {
-      conv.close(`<speak>Today there is no lecture by ${profName}</speak>`);
-      break;
+      if (entries[i][1].type === "Lecture" && entries[i][0] === "L17") {
+        conv.close(`<speak>There is no lecture by ${profName}</speak>`);
+        break;
+      }
     }
   }
 });
