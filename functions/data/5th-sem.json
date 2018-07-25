@@ -40,6 +40,18 @@
           "name": "Database Management System Lab",
           "Professor": "Reema Patel"
         }
+      },
+      "L14": {
+        "type": "Free"
+      },
+      "L15": {
+        "type": "Free"
+      },
+      "L16": {
+        "type": "Free"
+      },
+      "L17": {
+        "type": "Free"
       }
     }
   },
@@ -65,6 +77,18 @@
         "type": "Lecture",
         "name": "Operating System",
         "Professor": "R Jothi"
+      },
+      "L14": {
+        "type": "Free"
+      },
+      "L15": {
+        "type": "Free"
+      },
+      "L16": {
+        "type": "Free"
+      },
+      "L17": {
+        "type": "Free"
       }
     }
   },
@@ -95,6 +119,15 @@
         "type": "Lecture",
         "name": "Software Engineering",
         "Professor": "Santosh Kumar Bharti"
+      },
+      "L15": {
+        "type": "Free"
+      },
+      "L16": {
+        "type": "Free"
+      },
+      "L17": {
+        "type": "Free"
       }
     }
   },
@@ -152,6 +185,12 @@
         "type": "Lecture",
         "name": "Database Management System",
         "Professor": "Nishant Doshi"
+      },
+      "L16": {
+        "type": "Free"
+      },
+      "L17": {
+        "type": "Free"
       }
     }
   },
@@ -209,6 +248,12 @@
         "type": "Lecture",
         "name": "Principle of Economics",
         "Professor": "Prashanta Panda"
+      },
+      "L16": {
+        "type": "Free"
+      },
+      "L17": {
+        "type": "Free"
       }
     }
   }
