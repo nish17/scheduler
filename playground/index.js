@@ -1,5 +1,5 @@
 const moment = require("moment");
-// // var data = require("../functions/newData.json");
+var data = require("../functions/data/5th-sem.json");
 // const data = require("../functions/newData.json");
 
 // /* const indianTimeMoment = moment
@@ -52,12 +52,13 @@ function setTimeZone() {
 // }
 // console.log(profName.toLowerCase().includes("Santosh Bharti".toLowerCase()));
 
-let time = moment("2018-07-27T09:00:00+05:30").format("dddd");
+let day = moment("2018-07-27T09:00:00+05:30").format("dddd");
+console.log(day);
+let dayCode = moment("2018-07-27T09:00:00+05:30").day();
+console.log(dayCode);
+let time = moment("2018-07-27T13:00:00+05:30").hour();
 console.log(time);
+let hourCode = "L" + time;
+console.log(hourCode);
 
-const indianTimeMoment = setTimeZone();
-const currentHour = indianTimeMoment.hour();
-let next = currentHour + 1;
-let hourCode = "L" + next;
-let day = indianTimeMoment.day();
-let today = moment().format("dddd");
+console.log(data[dayCode][day][hourCode]);
