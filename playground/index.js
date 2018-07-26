@@ -1,4 +1,4 @@
-// const moment = require("moment");
+const moment = require("moment");
 // // var data = require("../functions/newData.json");
 // const data = require("../functions/newData.json");
 
@@ -11,13 +11,13 @@
 // console.log(currentDay);
 // console.log(currentHour);
 //  */
-// function setTimeZone() {
-//   const indianTimeZone = moment
-//     .utc()
-//     .add(5, "hours")
-//     .add(30, "minutes");
-//   return indianTimeZone;
-// }
+function setTimeZone() {
+  const indianTimeZone = moment
+    .utc()
+    .add(5, "hours")
+    .add(30, "minutes");
+  return indianTimeZone;
+}
 
 // function findLectureIntent(x) {
 //   const indianTimeMoment = setTimeZone();
@@ -45,9 +45,19 @@
 
 // findLectureIntent("Manish Chaturvedi");
 
-profName = "Santosh Kumar Bharti";
+// profName = "Santosh Kumar Bharti";
 
-if (profName.toLowerCase().includes("Santosh Bharti".toLowerCase())) {
-  console.log("true");
-}
-console.log(profName.toLowerCase().includes("Santosh Bharti".toLowerCase()));
+// if (profName.toLowerCase().includes("Santosh Bharti".toLowerCase())) {
+//   console.log("true");
+// }
+// console.log(profName.toLowerCase().includes("Santosh Bharti".toLowerCase()));
+
+let time = moment("2018-07-27T09:00:00+05:30").format("dddd");
+console.log(time);
+
+const indianTimeMoment = setTimeZone();
+const currentHour = indianTimeMoment.hour();
+let next = currentHour + 1;
+let hourCode = "L" + next;
+let day = indianTimeMoment.day();
+let today = moment().format("dddd");
