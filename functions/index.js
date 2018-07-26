@@ -51,7 +51,7 @@ app.intent("findLectureIntent", conv => {
     ) {
       const t = parseInt(entries[i][0].substring(1));
       conv.close(
-        `<speak>Yes there is a lecture by ${profName} sir of ${
+        `<speak>Yes there is a lecture by ${profName} of ${
           entries[i][1].name
         } at ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} on ${today}</speak>`
       );
@@ -80,12 +80,12 @@ app.intent("nextLectureIntent", conv => {
       if (classs.type === "LAB") {
         conv.close(
           `<speak> Next you have LAB` +
-            `For H1 Batch:` +
-            `${classs.h1.name} will be taken by ${classs.h1.Professor}` +
-            `For H2 Batch: ` +
-            `${classs.h2.name} will be taken by ${classs.h2.Professor}` +
-            `For H1 Batch: ` +
-            `${classs.h3.name} will be taken by ${classs.h3.Professor}</speak>`
+            ` For H1 Batch:` +
+            ` ${classs.h1.name} will be taken by ${classs.h1.Professor}` +
+            ` For H2 Batch: ` +
+            ` ${classs.h2.name} will be taken by ${classs.h2.Professor}` +
+            ` For H3 Batch: ` +
+            ` ${classs.h3.name} will be taken by ${classs.h3.Professor}</speak>`
         );
       } else if (classs.type === "Lecture") {
         conv.close(
@@ -116,12 +116,14 @@ app.intent("currentLectureIntent", conv => {
       if (classs.type === "LAB") {
         conv.close(
           `<speak> Right Now you have LAB` +
-            `For H1 Batch:` +
-            `It's ${classs.h1.name} LAB taken by ${classs.h1.Professor}` +
-            `For H2 Batch: ` +
-            `It's ${classs.h2.name} LAB taken by ${classs.h2.Professor}` +
-            `For H1 Batch: ` +
-            `It's ${classs.h3.name} LAB taken by ${classs.h3.Professor}</speak>`
+            ` For H1 Batch:` +
+            ` It's ${classs.h1.name} LAB taken by ${classs.h1.Professor}` +
+            ` For H2 Batch: ` +
+            ` It's ${classs.h2.name} LAB taken by ${classs.h2.Professor}` +
+            ` For H3 Batch: ` +
+            ` It's ${classs.h3.name} LAB taken by ${
+              classs.h3.Professor
+            }</speak>`
         );
       } else if (classs.type === "Lecture") {
         conv.close(
