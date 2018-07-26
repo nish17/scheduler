@@ -150,7 +150,7 @@ app.intent("findLectureByTime", conv => {
   const classs = data[dayCode][day][hourCode];
   if (classs.type === "LAB") {
     conv.close(
-      `<speak>You have LAB` +
+      `<speak>On ${day} at ${Ltime} You have LAB` +
         ` For H1 Batch:` +
         ` It's ${classs.h1.name} LAB taken by ${classs.h1.Professor}` +
         ` For H2 Batch: ` +
@@ -160,9 +160,9 @@ app.intent("findLectureByTime", conv => {
     );
   } else if (classs.type === "Lecture") {
     conv.close(
-      `<speak>On ${day} you have lecture of ${classs.name} taken by ${
-        classs.Professor
-      }</speak>`
+      `<speak>On ${day} at ${Ltime} you have lecture of ${
+        classs.name
+      } taken by ${classs.Professor}</speak>`
     );
   } else if (classs.type === "Free") {
     conv.close(`<speak>It's your free time</speak>`);
