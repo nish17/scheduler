@@ -165,7 +165,7 @@ app.intent("findLectureByTime", conv => {
       } taken by ${classs.Professor}</speak>`
     );
   } else if (classs.type === "Free") {
-    conv.close(`<speak>It's your free time</speak>`);
+    conv.close(`<speak>Oh that time I think it will be your free time</speak>`);
   }
 });
 
