@@ -140,6 +140,35 @@ app.intent("currentLectureIntent", conv => {
   }
 });
 
+app.intent("findLectureByTime", conv => {
+  const indianTimeMoment = setTimeZone();
+  const time = moment(conv.body.queryResult.parameters[time]).hour();
+  const dayCode = moment(conv.body.queryResult.parameters[date]).day();
+  const day = moment(conv.body.queryResult.parameters[date]).format("dddd");
+  const hourCode = "L" + time;
+
+  const classs = data[dayCode][day][hourCode];
+  if (classs.type === "LAB") {
+    conv.close(
+      `<speak>You have LAB` +
+        ` For H1 Batch:` +
+        ` It's ${classs.h1.name} LAB taken by ${classs.h1.Professor}` +
+        ` For H2 Batch: ` +
+        ` It's ${classs.h2.name} LAB taken by ${classs.h2.Professor}` +
+        ` For H3 Batch: ` +
+        ` It's ${classs.h3.name} LAB taken by ${classs.h3.Professor}</speak>`
+    );
+  } else if (classs.type === "Lecture") {
+    conv.close(
+      `<speak>On ${day} you have lecture of ${classs.name} taken by ${
+        classs.Professor
+      }</speak>`
+    );
+  } else if (classs.type === "Free") {
+    conv.close(`<speak>It's your free time</speak>`);
+  }
+});
+
 app.intent("Default Welcome Intent", conv => {
   if (!conv.surface.capabilities.has("actions.capability.SCREEN_OUTPUT")) {
     conv.ask(
