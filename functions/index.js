@@ -142,10 +142,10 @@ app.intent("currentLectureIntent", conv => {
 
 app.intent("findLectureByTime", conv => {
   const indianTimeMoment = setTimeZone();
-  const time = moment(conv.body.queryResult.parameters[time]).hour();
+  const Ltime = moment(conv.body.queryResult.parameters[time]).hour();
   const dayCode = moment(conv.body.queryResult.parameters[date]).day();
   const day = moment(conv.body.queryResult.parameters[date]).format("dddd");
-  const hourCode = "L" + time;
+  const hourCode = "L" + Ltime;
 
   const classs = data[dayCode][day][hourCode];
   if (classs.type === "LAB") {
