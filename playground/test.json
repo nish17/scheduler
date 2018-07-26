@@ -1,0 +1,58 @@
+{
+  "responseId": "b6282f1c-e721-4e04-9058-8cbe8206f902",
+  "queryResult": {
+    "queryText": "tomorrow",
+    "parameters": {
+      "typeOfClass": "Lecture",
+      "time": "2018-07-27T09:00:00+05:30",
+      "date": "2018-07-27T12:00:00+05:30"
+    },
+    "allRequiredParamsPresent": true,
+    "fulfillmentMessages": [
+      {
+        "text": {
+          "text": [""]
+        }
+      }
+    ],
+    "webhookPayload": {
+      "google": {
+        "userStorage": "{\"data\":{}}",
+        "richResponse": {
+          "items": [
+            {
+              "simpleResponse": {
+                "textToSpeech":
+                  "<speak> 17 Oh at that time I think it will be your free time</speak>"
+              }
+            }
+          ]
+        },
+        "expectUserResponse": false
+      }
+    },
+    "outputContexts": [
+      {
+        "name":
+          "projects/daily-schedule-a07e5/agent/sessions/eaacd400-f9d4-4a0b-7b97-72f2ed4a9b7c/contexts/_actions_on_google",
+        "lifespanCount": 99,
+        "parameters": {
+          "data": "{}"
+        }
+      }
+    ],
+    "intent": {
+      "name":
+        "projects/daily-schedule-a07e5/agent/intents/dcfe2f75-c114-43b4-863a-8cc043de7835",
+      "displayName": "findLectureByTime"
+    },
+    "intentDetectionConfidence": 1,
+    "diagnosticInfo": {
+      "webhook_latency_ms": 76
+    },
+    "languageCode": "en"
+  },
+  "webhookStatus": {
+    "message": "Webhook execution successful"
+  }
+}
