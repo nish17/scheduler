@@ -142,9 +142,9 @@ app.intent("currentLectureIntent", conv => {
 
 app.intent("findLectureByTime", conv => {
   const indianTimeMoment = setTimeZone();
-  const Ltime = moment(conv.body.queryResult.parameters[time]).hour();
-  const dayCode = moment(conv.body.queryResult.parameters[date]).day();
-  const day = moment(conv.body.queryResult.parameters[date]).format("dddd");
+  const Ltime = moment(conv.body.queryResult.parameters["time"]).hour();
+  const dayCode = moment(conv.body.queryResult.parameters["date"]).day();
+  const day = moment(conv.body.queryResult.parameters["date"]).format("dddd");
   const hourCode = "L" + Ltime;
 
   const classs = data[dayCode][day][hourCode];
