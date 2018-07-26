@@ -52,13 +52,17 @@ function setTimeZone() {
 // }
 // console.log(profName.toLowerCase().includes("Santosh Bharti".toLowerCase()));
 
-let day = moment("2018-07-27T09:00:00+05:30").format("dddd");
+const test = require("./test.json");
+
+let day = moment("2018-07-27T12:00:00+05:30").format("dddd");
 console.log(day);
-let dayCode = moment("2018-07-27T09:00:00+05:30").day();
+let dayCode = moment("2018-07-27T12:00:00+05:30").day();
 console.log(dayCode);
-let time = moment("2018-07-27T13:00:00+05:30").hour();
+let time = moment("2018-07-27T09:00:00+05:30").hour();
 console.log(time);
 let hourCode = "L" + time;
 console.log(hourCode);
 
-console.log(data[dayCode][day][hourCode]);
+// console.log(data[dayCode][day][hourCode]);
+
+console.log(test.queryResult.parameters.time);
