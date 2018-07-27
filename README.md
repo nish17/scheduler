@@ -6,16 +6,12 @@
 
 It's a Google Assistant action 🤖 that tells you about which classes and labs you have today.
 
-<a href="https://m.me/snbot">
-<img src="https://s23.postimg.org/lx7vvkugb/try_it_now_button.png" height="50px"/>
-</a>
-
 ## 📱 Screenshots
 
-<img src="/assets/pdpu_schedule01.jpg"/>
-<img src="/assets/pdpu_schedule02.jpg"/>
-<img src="/assets/pdpu_schedule03.jpg"/>
-<img src="/assets/pdpu_schedule04.jpg"/>
+<img src="/assets/pdpu_schedule01.jpg" height="200px"/>
+<img src="/assets/pdpu_schedule02.jpg" height="200px"/>
+<img src="/assets/pdpu_schedule03.jpg" height="200px"/>
+<img src="/assets/pdpu_schedule04.jpg" height="200px"/>
 
 ## ❤️ Credits
 
