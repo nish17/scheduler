@@ -12,10 +12,10 @@ It's a Google Assistant action 🤖 that tells you about which classes and labs 
 
 ## 📱Screenshots
 
-<img src="https://drive.google.com/open?id=1CbAIKt2WpPT3XWrF-3EjH0zAqZkhpo7H"/>
-<img src="https://drive.google.com/open?id=1NOuDh6asQs5M5H7XLaHSYTQmF6e2LHc2"/>
-<img src="https://drive.google.com/open?id=1xWRMjwL0kkzcqRaG-HTND48SY6RZdL6Q"/>
-<img src="https://drive.google.com/open?id=1XbcBxh8NuRFl_UBcW-SYiL8fcMeH3Cu4"/>
+<img src=""/>
+<img src=""/>
+<img src=""/>
+<img src=""/>
 
 ## ❤️ Credits
 
