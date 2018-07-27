@@ -8,10 +8,10 @@ It's a Google Assistant action 🤖 that tells you about which classes and labs 
 
 ## 📱 Screenshots
 
-<img src="/assets/pdpu_schedule01.jpg" height="200px"/>
-<img src="/assets/pdpu_schedule02.jpg" height="200px"/>
-<img src="/assets/pdpu_schedule03.jpg" height="200px"/>
-<img src="/assets/pdpu_schedule04.jpg" height="200px"/>
+<img src="/assets/pdpu_schedule01.jpg" height="500px"/>
+<img src="/assets/pdpu_schedule02.jpg" height="500px"/>
+<img src="/assets/pdpu_schedule03.jpg" height="500px"/>
+<img src="/assets/pdpu_schedule04.jpg" height="500px"/>
 
 ## ❤️ Credits
 
