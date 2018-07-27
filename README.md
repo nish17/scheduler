@@ -10,12 +10,12 @@ It's a Google Assistant action 🤖 that tells you about which classes and labs 
 <img src="https://s23.postimg.org/lx7vvkugb/try_it_now_button.png" height="50px"/>
 </a>
 
-## 📱Screenshots
+## 📱 Screenshots
 
-<img src=""/>
-<img src=""/>
-<img src=""/>
-<img src=""/>
+<img src="/assets/pdpu_schedule01.jpg"/>
+<img src="/assets/pdpu_schedule02.jpg"/>
+<img src="/assets/pdpu_schedule03.jpg"/>
+<img src="/assets/pdpu_schedule04.jpg"/>
 
 ## ❤️ Credits
 
