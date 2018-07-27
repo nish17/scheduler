@@ -11,7 +11,7 @@ It's a Google Assistant action 🤖 that tells you about which classes and labs 
 <img src="/assets/pdpu_schedule01.jpg" height="500px"/>
 
 ### Get the details of current on going Lecture
-<img src="/assets/pdpu_schedule02.jpg" height="500px"/>
+<img src="/assets/pdpu_schedule02.jpg" height="500px" align="right"/>
 
 ### Get the details of next Lecture
 <img src="/assets/pdpu_schedule04.jpg" height="500px"/>
