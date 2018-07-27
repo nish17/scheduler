@@ -7,10 +7,13 @@
 It's a Google Assistant action 🤖 that tells you about which classes and labs you have today.
 
 ## 📱 Screenshots
-
+### search lecture by professor name
 <img src="/assets/pdpu_schedule01.jpg" height="500px"/>
+
+### Get the details of current on going Lecture
 <img src="/assets/pdpu_schedule02.jpg" height="500px"/>
-<img src="/assets/pdpu_schedule03.jpg" height="500px"/>
+
+### Get the details of next Lecture
 <img src="/assets/pdpu_schedule04.jpg" height="500px"/>
 
 ## ❤️ Credits
