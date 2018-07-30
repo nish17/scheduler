@@ -1,5 +1,5 @@
 const moment = require("moment");
-var data = require("./functions/data/4th-sem.json");
+/* var data = require("./functions/data/4th-sem.json");
 
 function workingHours(time) {
   if (time >= 9 && time <= 18) return true;
@@ -10,6 +10,7 @@ function weekdays(day) {
   if (day === "Saturday" || day === "Sunday") return true;
   else return false;
 }
+*/
 function setTimeZone() {
   const indianTimeZone = moment
     .utc()
@@ -17,6 +18,7 @@ function setTimeZone() {
     .add(30, "minutes");
   return indianTimeZone;
 }
+/*
 function nextLectureIntentHandler() {
   const indianTimeMoment = setTimeZone();
   const currentHour = indianTimeMoment.hour();
@@ -81,3 +83,16 @@ function findLectureIntent(x) {
 findLectureIntent("Manish Chaturvedi");
 // nextLectureIntentHandler();
 profName;
+ */
+
+function isItToday(today) {
+  const indianTimeMoment = setTimeZone();
+  const day = indianTimeMoment.format("dddd");
+  if (day === today) {
+    return true;
+  } else return false;
+}
+
+if (isItToday("Monday")) {
+  console.log("Its monday");
+} else console.log("its not monday");
