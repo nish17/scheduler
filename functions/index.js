@@ -2,6 +2,7 @@
 const {
   dialogflow,
   List,
+  Suggestions,
   BasicCard,
   Permission
 } = require("actions-on-google");
@@ -25,6 +26,14 @@ function setTimeZone() {
   return indianTimeZone;
 }
 
+function isItToday(today) {
+  const indianTimeMoment = setTimeZone();
+  const day = indianTimeMoment.format("dddd");
+  if (day === today) {
+    return true;
+  } else return false;
+}
+
 function toArray(moData) {
   // console.log(Object.keys(moData));
   const ownProps = Object.keys(moData);
@@ -35,31 +44,35 @@ function toArray(moData) {
 }
 
 app.intent("findLectureIntent", conv => {
-  // const indianTimeMoment = setTimeZone();
-  let day = moment(conv.body.queryResult.parameters["date"][0]).day();
+  const day = moment(conv.body.queryResult.parameters["date"][0]).day();
   const profName = conv.body.queryResult.parameters["profName"][0];
-  let today = moment(conv.body.queryResult.parameters["date"][0]).format(
+  const today = moment(conv.body.queryResult.parameters["date"][0]).format(
     "dddd"
   );
-  const entries = toArray(data[day][today]);
 
-  for (let i = 0; i < entries.length; i++) {
-    if (
-      entries[i][1].type === "Lecture" &&
-      entries[i][1].Professor !== undefined &&
-      entries[i][1].Professor === profName
-    ) {
-      const t = parseInt(entries[i][0].substring(1));
-      conv.close(
-        `<speak>Yes there is a lecture by ${profName} of ${
-          entries[i][1].name
-        } at ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} on ${today}</speak>`
-      );
-      break;
-    } else {
-      if (entries[i][1].type === "Lecture" && entries[i][0] === "L17") {
-        conv.close(`<speak>There is no lecture by ${profName}</speak>`);
+  if (today === "Saturday" || today === "Sunday") {
+    conv.close(`<speak>Enjoy your weekend buddy!</speak>`);
+  } else {
+    const entries = toArray(data[day][today]);
+
+    for (let i = 0; i < entries.length; i++) {
+      if (
+        entries[i][1].type === "Lecture" &&
+        entries[i][1].Professor !== undefined &&
+        entries[i][1].Professor === profName
+      ) {
+        const t = parseInt(entries[i][0].substring(1));
+        conv.close(
+          `<speak>Yes there is a lecture by ${profName} of ${
+            entries[i][1].name
+          } at ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} on ${today}</speak>`
+        );
         break;
+      } else {
+        if (entries[i][1].type === "Lecture" && entries[i][0] === "L17") {
+          conv.close(`<speak>There is no lecture by ${profName}</speak>`);
+          break;
+        }
       }
     }
   }
@@ -68,10 +81,10 @@ app.intent("findLectureIntent", conv => {
 app.intent("nextLectureIntent", conv => {
   const indianTimeMoment = setTimeZone();
   const currentHour = indianTimeMoment.hour();
-  let next = currentHour + 1;
-  let hourCode = "L" + next;
-  let day = indianTimeMoment.day();
-  let today = moment().format("dddd");
+  const next = currentHour + 1;
+  const hourCode = "L" + next;
+  const day = indianTimeMoment.day();
+  const today = moment().format("dddd");
   if (workingHours(next)) {
     if (weekdays(today)) {
       conv.close(`<speak>Enjoy your weekend Buddy!</speak>`);
@@ -105,9 +118,9 @@ app.intent("nextLectureIntent", conv => {
 app.intent("currentLectureIntent", conv => {
   const indianTimeMoment = setTimeZone();
   const currentHour = indianTimeMoment.hour();
-  let hourCode = "L" + currentHour;
-  let day = indianTimeMoment.day();
-  let today = moment().format("dddd");
+  const hourCode = "L" + currentHour;
+  const day = indianTimeMoment.day();
+  const today = moment().format("dddd");
   if (workingHours(currentHour)) {
     if (weekdays(today)) {
       conv.close(`<speak>Enjoy your weekend Buddy!</speak>`);
@@ -141,14 +154,20 @@ app.intent("currentLectureIntent", conv => {
 });
 
 app.intent("findLectureByTime", conv => {
-  const indianTimeMoment = setTimeZone();
   const Ltime = moment(conv.body.queryResult.parameters["time"]).hour();
   const dayCode = moment(conv.body.queryResult.parameters["date"]).day();
   const day = moment(conv.body.queryResult.parameters["date"]).format("dddd");
   const hourCode = "L" + Ltime;
 
   const classs = data[dayCode][day][hourCode];
-  if (classs.type === "LAB") {
+
+  conv.close(`<speak>${Ltime}: ${hourCode} ${dayCode} ${day}</speak>`);
+
+  // conv.close(
+  //   `<speak>${classs.type} ${classs.name} ${classs.Professor}</speak>`
+  // );
+
+  /* if (classs.type === "LAB") {
     conv.close(
       `<speak>On ${day} at ${Ltime} You have LAB` +
         ` For H1 Batch:` +
@@ -168,19 +187,23 @@ app.intent("findLectureByTime", conv => {
     conv.close(
       `<speak> ${day}- ${dayCode} - ${day} -${hourCode} -${Ltime} Oh at that time I think it will be your free time</speak>`
     );
-  }
+  } */
 });
 
-app.intent("Default Welcome Intent", conv => {
-  if (!conv.surface.capabilities.has("actions.capability.SCREEN_OUTPUT")) {
+// app.intent("Default Welcome Intent", conv => {
+/*   if (!conv.surface.capabilities.has("actions.capability.SCREEN_OUTPUT")) {
     conv.ask(
       "Sorry, try this on a screen device or select the " +
         "phone surface in the simulator."
     );
-    return;
-  }
-  // Create a list
-  conv.ask(
+    return; */
+// conv.ask(new Suggestions("Suggestion Chips"));
+// conv.ask(
+//   new Suggestions(["Current Lecture?", "Next Lecture?", "Find Lecture?"])
+// );
+// }
+// Create a list
+/*   conv.ask(
     new List({
       title: "Select Department",
       items: {
@@ -206,7 +229,7 @@ app.intent("Default Welcome Intent", conv => {
         }
       }
     })
-  );
-});
+  ); */
+// });
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
