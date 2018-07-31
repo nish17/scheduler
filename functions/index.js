@@ -65,12 +65,14 @@ app.intent("findLectureIntent", conv => {
         conv.close(
           `<speak>Yes there is a lecture by ${profName} of ${
             entries[i][1].name
-          } at ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} on ${today}</speak>`
+          } at ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} ${
+            isItToday(today) ? "today" : `on ${today}.`
+          }</speak>`
         );
         break;
       } else {
         if (entries[i][1].type === "Lecture" && entries[i][0] === "L17") {
-          conv.close(`<speak>There is no lecture by ${profName}</speak>`);
+          conv.close(`<speak>There is no lecture by ${profName} ${isItToday(today) ? "today" : `on ${today}.}</speak>`);
           break;
         }
       }
