@@ -83,16 +83,21 @@ function findLectureIntent(x) {
 findLectureIntent("Manish Chaturvedi");
 // nextLectureIntentHandler();
 profName;
- */
+//  */
 
-function isItToday(today) {
-  const indianTimeMoment = setTimeZone();
-  const day = indianTimeMoment.format("dddd");
-  if (day === today) {
-    return true;
-  } else return false;
-}
+// function isItToday(today) {
+//   const indianTimeMoment = setTimeZone();
+//   const day = indianTimeMoment.format("dddd");
+//   const nextDay = indianTimeMoment.add(1, "days");
+//   console.log("nextDay ", nextDay.format("dddd"));
+//   console.log(nextDay.format("dddd"));
+//   // const tomorrow = moment().calender(null, { nextDay });
+//   // console.log(tomorrow);
+// }
 
-if (isItToday("Monday")) {
-  console.log("Its monday");
-} else console.log("its not monday");
+// if (isItToday("Monday")) {
+//   console.log("Its monday");
+// } else console.log("its not monday");
+
+// console.log(moment("2018-08-01T09:00:00+05:30").hour());
+const indianTimeMoment = setTimeZone();
