@@ -165,20 +165,22 @@ app.intent("currentLectureIntent", conv => {
 });
 
 app.intent("findLectureByTime", conv => {
-  const Ltime = moment(conv.body.queryResult.parameters.time).hour();
+  // const indianTimeMoment = setTimeZone();
+  const hourCode =
+    "L" + new Date(conv.body.queryResult.parameters.time).getHours();
   const dayCode = moment(conv.body.queryResult.parameters.date).day();
   const day = moment(conv.body.queryResult.parameters.date).format("dddd");
-  const hourCode = "L" + Ltime;
 
   const classs = data[dayCode][day][hourCode];
-
+  // console.log(classs);
+  conv.close(`<speak>${dayCode}, ${day}, ${hourCode}</speak>`);
   // conv.close(`<speak>${Ltime}: ${hourCode} ${dayCode} ${day}</speak>`);
 
   // conv.close(
   //   `<speak>${classs.type} ${classs.name} ${classs.Professor}</speak>`
   // );
 
-  if (classs.type === "LAB") {
+  /*   if (classs.type === "LAB") {
     conv.close(
       `<speak>On ${day} at ${Ltime} You have LAB` +
         ` For H1 Batch:` +
@@ -199,6 +201,6 @@ app.intent("findLectureByTime", conv => {
       `<speak> ${day}- ${dayCode} - ${day} -${hourCode} -${Ltime} Oh at that time I think it will be your free time</speak>`
     );
   }
+  */
 });
-
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
