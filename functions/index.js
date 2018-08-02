@@ -203,4 +203,47 @@ app.intent("findLectureByTime", conv => {
   }
   */
 });
+
+app.intent("showFullSchedule", conv => {
+  const day = moment(conv.body.queryResult.parameters.date).day();
+  const today = moment(conv.body.queryResult.parameters.date).format("dddd");
+
+  if (today === "Saturday" || today === "Sunday") {
+    conv.close(`<speak>Enjoy your weekend buddy!</speak>`);
+  } else {
+    const entries = toArray(data[day][today]);
+    for (let i = 0; i < entries.length; i++) {
+      if (entries[i][1].type === "Lecture") {
+        const t = parseInt(entries[i][0].substring(1));
+        conv.close(`<speak>
+          At ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} ${
+          entries[i][1].name
+        } by ${entries[i][1].Professor}</speak>`);
+        // break;
+      } else if (entries[i][1].type === "LAB") {
+        const t = parseInt(entries[i][0].substring(1));
+        conv.close(`<speak>
+          For H1 Batch At ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} ${
+          entries[i][1].h1.name
+        } by ${entries[i][1].h1.Professor}</speak>`);
+        conv.close(`<speak>
+          For H2 Batch At ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} ${
+          entries[i][1].h2.name
+        } by ${entries[i][1].h2.Professor}</speak>`);
+        conv.close(`<speak>
+          For H3 Batch At ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} ${
+          entries[i][1].h3.name
+        } by ${entries[i][1].h3.Professor}</speak>`);
+      } else {
+        const t = parseInt(entries[i][0].substring(1));
+        console.log(
+          `<speak>At ${
+            t - 12 > 0 ? `${t - 12} PM` : `${t} AM`
+          } Free Time. </speak>`
+        );
+      }
+    }
+  }
+});
+
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
