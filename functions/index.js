@@ -203,16 +203,93 @@ app.intent("findLectureByTime", conv => {
   }
   */
 });
-
+function timeConvert(t) {
+  return `${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`}`;
+}
 app.intent("showFullSchedule", conv => {
   const day = moment(conv.body.queryResult.parameters.date).day();
   const today = moment(conv.body.queryResult.parameters.date).format("dddd");
-
+  /* You can also try to concatenate all the results into oen string and then display the result */
   if (today === "Saturday" || today === "Sunday") {
     conv.close(`<speak>Enjoy your weekend buddy!</speak>`);
   } else {
     const entries = toArray(data[day][today]);
-    for (let i = 0; i < entries.length; i++) {
+    conv.close(
+      new List({
+        title: `${today}'s schedule`,
+        items: {
+          [entries[0][1].name]: {
+            synonyms: [`${entries[0][1].name}`],
+            title: `${entries[0][1].name}`,
+            description: `At ${timeConvert(
+              parseInt(entries[0][0].substring(1))
+            )} ${entries[0][1].name} by ${entries[0][1].Professor} `
+          },
+          [entries[1][1].name]: {
+            synonyms: [`${entries[1][1].name}`],
+            title: `${entries[1][1].name}`,
+            description: `At ${timeConvert(
+              parseInt(entries[1][0].substring(1))
+            )} ${entries[1][1].name} by ${entries[1][1].Professor} `
+          },
+          [entries[2][1].name]: {
+            synonyms: [`${entries[2][1].name}`],
+            title: `${entries[2][1].name}`,
+            description: `At ${timeConvert(
+              parseInt(entries[2][0].substring(1))
+            )} ${entries[2][1].name} by ${entries[2][1].Professor} `
+          },
+          [entries[3][1].name]: {
+            synonyms: [`${entries[3][1].name}`],
+            title: `${entries[3][1].name}`,
+            description: `At ${timeConvert(
+              parseInt(entries[3][0].substring(1))
+            )} ${entries[3][1].name} by ${entries[3][1].Professor} `
+          },
+          [entries[4][1].name]: {
+            synonyms: [`${entries[4][1].name}`],
+            title: `${entries[4][1].name}`,
+            description: `At ${timeConvert(
+              parseInt(entries[4][0].substring(1))
+            )} ${entries[4][1].name} by ${entries[4][1].Professor} `
+          },
+          [entries[5][1].name]: {
+            synonyms: [`${entries[5][1].name}`],
+            title: `${entries[5][1].name}`,
+            description: `At ${timeConvert(
+              parseInt(entries[5][0].substring(1))
+            )} ${entries[5][1].name} by ${entries[5][1].Professor} `
+          },
+          [entries[6][1].name]: {
+            synonyms: [`${entries[6][1].name}`],
+            title: `${entries[6][1].name}`,
+            description: `At ${timeConvert(
+              parseInt(entries[6][0].substring(1))
+            )} ${entries[6][1].name} by ${entries[6][1].Professor} `
+          },
+          [entries[7][1].name]: {
+            synonyms: [`${entries[7][1].name}`],
+            title: `${entries[7][1].name}`,
+            description: `At ${timeConvert(
+              parseInt(entries[7][0].substring(1))
+            )} ${entries[7][1].name} by ${entries[7][1].Professor} `
+          },
+          [entries[8][1].name]: {
+            synonyms: [`${entries[8][1].name}`],
+            title: `${entries[8][1].name}`,
+            description: `At ${timeConvert(
+              parseInt(entries[8][0].substring(1))
+            )} ${entries[8][1].name} by ${entries[8][1].Professor} `
+          }
+        }
+      })
+    );
+  }
+});
+
+exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
+
+/*     for (let i = 0; i < entries.length; i++) {
       if (entries[i][1].type === "Lecture") {
         const t = parseInt(entries[i][0].substring(1));
         conv.close(`<speak>
@@ -236,14 +313,10 @@ app.intent("showFullSchedule", conv => {
         } by ${entries[i][1].h3.Professor}</speak>`);
       } else {
         const t = parseInt(entries[i][0].substring(1));
-        console.log(
+        conv.close(
           `<speak>At ${
             t - 12 > 0 ? `${t - 12} PM` : `${t} AM`
           } Free Time. </speak>`
         );
       }
-    }
-  }
-});
-
-exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
+    } */
