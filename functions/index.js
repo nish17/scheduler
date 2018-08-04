@@ -206,57 +206,61 @@ app.intent("findLectureByTime", conv => {
   */
 });
 function timeConvert(t) {
-  return `${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`}`;
+  return `${
+    t - 12 >= 0 ? `${t - 12 === 0 ? "12" : `${t - 12}`} PM` : `${t} AM`
+  }`;
 }
 app.intent("showFullSchedule", conv => {
   const day = moment(conv.body.queryResult.parameters.date).day();
   const today = moment(conv.body.queryResult.parameters.date).format("dddd");
+  const entries = toArray(data[day][today]);
   /* You can also try to concatenate all the results into oen string and then display the result */
-  const result = {
-    title: `${today}'s schedule`,
-    items: {}
-  };
-  for (const entry of entries) {
-    // console.log("entry.length", entry.length);
-    const key = entry[0];
-    const value = entry[1];
-    if (value.type === "Lecture") {
-      result.items[value.name] = {
-        synonyms: [`${value.name}`],
-        title: `${value.name}`,
-        description: `At ${timeConvert(parseInt(key.substring(1)))} ${
-          value.name
-        } by ${value.Professor} `
-      };
-    } else if (value.type === "LAB") {
-      result.items[`${value.h1.name}, ${value.h2.name}, ${value.h3.name}`] = {
-        synonyms: [`${value.h1.name} ${value.h2.name} ${value.h3.name}`],
-        title: `LAB Session`,
-        description:
-          `For H1 Batch, At ${timeConvert(parseInt(key.substring(1)))} ${
-            value.h1.name
-          } by ${value.h1.Professor} ` +
-          `For H2 Batch, At ${timeConvert(parseInt(key.substring(1)))} ${
-            value.h2.name
-          } by ${value.h2.Professor} ` +
-          `For h3 Batch, At ${timeConvert(parseInt(key.substring(1)))} ${
-            value.h3.name
-          } by ${value.h3.Professor} `
-      };
-    } else {
-      //if (value.type === "Free") {}
-      result.items[value.type] = {
-        synonyms: [`${value.type}`],
-        title: `${value.type}`,
-        description: `At ${timeConvert(
-          parseInt(key.substring(1))
-        )}  Its your free time`
-      };
-    }
-  }
   if (today === "Saturday" || today === "Sunday") {
     conv.close(`<speak>Enjoy your weekend buddy!</speak>`);
   } else {
+    const result = {
+      title: `${today}'s schedule`,
+      items: {}
+    };
+    for (const entry of entries) {
+      // console.log("entry.length", entry.length);
+      const key = entry[0];
+      const value = entry[1];
+      if (value.type === "Lecture") {
+        result.items[value.name] = {
+          synonyms: [`${value.name}`],
+          title: `${value.name}`,
+          description: `At ${timeConvert(parseInt(key.substring(1)))} ${
+            value.name
+          } by ${value.Professor} `
+        };
+      } else if (value.type === "LAB") {
+        result.items[`${value.h1.name}, ${value.h2.name}, ${value.h3.name}`] = {
+          synonyms: [`${value.h1.name} ${value.h2.name} ${value.h3.name}`],
+          title: `LAB Session`,
+          description:
+            `For H1 Batch, At ${timeConvert(parseInt(key.substring(1)))} ${
+              value.h1.name
+            } by ${value.h1.Professor} ` +
+            `For H2 Batch, At ${timeConvert(parseInt(key.substring(1)))} ${
+              value.h2.name
+            } by ${value.h2.Professor} ` +
+            `For h3 Batch, At ${timeConvert(parseInt(key.substring(1)))} ${
+              value.h3.name
+            } by ${value.h3.Professor} `
+        };
+      } else {
+        //if (value.type === "Free") {}
+        result.items[value.type] = {
+          synonyms: [`${value.type}`],
+          title: `${value.type}`,
+          description: `At ${timeConvert(
+            parseInt(key.substring(1))
+          )}  Its your free time`
+        };
+      }
+    }
+    conv.close(`<speak>Here is ${result.title}</speak>`);
     conv.close(new List(result));
   }
 });
