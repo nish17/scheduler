@@ -10,15 +10,21 @@ It's a Google Assistant action 🤖 that tells you about which classes and labs 
 
 ### Search lecture by professor name
 
-<img src="/assets/pdpu_schedule01.jpg" height="500px"/>
+<img src="/assets/Screenshots/pdpu_scheduler01.jpg" height="500px"/>
 
 ### Get the details of current on going Lecture
 
-<img src="/assets/pdpu_schedule02.jpg" height="500px"/>
+<img src="/assets/Screenshots/pdpu_scheduler02.jpg" height="500px"/>
 
 ### Get the details of next Lecture
 
-<img src="/assets/pdpu_schedule04.jpg" height="500px"/>
+<img src="/assets/Screenshots/pdpu_scheduler04.jpg" height="500px"/>
+
+### Get today's schedule with one command
+
+<img src="/assets/Screenshots/pdpu_scheduler05.jpg" height="500px"/>
+
+<img src="/assets/Screenshots/pdpu_scheduler06.jpg" height="500px"/>
 
 ## ❤️ Credits
 
