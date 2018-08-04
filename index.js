@@ -1,4 +1,5 @@
 const moment = require("moment");
+const data = require("./functions/data/5th-sem.json");
 /* var data = require("./functions/data/4th-sem.json");
 
 function workingHours(time) {
@@ -100,4 +101,72 @@ profName;
 // } else console.log("its not monday");
 
 // console.log(moment("2018-08-01T09:00:00+05:30").hour());
+function timeConvert(t) {
+  return `${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`}`;
+}
+function toArray(moData) {
+  // console.log(Object.keys(moData));
+  const ownProps = Object.keys(moData);
+  var i = ownProps.length;
+  var resArray = new Array(i);
+  while (i--) resArray[i] = [ownProps[i], moData[ownProps[i]]];
+  return resArray;
+}
 const indianTimeMoment = setTimeZone();
+const today = "Monday";
+const day = 1;
+
+const result = {
+  title: `${today}'s schedule`,
+  items: {}
+};
+const entries = toArray(data[day][today]);
+console.log(entries.length);
+function displayDaySchedule() {
+  for (const entry of entries) {
+    console.log("entry.length", entry.length);
+    const key = entry[0];
+    const value = entry[1];
+    if (value.type === "Lecture") {
+      result.items[value.name] = {
+        synonyms: [`${value.name}`],
+        title: `${value.name}`,
+        description: `At ${timeConvert(parseInt(key.substring(1)))} ${
+          value.name
+        } by ${value.Professor} `
+      };
+    } else if (value.type === "LAB") {
+      (result.items[value.h1.name] = {
+        synonyms: [`${value.h1.name}`],
+        title: `${value.h1.name}`,
+        description: `For H1 Batch, At ${timeConvert(
+          parseInt(key.substring(1))
+        )} ${value.h1.name} by ${value.h1.Professor} `
+      }),
+        (result.items[value.h2.name] = {
+          synonyms: [`${value.h2.name}`],
+          title: `${value.h2.name}`,
+          description: `For H2 Batch, At ${timeConvert(
+            parseInt(key.substring(1))
+          )} ${value.h2.name} by ${value.h2.Professor} `
+        }),
+        (result.items[value.h3.name] = {
+          synonyms: [`${value.h3.name}`],
+          title: `${value.h3.name}`,
+          description: `For h3 Batch, At ${timeConvert(
+            parseInt(key.substring(1))
+          )} ${value.h3.name} by ${value.h3.Professor} `
+        });
+    } else {
+      // if (value.type === "Free") {
+      result.items[value.type] = {
+        synonyms: [`${value.type}`],
+        title: `${value.type}`,
+        description: `Its your time`
+      };
+    }
+  }
+}
+
+displayDaySchedule();
+console.log(result.items);
