@@ -56,7 +56,9 @@ app.intent("findLectureIntent", conv => {
   );
 
   if (today === "Saturday" || today === "Sunday") {
-    conv.close(`<speak>Enjoy your weekend buddy!</speak>`);
+    conv.close(
+      `<speak>Enjoy your weekend buddy! There aren't any lectures of ${profName} on weekends</speak>`
+    );
   } else {
     const entries = toArray(data[day][today]);
 
@@ -210,12 +212,91 @@ app.intent("showFullSchedule", conv => {
   const day = moment(conv.body.queryResult.parameters.date).day();
   const today = moment(conv.body.queryResult.parameters.date).format("dddd");
   /* You can also try to concatenate all the results into oen string and then display the result */
+  const result = {
+    title: `${today}'s schedule`,
+    items: {}
+  };
+  for (const entry of entries) {
+    // console.log("entry.length", entry.length);
+    const key = entry[0];
+    const value = entry[1];
+    if (value.type === "Lecture") {
+      result.items[value.name] = {
+        synonyms: [`${value.name}`],
+        title: `${value.name}`,
+        description: `At ${timeConvert(parseInt(key.substring(1)))} ${
+          value.name
+        } by ${value.Professor} `
+      };
+    } else if (value.type === "LAB") {
+      result.items[`${value.h1.name}, ${value.h2.name}, ${value.h3.name}`] = {
+        synonyms: [`${value.h1.name} ${value.h2.name} ${value.h3.name}`],
+        title: `LAB Session`,
+        description:
+          `For H1 Batch, At ${timeConvert(parseInt(key.substring(1)))} ${
+            value.h1.name
+          } by ${value.h1.Professor} ` +
+          `For H2 Batch, At ${timeConvert(parseInt(key.substring(1)))} ${
+            value.h2.name
+          } by ${value.h2.Professor} ` +
+          `For h3 Batch, At ${timeConvert(parseInt(key.substring(1)))} ${
+            value.h3.name
+          } by ${value.h3.Professor} `
+      };
+    } else {
+      //if (value.type === "Free") {}
+      result.items[value.type] = {
+        synonyms: [`${value.type}`],
+        title: `${value.type}`,
+        description: `At ${timeConvert(
+          parseInt(key.substring(1))
+        )}  Its your free time`
+      };
+    }
+  }
   if (today === "Saturday" || today === "Sunday") {
     conv.close(`<speak>Enjoy your weekend buddy!</speak>`);
   } else {
-    const entries = toArray(data[day][today]);
-    conv.close(
-      new List({
+    conv.close(new List(result));
+  }
+});
+
+exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
+
+/*     for (let i = 0; i < entries.length; i++) {
+      if (entries[i][1].type === "Lecture") {
+        const t = parseInt(entries[i][0].substring(1));
+        conv.close(`<speak>
+          At ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} ${
+          entries[i][1].name
+        } by ${entries[i][1].Professor}</speak>`);
+        // break;
+      } else if (entries[i][1].type === "LAB") {
+        const t = parseInt(entries[i][0].substring(1));
+        conv.close(`<speak>
+          For H1 Batch At ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} ${
+          entries[i][1].h1.name
+        } by ${entries[i][1].h1.Professor}</speak>`);
+        conv.close(`<speak>
+          For H2 Batch At ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} ${
+          entries[i][1].h2.name
+        } by ${entries[i][1].h2.Professor}</speak>`);
+        conv.close(`<speak>
+          For H3 Batch At ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} ${
+          entries[i][1].h3.name
+        } by ${entries[i][1].h3.Professor}</speak>`);
+      } else {
+        const t = parseInt(entries[i][0].substring(1));
+        conv.close(
+          `<speak>At ${
+            t - 12 > 0 ? `${t - 12} PM` : `${t} AM`
+          } Free Time. </speak>`
+        );
+      }
+    } */
+
+/* List Code Replaced with jaydeep's solution */
+/* {
         title: `${today}'s schedule`,
         items: {
           [entries[0][1].name]: {
@@ -282,41 +363,4 @@ app.intent("showFullSchedule", conv => {
             )} ${entries[8][1].name} by ${entries[8][1].Professor} `
           }
         }
-      })
-    );
-  }
-});
-
-exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
-
-/*     for (let i = 0; i < entries.length; i++) {
-      if (entries[i][1].type === "Lecture") {
-        const t = parseInt(entries[i][0].substring(1));
-        conv.close(`<speak>
-          At ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} ${
-          entries[i][1].name
-        } by ${entries[i][1].Professor}</speak>`);
-        // break;
-      } else if (entries[i][1].type === "LAB") {
-        const t = parseInt(entries[i][0].substring(1));
-        conv.close(`<speak>
-          For H1 Batch At ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} ${
-          entries[i][1].h1.name
-        } by ${entries[i][1].h1.Professor}</speak>`);
-        conv.close(`<speak>
-          For H2 Batch At ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} ${
-          entries[i][1].h2.name
-        } by ${entries[i][1].h2.Professor}</speak>`);
-        conv.close(`<speak>
-          For H3 Batch At ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} ${
-          entries[i][1].h3.name
-        } by ${entries[i][1].h3.Professor}</speak>`);
-      } else {
-        const t = parseInt(entries[i][0].substring(1));
-        conv.close(
-          `<speak>At ${
-            t - 12 > 0 ? `${t - 12} PM` : `${t} AM`
-          } Free Time. </speak>`
-        );
-      }
-    } */
+      } */
