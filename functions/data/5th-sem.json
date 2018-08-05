@@ -29,15 +29,15 @@
       "L13": {
         "type": "LAB",
         "h1": {
-          "name": "Radio Frequency Engineering Lab",
+          "name": "RF Engineering Lab",
           "Professor": "Ganga Prasad Pandey"
         },
         "h2": {
-          "name": "Operating System Lab",
+          "name": "OS Lab",
           "Professor": "R Jothi"
         },
         "h3": {
-          "name": "Database Management System Lab",
+          "name": "DBMS Lab",
           "Professor": "Reema Patel"
         }
       },
@@ -146,30 +146,30 @@
       "L11": {
         "type": "LAB",
         "h1": {
-          "name": "Operating System Lab",
+          "name": "OS Lab",
           "Professor": "R Jothi"
         },
         "h2": {
-          "name": "Database Management System Lab",
+          "name": "DBMS Lab",
           "Professor": "Reema Patel"
         },
         "h3": {
-          "name": "Radio Frequency Engineering",
+          "name": "RF Engineering Lab",
           "Professor": "Ganga Prasad Pandey"
         }
       },
       "L12": {
         "type": "LAB",
         "h1": {
-          "name": "Operating System Lab",
+          "name": "OS Lab",
           "Professor": "R Jothi"
         },
         "h2": {
-          "name": "Database Management System Lab",
+          "name": "DBMS Lab",
           "Professor": "Reema Patel"
         },
         "h3": {
-          "name": "Radio Frequency Engineering Lab",
+          "name": "RF Engineering Lab",
           "Professor": "Ganga Prasad Pandey"
         }
       },
@@ -217,30 +217,30 @@
       "L13": {
         "type": "LAB",
         "h1": {
-          "name": "Database Management System Lab",
+          "name": "DBMS Lab",
           "Professor": "Reema Patel"
         },
         "h2": {
-          "name": "Radio Frequency Engineering Lab",
+          "name": "RF Engineering Lab",
           "Professor": "Ganga Prasad Pandey"
         },
         "h3": {
-          "name": "Operating System Lab",
+          "name": "OS Lab",
           "Professor": "R Jothi"
         }
       },
       "L14": {
         "type": "LAB",
         "h1": {
-          "name": "Database Management System Lab",
+          "name": "DBMS Lab",
           "Professor": "Reema Patel"
         },
         "h2": {
-          "name": "Radio Frequency Engineering Lab",
+          "name": "RF Engineering Lab",
           "Professor": "Ganga Prasad Pandey"
         },
         "h3": {
-          "name": "Operating System Lab",
+          "name": "OS Lab",
           "Professor": "R Jothi"
         }
       },
