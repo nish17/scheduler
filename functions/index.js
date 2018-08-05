@@ -26,18 +26,21 @@ function setTimeZone() {
   return indianTimeZone;
 }
 
-function isItToday(today) {
+function isItToday(today, intentName) {
   const indianTimeMoment = setTimeZone();
   const day = indianTimeMoment.format("dddd");
   const nextDay = indianTimeMoment.add("days", 1);
-  if (today === day) {
-    return "today";
-  } else if (today === nextDay.format("dddd")) {
-    return "tomorrow";
-  } else return `on ${today}`;
+  if (intentName === "showFullSchedule") {
+    if (today === day) return true;
+    else return false;
+  } else {
+    if (today === day) {
+      return "today";
+    } else if (today === nextDay.format("dddd")) {
+      return "tomorrow";
+    } else return `on ${today}`;
+  }
 }
-
-function isItTomorrow(today) {}
 
 function toArray(moData) {
   // console.log(Object.keys(moData));
@@ -210,12 +213,30 @@ function timeConvert(t) {
     t - 12 >= 0 ? `${t - 12 === 0 ? "12" : `${t - 12}`} PM` : `${t} AM`
   }`;
 }
+function add1Day(day) {
+  return moment(day).add("days", 1);
+}
 app.intent("showFullSchedule", conv => {
-  const day = moment(conv.body.queryResult.parameters.date).day();
-  const today = moment(conv.body.queryResult.parameters.date).format("dddd");
+  let day = moment(conv.body.queryResult.parameters.date).day();
+  let today = moment(conv.body.queryResult.parameters.date).format("dddd");
   const entries = toArray(data[day][today]);
-  /* You can also try to concatenate all the results into oen string and then display the result */
+  if (!isItToday(today, conv.body.queryResult.intent.displayName)) {
+    today = add1Day(conv.body.queryResult.parameters.date);
+    today = today.format("dddd");
+    day++;
+  }
   if (today === "Saturday" || today === "Sunday") {
+    /* You can also try to concatenate all the results into oen string and then display the result */
+    conv.ask(new Suggestions("Show Monday's Schedule"));
+    conv.ask(
+      new Suggestions([
+        "show today's Schedule",
+        "Show Tuesday's Schedule",
+        "Show Wednesday's Schedule",
+        "Show Thursday's Schedule",
+        "Show Friday's Schedule"
+      ])
+    );
     conv.close(`<speak>Enjoy your weekend buddy!</speak>`);
   } else {
     const result = {
@@ -231,10 +252,10 @@ app.intent("showFullSchedule", conv => {
           `${value.name} at ${timeConvert(parseInt(key.substring(1)))}`
         ] = {
           synonyms: [`${value.name}`],
-          title: `${value.name}`,
-          description: `At ${timeConvert(parseInt(key.substring(1)))} ${
+          title: `At  ${timeConvert(parseInt(key.substring(1)))}: ${
             value.name
-          } by ${value.Professor} `
+          }`,
+          description: `By ${value.Professor}.`
         };
       } else if (value.type === "LAB") {
         result.items[`${value.h1.name}, ${value.h2.name}, ${value.h3.name}`] = {
@@ -245,19 +266,17 @@ app.intent("showFullSchedule", conv => {
             `For H2: ${value.h2.name} by ${value.h2.Professor}, ` +
             `For H3: ${value.h3.name} by ${value.h3.Professor}.`
         };
-      } else if (
-        // value.type !== "Lecture" &&
-        // value.type !== "LAB" &&
-        value.type === "Free"
-      ) {
+      } else if (value.type === "Free") {
         result.items[
           `${value.name} at ${timeConvert(parseInt(key.substring(1)))}`
         ] = {
-          synonyms: [`${value.type}`],
-          title: `${value.type}`,
-          description: `At ${timeConvert(
+          synonyms: [
+            `${value.type} at ${timeConvert(parseInt(key.substring(1)))}`
+          ],
+          title: `At ${timeConvert(parseInt(key.substring(1)))}: ${value.type}`,
+          description: `No lecture at ${timeConvert(
             parseInt(key.substring(1))
-          )}  Its your free time`
+          )}`
         };
       }
     }
