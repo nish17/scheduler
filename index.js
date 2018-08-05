@@ -1,5 +1,6 @@
 const moment = require("moment");
 const data = require("./functions/data/5th-sem.json");
+const requestData = require("./playground/request.json");
 /* var data = require("./functions/data/4th-sem.json");
 
 function workingHours(time) {
@@ -12,6 +13,7 @@ function weekdays(day) {
   else return false;
 }
 */
+console.log(requestData.queryResult.intent.displayName);
 function setTimeZone() {
   const indianTimeZone = moment
     .utc()
@@ -117,8 +119,12 @@ function toArray(moData) {
   return resArray;
 }
 const indianTimeMoment = setTimeZone();
-const today = "Thursday";
-const day = 4;
+const today = moment("2018-08-10T00:26:06+05:30").format("dddd");
+const day = moment("	2018-08-10T00:26:06+05:30").day();
+console.log("Today: ", today);
+console.log("day: ", day);
+// const today = "Thursday";
+// const day = 4;
 
 const result = {
   title: `${today}'s schedule`,
@@ -133,12 +139,12 @@ function displayDaySchedule() {
     const value = entry[1];
     // console.log(key, value);
     if (value.type === "Lecture") {
-      result.items[value.name] = {
+      result.items[
+        `${value.name} at ${timeConvert(parseInt(key.substring(1)))}`
+      ] = {
         synonyms: [`${value.name}`],
-        title: `${value.name}`,
-        description: `At ${timeConvert(parseInt(key.substring(1)))} ${
-          value.name
-        } by ${value.Professor} `
+        title: `At  ${timeConvert(parseInt(key.substring(1)))}: ${value.name}`,
+        description: `By ${value.Professor} `
       };
     } else if (value.type === "LAB") {
       result.items[`${value.h1.name}, ${value.h2.name}, ${value.h3.name}`] = {
@@ -169,9 +175,11 @@ function displayDaySchedule() {
       };
     } else if (value.type === "Free") {
       // console.log(value.type, key.substring(1));
-      result.items[value.type] = {
+      result.items[
+        `${value.name} at ${timeConvert(parseInt(key.substring(1)))}`
+      ] = {
         synonyms: [`${value.type}`],
-        title: `${value.type}`,
+        title: `At  ${timeConvert(parseInt(key.substring(1)))}: ${value.type}`,
         description: `At ${timeConvert(
           parseInt(key.substring(1))
         )}  Its your free time`
@@ -195,3 +203,25 @@ console.log(result.items);
           `For h3 Batch, At ${timeConvert(parseInt(key.substring(1)))} ${
             value.h3.name
           } by ${value.h3.Professor} ` */
+
+/* { 'Principle of Economics':
+   { synonyms: [ 'Principle of Economics' ],
+     title: 'Principle of Economics',
+     description: 'At 9 AM Principle of Economics by Prashanta Panda ' },
+  'Database Management System at 10 am':
+   { synonyms: [ 'Database Management System' ],
+     title: 'Database Management System',
+     description: 'At 3 PM Database Management System by Nishant Doshi ' },
+  'OS Lab, DBMS Lab, RF Engineering Lab':
+   { synonyms: [ 'OS Lab DBMS Lab RF Engineering Lab' ],
+     title: 'LAB Session',
+     description:      'For H1 Batch, At 12 PM OS Lab by R Jothi \n For H2 Batch, At 12 PM DBMS Lab by Ree
+ma Patel \n For h3 Batch, At 12 PM RF Engineering Lab by Ganga Prasad Pandey \n ' },
+  Free:
+   { synonyms: [ 'Free' ],
+     title: 'Free',
+     description: 'At 5 PM  Its your free time' },
+  'Operating System':
+   { synonyms: [ 'Operating System' ],
+     title: 'Operating System',
+     description: 'At 2 PM Operating System by R Jothi ' } } */
