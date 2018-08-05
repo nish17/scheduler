@@ -1,0 +1,139 @@
+{
+  "responseId": "b3c54d5b-d865-4b63-a2a1-ede79628759c",
+  "queryResult": {
+    "queryText": "show me tuesday's schedule",
+    "parameters": {
+      "date": "2018-08-07T00:55:40+05:30"
+    },
+    "allRequiredParamsPresent": true,
+    "fulfillmentMessages": [
+      {
+        "text": {
+          "text": [""]
+        }
+      }
+    ],
+    "webhookPayload": {
+      "google": {
+        "userStorage": "{\"data\":{}}",
+        "richResponse": {
+          "items": [
+            {
+              "simpleResponse": {
+                "textToSpeech": "<speak>Here is Monday's schedule</speak>"
+              }
+            }
+          ]
+        },
+        "expectUserResponse": false,
+        "systemIntent": {
+          "intent": "actions.intent.OPTION",
+          "data": {
+            "listSelect": {
+              "title": "Monday's schedule",
+              "items": [
+                {
+                  "optionInfo": {
+                    "synonyms": ["Software Engineering"],
+                    "key": "Software Engineering at 9 AM"
+                  },
+                  "title": "At  9 AM: Software Engineering",
+                  "description": "By Santosh Kumar Bharti."
+                },
+                {
+                  "description": "By R Jothi.",
+                  "optionInfo": {
+                    "synonyms": ["Operating System"],
+                    "key": "Operating System at 10 AM"
+                  },
+                  "title": "At  10 AM: Operating System"
+                },
+                {
+                  "description": "By Ganga Prasad Pandey.",
+                  "optionInfo": {
+                    "synonyms": ["Radio Frequency Engineering"],
+                    "key": "Radio Frequency Engineering at 11 AM"
+                  },
+                  "title": "At  11 AM: Radio Frequency Engineering"
+                },
+                {
+                  "description": "No lecture at 12 PM",
+                  "optionInfo": {
+                    "key": "undefined at 12 PM",
+                    "synonyms": ["Free at 12 PM"]
+                  },
+                  "title": "At 12 PM: Free"
+                },
+                {
+                  "description":
+                    "For H1: RF Engineering Lab by Ganga Prasad Pandey, For H2: OS Lab by R Jothi, For H3: DBMS Lab by Reema Patel.",
+                  "optionInfo": {
+                    "synonyms": ["RF Engineering Lab OS Lab DBMS Lab"],
+                    "key": "RF Engineering Lab, OS Lab, DBMS Lab"
+                  },
+                  "title": "LAB Session at 1 PM"
+                },
+                {
+                  "description": "No lecture at 2 PM",
+                  "optionInfo": {
+                    "synonyms": ["Free at 2 PM"],
+                    "key": "undefined at 2 PM"
+                  },
+                  "title": "At 2 PM: Free"
+                },
+                {
+                  "optionInfo": {
+                    "synonyms": ["Free at 3 PM"],
+                    "key": "undefined at 3 PM"
+                  },
+                  "title": "At 3 PM: Free",
+                  "description": "No lecture at 3 PM"
+                },
+                {
+                  "optionInfo": {
+                    "key": "undefined at 4 PM",
+                    "synonyms": ["Free at 4 PM"]
+                  },
+                  "title": "At 4 PM: Free",
+                  "description": "No lecture at 4 PM"
+                },
+                {
+                  "description": "No lecture at 5 PM",
+                  "optionInfo": {
+                    "synonyms": ["Free at 5 PM"],
+                    "key": "undefined at 5 PM"
+                  },
+                  "title": "At 5 PM: Free"
+                }
+              ]
+            },
+            "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec"
+          }
+        }
+      }
+    },
+    "outputContexts": [
+      {
+        "name":
+          "projects/daily-schedule-a07e5/agent/sessions/737542c3-a93d-a12b-96f2-1321edd6ef0a/contexts/_actions_on_google",
+        "lifespanCount": 99,
+        "parameters": {
+          "data": "{}"
+        }
+      }
+    ],
+    "intent": {
+      "name":
+        "projects/daily-schedule-a07e5/agent/intents/0c4ccac0-6120-465c-9b68-30e27632812d",
+      "displayName": "showFullSchedule"
+    },
+    "intentDetectionConfidence": 1,
+    "diagnosticInfo": {
+      "webhook_latency_ms": 71
+    },
+    "languageCode": "en"
+  },
+  "webhookStatus": {
+    "message": "Webhook execution successful"
+  }
+}
