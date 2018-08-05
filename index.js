@@ -117,8 +117,8 @@ function toArray(moData) {
   return resArray;
 }
 const indianTimeMoment = setTimeZone();
-const today = "Monday";
-const day = 1;
+const today = "Thursday";
+const day = 4;
 
 const result = {
   title: `${today}'s schedule`,
@@ -131,7 +131,7 @@ function displayDaySchedule() {
     // console.log("entry.length", entry.length);
     const key = entry[0];
     const value = entry[1];
-    console.log(key, value);
+    // console.log(key, value);
     if (value.type === "Lecture") {
       result.items[value.name] = {
         synonyms: [`${value.name}`],
@@ -145,15 +145,27 @@ function displayDaySchedule() {
         synonyms: [`${value.h1.name} ${value.h2.name} ${value.h3.name}`],
         title: `LAB Session`,
         description:
-          `For H1 Batch, At ${timeConvert(parseInt(key.substring(1)))} ${
-            value.h1.name
-          } by ${value.h1.Professor} ` +
-          `For H2 Batch, At ${timeConvert(parseInt(key.substring(1)))} ${
-            value.h2.name
-          } by ${value.h2.Professor} ` +
-          `For h3 Batch, At ${timeConvert(parseInt(key.substring(1)))} ${
-            value.h3.name
-          } by ${value.h3.Professor} `
+          "For H1 Batch, At " +
+          timeConvert(parseInt(key.substring(1))) +
+          " " +
+          value.h1.name +
+          " by " +
+          value.h1.Professor +
+          " \n " +
+          "For H2 Batch, At " +
+          timeConvert(parseInt(key.substring(1))) +
+          " " +
+          value.h2.name +
+          " by " +
+          value.h2.Professor +
+          " \n " +
+          "For h3 Batch, At " +
+          timeConvert(parseInt(key.substring(1))) +
+          " " +
+          value.h3.name +
+          " by " +
+          value.h3.Professor +
+          " \n "
       };
     } else if (value.type === "Free") {
       // console.log(value.type, key.substring(1));
@@ -172,4 +184,14 @@ function displayDaySchedule() {
 }
 
 displayDaySchedule();
-// console.log(result);
+console.log(result.items);
+/*         description:
+          `For H1 Batch, At ${timeConvert(parseInt(key.substring(1)))} ${
+            value.h1.name
+          } by ${value.h1.Professor} ` +
+          `For H2 Batch, At ${timeConvert(parseInt(key.substring(1)))} ${
+            value.h2.name
+          } by ${value.h2.Professor} ` +
+          `For h3 Batch, At ${timeConvert(parseInt(key.substring(1)))} ${
+            value.h3.name
+          } by ${value.h3.Professor} ` */
