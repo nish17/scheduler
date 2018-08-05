@@ -226,8 +226,7 @@ app.intent("showFullSchedule", conv => {
     day++;
   }
   if (today === "Saturday" || today === "Sunday") {
-    /* You can also try to concatenate all the results into oen string and then display the result */
-    conv.ask(new Suggestions("Show Monday's Schedule"));
+    // conv.ask(new Suggestions("Show Monday's Schedule"));
     conv.ask(
       new Suggestions([
         "show today's Schedule",
