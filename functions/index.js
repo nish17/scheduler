@@ -237,20 +237,29 @@ app.intent("showFullSchedule", conv => {
       } else if (value.type === "LAB") {
         result.items[`${value.h1.name}, ${value.h2.name}, ${value.h3.name}`] = {
           synonyms: [`${value.h1.name} ${value.h2.name} ${value.h3.name}`],
-          title: `LAB Session`,
+          title: `LAB Session at ${timeConvert(parseInt(key.substring(1)))}`,
           description:
-            `For H1 Batch, At ${timeConvert(parseInt(key.substring(1)))} ${
-              value.h1.name
-            } by ${value.h1.Professor} ` +
-            `For H2 Batch, At ${timeConvert(parseInt(key.substring(1)))} ${
-              value.h2.name
-            } by ${value.h2.Professor} ` +
-            `For h3 Batch, At ${timeConvert(parseInt(key.substring(1)))} ${
-              value.h3.name
-            } by ${value.h3.Professor} `
+            "For H1 Batch, " +
+            value.h1.name +
+            " by " +
+            value.h1.Professor +
+            " \n" +
+            "For H2 Batch, " +
+            value.h2.name +
+            " by " +
+            value.h2.Professor +
+            " \n" +
+            "For h3 Batch, " +
+            value.h3.name +
+            " by " +
+            value.h3.Professor
+          // " \n"
         };
-      } else {
-        //if (value.type === "Free") {}
+      } /* else if (
+        value.type !== "Lecture" &&
+        value.type !== "LAB" &&
+        value.type === "Free"
+      ) {
         result.items[value.type] = {
           synonyms: [`${value.type}`],
           title: `${value.type}`,
@@ -258,7 +267,7 @@ app.intent("showFullSchedule", conv => {
             parseInt(key.substring(1))
           )}  Its your free time`
         };
-      }
+      } */
     }
     conv.close(`<speak>Here is ${result.title}</speak>`);
     conv.close(new List(result));
