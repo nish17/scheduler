@@ -227,7 +227,9 @@ app.intent("showFullSchedule", conv => {
       const key = entry[0];
       const value = entry[1];
       if (value.type === "Lecture") {
-        result.items[value.name] = {
+        result.items[
+          `${value.name} at ${timeConvert(parseInt(key.substring(1)))}`
+        ] = {
           synonyms: [`${value.name}`],
           title: `${value.name}`,
           description: `At ${timeConvert(parseInt(key.substring(1)))} ${
@@ -239,32 +241,25 @@ app.intent("showFullSchedule", conv => {
           synonyms: [`${value.h1.name} ${value.h2.name} ${value.h3.name}`],
           title: `LAB Session at ${timeConvert(parseInt(key.substring(1)))}`,
           description:
-            "For H1: " +
-            value.h1.name +
-            " by " +
-            value.h1.Professor +
-            " For H2: " +
-            value.h2.name +
-            " by " +
-            value.h2.Professor +
-            " For H3:" +
-            value.h3.name +
-            " by " +
-            value.h3.Professor
+            `For H1: ${value.h1.name} by ${value.h1.Professor}, ` +
+            `For H2: ${value.h2.name} by ${value.h2.Professor}, ` +
+            `For H3: ${value.h3.name} by ${value.h3.Professor}.`
         };
-      } /* else if (
-        value.type !== "Lecture" &&
-        value.type !== "LAB" &&
+      } else if (
+        // value.type !== "Lecture" &&
+        // value.type !== "LAB" &&
         value.type === "Free"
       ) {
-        result.items[value.type] = {
+        result.items[
+          `${value.name} at ${timeConvert(parseInt(key.substring(1)))}`
+        ] = {
           synonyms: [`${value.type}`],
           title: `${value.type}`,
           description: `At ${timeConvert(
             parseInt(key.substring(1))
           )}  Its your free time`
         };
-      } */
+      }
     }
     conv.close(`<speak>Here is ${result.title}</speak>`);
     conv.close(new List(result));
