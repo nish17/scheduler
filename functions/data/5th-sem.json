@@ -48,10 +48,14 @@
         "type": "Free"
       },
       "L16": {
-        "type": "Free"
+        "type": "Lecture",
+        "name": "Placement Preparation For Batch 1",
+        "Professor": "T&P cell"
       },
       "L17": {
-        "type": "Free"
+        "type": "Lecture",
+        "name": "Placement Preparation For Batch 1",
+        "Professor": "T&P cell"
       }
     }
   },
@@ -85,10 +89,14 @@
         "type": "Free"
       },
       "L16": {
-        "type": "Free"
+        "type": "Lecture",
+        "name": "Placement Preparation For Batch 2",
+        "Professor": "T&P cell"
       },
       "L17": {
-        "type": "Free"
+        "type": "Lecture",
+        "name": "Placement Preparation For Batch 1",
+        "Professor": "T&P cell"
       }
     }
   },
