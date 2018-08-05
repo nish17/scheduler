@@ -106,6 +106,8 @@ function timeConvert(t) {
     t - 12 >= 0 ? `${t - 12 === 0 ? "12" : `${t - 12}`} PM` : `${t} AM`
   }`;
 }
+// console.log(timeConvert(24));
+
 function toArray(moData) {
   // console.log(Object.keys(moData));
   const ownProps = Object.keys(moData);
@@ -129,6 +131,7 @@ function displayDaySchedule() {
     // console.log("entry.length", entry.length);
     const key = entry[0];
     const value = entry[1];
+    console.log(key, value);
     if (value.type === "Lecture") {
       result.items[value.name] = {
         synonyms: [`${value.name}`],
@@ -152,8 +155,8 @@ function displayDaySchedule() {
             value.h3.name
           } by ${value.h3.Professor} `
       };
-    } else {
-      //if (value.type === "Free") {}
+    } else if (value.type === "Free") {
+      // console.log(value.type, key.substring(1));
       result.items[value.type] = {
         synonyms: [`${value.type}`],
         title: `${value.type}`,
@@ -161,9 +164,12 @@ function displayDaySchedule() {
           parseInt(key.substring(1))
         )}  Its your free time`
       };
+    } else {
+      console.log("\n\nterminating the loop\n\n");
+      break;
     }
   }
 }
 
 displayDaySchedule();
-console.log(result.items);
+// console.log(result);
