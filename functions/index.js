@@ -239,21 +239,18 @@ app.intent("showFullSchedule", conv => {
           synonyms: [`${value.h1.name} ${value.h2.name} ${value.h3.name}`],
           title: `LAB Session at ${timeConvert(parseInt(key.substring(1)))}`,
           description:
-            "For H1 Batch, " +
+            "For H1: " +
             value.h1.name +
             " by " +
             value.h1.Professor +
-            " \n" +
-            "For H2 Batch, " +
+            " For H2: " +
             value.h2.name +
             " by " +
             value.h2.Professor +
-            " \n" +
-            "For h3 Batch, " +
+            " For H3:" +
             value.h3.name +
             " by " +
             value.h3.Professor
-          // " \n"
         };
       } /* else if (
         value.type !== "Lecture" &&
@@ -275,105 +272,3 @@ app.intent("showFullSchedule", conv => {
 });
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
-
-/*     for (let i = 0; i < entries.length; i++) {
-      if (entries[i][1].type === "Lecture") {
-        const t = parseInt(entries[i][0].substring(1));
-        conv.close(`<speak>
-          At ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} ${
-          entries[i][1].name
-        } by ${entries[i][1].Professor}</speak>`);
-        // break;
-      } else if (entries[i][1].type === "LAB") {
-        const t = parseInt(entries[i][0].substring(1));
-        conv.close(`<speak>
-          For H1 Batch At ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} ${
-          entries[i][1].h1.name
-        } by ${entries[i][1].h1.Professor}</speak>`);
-        conv.close(`<speak>
-          For H2 Batch At ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} ${
-          entries[i][1].h2.name
-        } by ${entries[i][1].h2.Professor}</speak>`);
-        conv.close(`<speak>
-          For H3 Batch At ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} ${
-          entries[i][1].h3.name
-        } by ${entries[i][1].h3.Professor}</speak>`);
-      } else {
-        const t = parseInt(entries[i][0].substring(1));
-        conv.close(
-          `<speak>At ${
-            t - 12 > 0 ? `${t - 12} PM` : `${t} AM`
-          } Free Time. </speak>`
-        );
-      }
-    } */
-
-/* List Code Replaced with jaydeep's solution */
-/* {
-        title: `${today}'s schedule`,
-        items: {
-          [entries[0][1].name]: {
-            synonyms: [`${entries[0][1].name}`],
-            title: `${entries[0][1].name}`,
-            description: `At ${timeConvert(
-              parseInt(entries[0][0].substring(1))
-            )} ${entries[0][1].name} by ${entries[0][1].Professor} `
-          },
-          [entries[1][1].name]: {
-            synonyms: [`${entries[1][1].name}`],
-            title: `${entries[1][1].name}`,
-            description: `At ${timeConvert(
-              parseInt(entries[1][0].substring(1))
-            )} ${entries[1][1].name} by ${entries[1][1].Professor} `
-          },
-          [entries[2][1].name]: {
-            synonyms: [`${entries[2][1].name}`],
-            title: `${entries[2][1].name}`,
-            description: `At ${timeConvert(
-              parseInt(entries[2][0].substring(1))
-            )} ${entries[2][1].name} by ${entries[2][1].Professor} `
-          },
-          [entries[3][1].name]: {
-            synonyms: [`${entries[3][1].name}`],
-            title: `${entries[3][1].name}`,
-            description: `At ${timeConvert(
-              parseInt(entries[3][0].substring(1))
-            )} ${entries[3][1].name} by ${entries[3][1].Professor} `
-          },
-          [entries[4][1].name]: {
-            synonyms: [`${entries[4][1].name}`],
-            title: `${entries[4][1].name}`,
-            description: `At ${timeConvert(
-              parseInt(entries[4][0].substring(1))
-            )} ${entries[4][1].name} by ${entries[4][1].Professor} `
-          },
-          [entries[5][1].name]: {
-            synonyms: [`${entries[5][1].name}`],
-            title: `${entries[5][1].name}`,
-            description: `At ${timeConvert(
-              parseInt(entries[5][0].substring(1))
-            )} ${entries[5][1].name} by ${entries[5][1].Professor} `
-          },
-          [entries[6][1].name]: {
-            synonyms: [`${entries[6][1].name}`],
-            title: `${entries[6][1].name}`,
-            description: `At ${timeConvert(
-              parseInt(entries[6][0].substring(1))
-            )} ${entries[6][1].name} by ${entries[6][1].Professor} `
-          },
-          [entries[7][1].name]: {
-            synonyms: [`${entries[7][1].name}`],
-            title: `${entries[7][1].name}`,
-            description: `At ${timeConvert(
-              parseInt(entries[7][0].substring(1))
-            )} ${entries[7][1].name} by ${entries[7][1].Professor} `
-          },
-          [entries[8][1].name]: {
-            synonyms: [`${entries[8][1].name}`],
-            title: `${entries[8][1].name}`,
-            description: `At ${timeConvert(
-              parseInt(entries[8][0].substring(1))
-            )} ${entries[8][1].name} by ${entries[8][1].Professor} `
-          }
-        }
-      } */
