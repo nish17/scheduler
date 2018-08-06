@@ -323,11 +323,6 @@ app.intent("getPositionOfLecture", conv => {
             )} of ${value.name} by ${value.Professor}`
           })
         );
-        // conv.ask(
-        //   `<speak>Last lecture is at ${timeConvert(
-        //     parseInt(key.substring(1))
-        //   )} of ${value.name} by ${value.Professor}</speak>`
-        // );
       }
     }
   }
