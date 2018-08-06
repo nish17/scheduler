@@ -307,7 +307,7 @@ app.intent("getPositionOfLecture", conv => {
     conv.close(`<speak>Enjoy your weekend buddy!</speak>`);
   } else {
     const entries = toArray(data[day][today]);
-    for (const entry in entries) {
+    for (const entry of entries) {
       const key = entry[0];
       const value = entry[1];
       if (value.type === "Lecture" && value.position === pos) {
