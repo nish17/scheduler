@@ -4,6 +4,7 @@ const {
   List,
   Suggestions,
   BasicCard,
+  SimpleResponse,
   Permission
 } = require("actions-on-google");
 const functions = require("firebase-functions");
@@ -225,11 +226,11 @@ app.intent("showFullSchedule", conv => {
   }
   if (today === "Saturday" || today === "Sunday") {
     conv.ask(
-      new Suggestions(
+      new Suggestions([
         "Show Monday's Schedule",
         "show today's Schedule",
         "Show Tuesday's Schedule"
-      )
+      ])
     );
     conv.close(`<speak>Enjoy your weekend buddy!</speak>`);
     // conv.ask(
@@ -288,6 +289,45 @@ app.intent("showFullSchedule", conv => {
     }
     conv.close(`<speak>Here is ${result.title}</speak>`);
     conv.close(new List(result));
+  }
+});
+
+app.intent("getPositionOfLecture", conv => {
+  const pos = conv.body.queryResult.parameters.position;
+  const day = moment(conv.body.queryResult.parameters.date).day();
+  const today = moment(conv.body.queryResult.parameters.date).format("dddd");
+  if (today === "Saturday" || today === "Sunday") {
+    // conv.ask(
+    //   new Suggestions([
+    //     "Show Monday's Schedule",
+    //     "show today's Schedule",
+    //     "Show Tuesday's Schedule"
+    //   ])
+    // );
+    conv.close(`<speak>Enjoy your weekend buddy!</speak>`);
+  } else {
+    const entries = toArray(data[day][today]);
+    for (const entry in entries) {
+      const key = entry[0];
+      const value = entry[1];
+      if (value.type === "Lecture" && value.position === pos) {
+        conv.close(
+          new SimpleResponse({
+            speech: `${pos} lecture is at ${timeConvert(
+              parseInt(key.substring(1))
+            )} of ${value.name} by ${value.Professor}`,
+            text: `${pos} lecture is at ${timeConvert(
+              parseInt(key.substring(1))
+            )} of ${value.name} by ${value.Professor}`
+          })
+        );
+        // conv.close(
+        //   `<speak>Last lecture is at ${timeConvert(
+        //     parseInt(key.substring(1))
+        //   )} of ${value.name} by ${value.Professor}</speak>`
+        // );
+      }
+    }
   }
 });
 
