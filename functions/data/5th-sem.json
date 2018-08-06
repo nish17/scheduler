@@ -44,9 +44,6 @@
           "Professor": "Reema Patel"
         }
       },
-      "L14": {
-        "type": "Free"
-      },
       "L15": {
         "type": "Free"
       },
@@ -97,16 +94,10 @@
         "type": "Free"
       },
       "L16": {
-        "type": "Lecture",
-        "position": null,
-        "name": "Placement Preparation For Batch 2",
-        "Professor": "T&P cell"
+        "type": "Free"
       },
       "L17": {
-        "type": "Lecture",
-        "position": "last",
-        "name": "Placement Preparation For Batch 1",
-        "Professor": "T&P cell"
+        "type": "Free"
       }
     }
   },
@@ -146,10 +137,16 @@
         "type": "Free"
       },
       "L16": {
-        "type": "Free"
+        "type": "Lecture",
+        "position": null,
+        "name": "Placement Preparation For Batch 2",
+        "Professor": "T&P cell"
       },
       "L17": {
-        "type": "Free"
+        "type": "Lecture",
+        "position": "last",
+        "name": "Placement Preparation For Batch 1",
+        "Professor": "T&P cell"
       }
     }
   },
@@ -168,21 +165,6 @@
         "Professor": "Nishant Doshi"
       },
       "L11": {
-        "type": "LAB",
-        "h1": {
-          "name": "OS Lab",
-          "Professor": "R Jothi"
-        },
-        "h2": {
-          "name": "DBMS Lab",
-          "Professor": "Reema Patel"
-        },
-        "h3": {
-          "name": "RF Engineering Lab",
-          "Professor": "Ganga Prasad Pandey"
-        }
-      },
-      "L12": {
         "type": "LAB",
         "h1": {
           "name": "OS Lab",
@@ -244,21 +226,6 @@
         "type": "Free"
       },
       "L13": {
-        "type": "LAB",
-        "h1": {
-          "name": "DBMS Lab",
-          "Professor": "Reema Patel"
-        },
-        "h2": {
-          "name": "RF Engineering Lab",
-          "Professor": "Ganga Prasad Pandey"
-        },
-        "h3": {
-          "name": "OS Lab",
-          "Professor": "R Jothi"
-        }
-      },
-      "L14": {
         "type": "LAB",
         "h1": {
           "name": "DBMS Lab",
