@@ -108,8 +108,14 @@ function timeConvert(t) {
     t - 12 >= 0 ? `${t - 12 === 0 ? "12" : `${t - 12}`} PM` : `${t} AM`
   }`;
 }
-// console.log(timeConvert(24));
+function add1Day(day) {
+  return moment(day).add(1, "days");
+}
+const timezone = "2018-08-05T12:00:00+05:30";
+console.log("today", moment(timezone).format("dddd"));
+console.log("NextDay", add1Day(timezone).format("dddd"));
 
+/* 
 function toArray(moData) {
   // console.log(Object.keys(moData));
   const ownProps = Object.keys(moData);
@@ -192,7 +198,7 @@ function displayDaySchedule() {
 }
 
 displayDaySchedule();
-console.log(result.items);
+console.log(result.items); */
 /*         description:
           `For H1 Batch, At ${timeConvert(parseInt(key.substring(1)))} ${
             value.h1.name
