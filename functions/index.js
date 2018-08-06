@@ -225,6 +225,7 @@ app.intent("showFullSchedule", conv => {
     day++;
   }
   if (today === "Saturday" || today === "Sunday") {
+    conv.ask(new Suggestions("Suggestion Chips"));
     conv.ask(
       new Suggestions([
         "Show Monday's Schedule",
@@ -297,6 +298,7 @@ app.intent("getPositionOfLecture", conv => {
   const day = moment(conv.body.queryResult.parameters.date).day();
   const today = moment(conv.body.queryResult.parameters.date).format("dddd");
   if (today === "Saturday" || today === "Sunday") {
+    conv.ask(new Suggestions("Suggestion Chips"));
     conv.ask(
       new Suggestions([
         "whose first lecture is it tomorrow?",
