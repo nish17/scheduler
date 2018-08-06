@@ -223,7 +223,6 @@ app.intent("showFullSchedule", conv => {
     today = add1Day(conv.body.queryResult.parameters.date).format("dddd");
     day++;
   }
-  const entries = toArray(data[day][today]);
   if (today === "Saturday" || today === "Sunday") {
     conv.ask(
       new Suggestions(
@@ -243,6 +242,7 @@ app.intent("showFullSchedule", conv => {
     //   ])
     // );
   } else {
+    const entries = toArray(data[day][today]);
     const result = {
       title: `${today}'s schedule`,
       items: {}
@@ -264,7 +264,9 @@ app.intent("showFullSchedule", conv => {
       } else if (value.type === "LAB") {
         result.items[`${value.h1.name}, ${value.h2.name}, ${value.h3.name}`] = {
           synonyms: [`${value.h1.name} ${value.h2.name} ${value.h3.name}`],
-          title: `LAB Session at ${timeConvert(parseInt(key.substring(1)))}`,
+          title: `LAB Session from ${timeConvert(
+            parseInt(key.substring(1))
+          )} to ${timeConvert(parseInt(key.substring(1)) + 2)}`,
           description:
             `For H1: ${value.h1.name} by ${value.h1.Professor}, ` +
             `For H2: ${value.h2.name} by ${value.h2.Professor}, ` +
