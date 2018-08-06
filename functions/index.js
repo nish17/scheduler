@@ -297,13 +297,13 @@ app.intent("getPositionOfLecture", conv => {
   const day = moment(conv.body.queryResult.parameters.date).day();
   const today = moment(conv.body.queryResult.parameters.date).format("dddd");
   if (today === "Saturday" || today === "Sunday") {
-    // conv.ask(
-    //   new Suggestions([
-    //     "Show Monday's Schedule",
-    //     "show today's Schedule",
-    //     "Show Tuesday's Schedule"
-    //   ])
-    // );
+    conv.ask(
+      new Suggestions([
+        "whose first lecture is it tomorrow?",
+        "whose last lecture is it today?",
+        "whose last lecture is it tomorrow?"
+      ])
+    );
     conv.ask(`<speak>Enjoy your weekend buddy!</speak>`);
   } else {
     const entries = toArray(data[day][today]);
