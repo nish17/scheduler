@@ -29,14 +29,14 @@ function setTimeZone() {
 function isItToday(today, intentName) {
   const indianTimeMoment = setTimeZone();
   const day = indianTimeMoment.format("dddd");
-  const nextDay = indianTimeMoment.add("days", 1);
+  const nextDay = indianTimeMoment.add(1, "days").format("dddd");
   if (intentName === "showFullSchedule") {
     if (today === day) return true;
     else return false;
   } else {
     if (today === day) {
       return "today";
-    } else if (today === nextDay.format("dddd")) {
+    } else if (today === nextDay) {
       return "tomorrow";
     } else return `on ${today}`;
   }
@@ -219,24 +219,29 @@ function add1Day(day) {
 app.intent("showFullSchedule", conv => {
   let day = moment(conv.body.queryResult.parameters.date).day();
   let today = moment(conv.body.queryResult.parameters.date).format("dddd");
-  const entries = toArray(data[day][today]);
   if (!isItToday(today, conv.body.queryResult.intent.displayName)) {
-    today = add1Day(conv.body.queryResult.parameters.date);
-    today = today.format("dddd");
+    today = add1Day(conv.body.queryResult.parameters.date).format("dddd");
     day++;
   }
+  const entries = toArray(data[day][today]);
   if (today === "Saturday" || today === "Sunday") {
-    // conv.ask(new Suggestions("Show Monday's Schedule"));
     conv.ask(
-      new Suggestions([
+      new Suggestions(
+        "Show Monday's Schedule",
         "show today's Schedule",
-        "Show Tuesday's Schedule",
-        "Show Wednesday's Schedule",
-        "Show Thursday's Schedule",
-        "Show Friday's Schedule"
-      ])
+        "Show Tuesday's Schedule"
+      )
     );
     conv.close(`<speak>Enjoy your weekend buddy!</speak>`);
+    // conv.ask(
+    //   new Suggestions([
+    //     "show today's Schedule",
+    //     "Show Tuesday's Schedule",
+    //     "Show Wednesday's Schedule",
+    //     "Show Thursday's Schedule",
+    //     "Show Friday's Schedule"
+    //   ])
+    // );
   } else {
     const result = {
       title: `${today}'s schedule`,
