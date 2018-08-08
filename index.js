@@ -13,7 +13,7 @@ function weekdays(day) {
   else return false;
 }
 */
-console.log(requestData.queryResult.intent.displayName);
+// console.log(requestData.queryResult.intent.displayName);
 function setTimeZone() {
   const indianTimeZone = moment
     .utc()
@@ -21,6 +21,36 @@ function setTimeZone() {
     .add(30, "minutes");
   return indianTimeZone;
 }
+
+function isItToday(today, intentName) {
+  const indianTimeMoment = setTimeZone();
+  const day = indianTimeMoment.format("dddd");
+  const nextDay = indianTimeMoment.add(1, "days").format("dddd");
+  if (intentName === "showFullSchedule") {
+    if (today === day) return true;
+    else return false;
+  } else {
+    if (today === day) {
+      return "today";
+    } else if (today === nextDay) {
+      return "tomorrow";
+    } else return `on ${today}`;
+  }
+}
+
+function isToday(today) {
+  const indianTimeMoment = setTimeZone();
+  const day = indianTimeMoment.format("dddd");
+  const nextDay = indianTimeMoment.add(1, "days").format("dddd");
+  if (today === day) {
+    return "today";
+  } else if (today === nextDay) {
+    return "tomorrow";
+  } else return `on ${today}`;
+}
+console.log(isToday("Friday"));
+
+// console.log(isItToday("Friday", "findLectureByTime"));
 /*
 function nextLectureIntentHandler() {
   const indianTimeMoment = setTimeZone();
@@ -112,8 +142,8 @@ function add1Day(day) {
   return moment(day).add(1, "days");
 }
 const timezone = "2018-08-05T12:00:00+05:30";
-console.log("today", moment(timezone).format("dddd"));
-console.log("NextDay", add1Day(timezone).format("dddd"));
+// console.log("today", moment(timezone).format("dddd"));
+// console.log("NextDay", add1Day(timezone).format("dddd"));
 
 /* 
 function toArray(moData) {
@@ -209,25 +239,3 @@ console.log(result.items); */
           `For h3 Batch, At ${timeConvert(parseInt(key.substring(1)))} ${
             value.h3.name
           } by ${value.h3.Professor} ` */
-
-/* { 'Principle of Economics':
-   { synonyms: [ 'Principle of Economics' ],
-     title: 'Principle of Economics',
-     description: 'At 9 AM Principle of Economics by Prashanta Panda ' },
-  'Database Management System at 10 am':
-   { synonyms: [ 'Database Management System' ],
-     title: 'Database Management System',
-     description: 'At 3 PM Database Management System by Nishant Doshi ' },
-  'OS Lab, DBMS Lab, RF Engineering Lab':
-   { synonyms: [ 'OS Lab DBMS Lab RF Engineering Lab' ],
-     title: 'LAB Session',
-     description:      'For H1 Batch, At 12 PM OS Lab by R Jothi \n For H2 Batch, At 12 PM DBMS Lab by Ree
-ma Patel \n For h3 Batch, At 12 PM RF Engineering Lab by Ganga Prasad Pandey \n ' },
-  Free:
-   { synonyms: [ 'Free' ],
-     title: 'Free',
-     description: 'At 5 PM  Its your free time' },
-  'Operating System':
-   { synonyms: [ 'Operating System' ],
-     title: 'Operating System',
-     description: 'At 2 PM Operating System by R Jothi ' } } */
