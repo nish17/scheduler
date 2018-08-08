@@ -31,18 +31,21 @@ function isItToday(today, intentName) {
   const indianTimeMoment = setTimeZone();
   const day = indianTimeMoment.format("dddd");
   const nextDay = indianTimeMoment.add(1, "days").format("dddd");
-  if (intentName === "showFullSchedule") {
-    if (today === day) return true;
-    else return false;
-  } else {
-    if (today === day) {
-      return "today";
-    } else if (today === nextDay) {
-      return "tomorrow";
-    } else return `on ${today}`;
-  }
+  if (intentName === "showFullSchedule" && today === day) {
+    return true;
+  } else return false;
 }
 
+function isToday(today) {
+  const indianTimeMoment = setTimeZone();
+  const day = indianTimeMoment.format("dddd");
+  const nextDay = indianTimeMoment.add(1, "days").format("dddd");
+  if (today === day) {
+    return "today";
+  } else if (today === nextDay) {
+    return "tomorrow";
+  } else return `on ${today}`;
+}
 function toArray(moData) {
   // console.log(Object.keys(moData));
   const ownProps = Object.keys(moData);
@@ -60,7 +63,7 @@ app.intent("findLectureIntent", conv => {
   );
 
   if (today === "Saturday" || today === "Sunday") {
-    conv.ask(
+    conv.close(
       `<speak>Enjoy your weekend buddy! There aren't any lectures of ${profName} on weekends</speak>`
     );
   } else {
@@ -73,18 +76,18 @@ app.intent("findLectureIntent", conv => {
         entries[i][1].Professor === profName
       ) {
         const t = parseInt(entries[i][0].substring(1));
-        conv.ask(
+        conv.close(
           `<speak>Yes there is a lecture by ${profName} of ${
             entries[i][1].name
-          } at ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} ${isItToday(
+          } at ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} ${isToday(
             today
           )}.</speak>`
         );
         break;
       } else {
         if (entries[i][1].Professor === "Lecture" && entries[i][0] === "L17") {
-          conv.ask(
-            `<speak>There is no lecture by ${profName} ${isItToday(
+          conv.close(
+            `<speak>There is no lecture by ${profName} ${isToday(
               today
             )}</speak>`
           );
@@ -170,23 +173,23 @@ app.intent("currentLectureIntent", conv => {
   }
 });
 
-app.intent("findLectureByTime", conv => {
-  // const indianTimeMoment = setTimeZone();
-  const hourCode =
-    "L" + new Date(conv.body.queryResult.parameters.time).getHours();
-  const dayCode = moment(conv.body.queryResult.parameters.date).day();
-  const day = moment(conv.body.queryResult.parameters.date).format("dddd");
+// app.intent("findLectureByTime", conv => {
+//   // const indianTimeMoment = setTimeZone();
+//   const hourCode =
+//     "L" + new Date(conv.body.queryResult.parameters.time).getHours();
+//   const dayCode = moment(conv.body.queryResult.parameters.date).day();
+//   const day = moment(conv.body.queryResult.parameters.date).format("dddd");
 
-  const classs = data[dayCode][day][hourCode];
-  // console.log(classs);
-  conv.ask(`<speak>${dayCode}, ${day}, ${hourCode}</speak>`);
-  // conv.ask(`<speak>${Ltime}: ${hourCode} ${dayCode} ${day}</speak>`);
+//   const classs = data[dayCode][day][hourCode];
+//   // console.log(classs);
+//   conv.ask(`<speak>${dayCode}, ${day}, ${hourCode}</speak>`);
+// conv.ask(`<speak>${Ltime}: ${hourCode} ${dayCode} ${day}</speak>`);
 
-  // conv.ask(
-  //   `<speak>${classs.type} ${classs.name} ${classs.Professor}</speak>`
-  // );
+// conv.ask(
+//   `<speak>${classs.type} ${classs.name} ${classs.Professor}</speak>`
+// );
 
-  /*   if (classs.type === "LAB") {
+/*   if (classs.type === "LAB") {
     conv.ask(
       `<speak>On ${day} at ${Ltime} You have LAB` +
         ` For H1 Batch:` +
@@ -207,8 +210,8 @@ app.intent("findLectureByTime", conv => {
       `<speak> ${day}- ${dayCode} - ${day} -${hourCode} -${Ltime} Oh at that time I think it will be your free time</speak>`
     );
   }
-  */
 });
+ */
 function timeConvert(t) {
   return `${
     t - 12 >= 0 ? `${t - 12 === 0 ? "12" : `${t - 12}`} PM` : `${t} AM`
