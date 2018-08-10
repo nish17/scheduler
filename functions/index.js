@@ -107,11 +107,11 @@ app.intent("nextLectureIntent", conv => {
   const today = moment().format("dddd");
   if (workingHours(next)) {
     if (weekdays(today)) {
-      conv.ask(`<speak>Enjoy your weekend Buddy!</speak>`);
+      conv.close(`<speak>Enjoy your weekend Buddy!</speak>`);
     } else {
       const classs = data[day][today][hourCode];
       if (classs.type === "LAB") {
-        conv.ask(
+        conv.close(
           `<speak> Next you have LAB` +
             ` For H1 Batch:` +
             ` ${classs.h1.name} will be taken by ${classs.h1.Professor}` +
@@ -121,17 +121,17 @@ app.intent("nextLectureIntent", conv => {
             ` ${classs.h3.name} will be taken by ${classs.h3.Professor}</speak>`
         );
       } else if (classs.type === "Lecture") {
-        conv.ask(
+        conv.close(
           `<speak>Next lecture is ${classs.name} which will be taken by ${
             classs.Professor
           }</speak>`
         );
       } else if (classs.type === "Free") {
-        conv.ask(`<speak>It's your free time</speak>`);
+        conv.close(`<speak>It's your free time</speak>`);
       }
     }
   } else {
-    conv.ask(`<speak>Please come back during working college hours</speak>`);
+    conv.close(`<speak>Please come back during working college hours</speak>`);
   }
 });
 
@@ -143,11 +143,11 @@ app.intent("currentLectureIntent", conv => {
   const today = moment().format("dddd");
   if (workingHours(currentHour)) {
     if (weekdays(today)) {
-      conv.ask(`<speak>Enjoy your weekend Buddy!</speak>`);
+      conv.close(`<speak>Enjoy your weekend Buddy!</speak>`);
     } else {
       const classs = data[day][today][hourCode];
       if (classs.type === "LAB") {
-        conv.ask(
+        conv.close(
           `<speak> Right Now you have LAB` +
             ` For H1 Batch:` +
             ` It's ${classs.h1.name} LAB taken by ${classs.h1.Professor}` +
@@ -159,17 +159,17 @@ app.intent("currentLectureIntent", conv => {
             }</speak>`
         );
       } else if (classs.type === "Lecture") {
-        conv.ask(
+        conv.close(
           `<speak>Current lecture is ${classs.name} taken by ${
             classs.Professor
           }</speak>`
         );
       } else if (classs.type === "Free") {
-        conv.ask(`<speak>It's your free time</speak>`);
+        conv.close(`<speak>It's your free time</speak>`);
       }
     }
   } else {
-    conv.ask(`<speak>Please come back during working college hours</speak>`);
+    conv.close(`<speak>Please come back during working college hours</speak>`);
   }
 });
 
@@ -182,15 +182,15 @@ app.intent("currentLectureIntent", conv => {
 
 //   const classs = data[dayCode][day][hourCode];
 //   // console.log(classs);
-//   conv.ask(`<speak>${dayCode}, ${day}, ${hourCode}</speak>`);
-// conv.ask(`<speak>${Ltime}: ${hourCode} ${dayCode} ${day}</speak>`);
+//   conv.close(`<speak>${dayCode}, ${day}, ${hourCode}</speak>`);
+// conv.close(`<speak>${Ltime}: ${hourCode} ${dayCode} ${day}</speak>`);
 
-// conv.ask(
+// conv.close(
 //   `<speak>${classs.type} ${classs.name} ${classs.Professor}</speak>`
 // );
 
 /*   if (classs.type === "LAB") {
-    conv.ask(
+    conv.close(
       `<speak>On ${day} at ${Ltime} You have LAB` +
         ` For H1 Batch:` +
         ` It's ${classs.h1.name} LAB taken by ${classs.h1.Professor}` +
@@ -200,13 +200,13 @@ app.intent("currentLectureIntent", conv => {
         ` It's ${classs.h3.name} LAB taken by ${classs.h3.Professor}</speak>`
     );
   } else if (classs.type === "Lecture") {
-    conv.ask(
+    conv.close(
       `<speak>On ${day} at ${Ltime} you have lecture of ${
         classs.name
       } taken by ${classs.Professor}</speak>`
     );
   } else if (classs.type === "Free") {
-    conv.ask(
+    conv.close(
       `<speak> ${day}- ${dayCode} - ${day} -${hourCode} -${Ltime} Oh at that time I think it will be your free time</speak>`
     );
   }
@@ -228,24 +228,24 @@ app.intent("showFullSchedule", conv => {
     day++;
   }
   if (today === "Saturday" || today === "Sunday") {
-    conv.ask(new Suggestions("Suggestion Chips"));
-    conv.ask(
-      new Suggestions([
-        "Show Monday's Schedule",
-        "show today's Schedule",
-        "Show Tuesday's Schedule"
-      ])
-    );
-    conv.ask(`<speak>Enjoy your weekend buddy!</speak>`);
+    // conv.close(new Suggestions("Suggestion Chips"));
     // conv.ask(
     //   new Suggestions([
+    //     "Show Monday's Schedule",
     //     "show today's Schedule",
-    //     "Show Tuesday's Schedule",
-    //     "Show Wednesday's Schedule",
-    //     "Show Thursday's Schedule",
-    //     "Show Friday's Schedule"
+    //     "Show Tuesday's Schedule"
     //   ])
     // );
+    conv.ask(`<speak>Enjoy your weekend buddy!</speak>`);
+    conv.ask(
+      new Suggestions([
+        "show today's Schedule",
+        "Show Tuesday's Schedule",
+        "Show Wednesday's Schedule",
+        "Show Thursday's Schedule",
+        "Show Friday's Schedule"
+      ])
+    );
   } else {
     const entries = toArray(data[day][today]);
     const result = {
@@ -291,8 +291,8 @@ app.intent("showFullSchedule", conv => {
         };
       }
     }
-    conv.ask(`<speak>Here is ${result.title}</speak>`);
-    conv.ask(new List(result));
+    conv.close(`<speak>Here is ${result.title}</speak>`);
+    conv.close(new List(result));
   }
 });
 
@@ -301,7 +301,7 @@ app.intent("getPositionOfLecture", conv => {
   const day = moment(conv.body.queryResult.parameters.date).day();
   const today = moment(conv.body.queryResult.parameters.date).format("dddd");
   if (today === "Saturday" || today === "Sunday") {
-    conv.ask(new Suggestions("Suggestion Chips"));
+    // conv.close(new Suggestions("Suggestion Chips"));
     conv.ask(
       new Suggestions([
         "whose first lecture is it tomorrow?",
@@ -309,14 +309,14 @@ app.intent("getPositionOfLecture", conv => {
         "whose last lecture is it tomorrow?"
       ])
     );
-    conv.ask(`<speak>Enjoy your weekend buddy!</speak>`);
+    conv.close(`<speak>Enjoy your weekend buddy!</speak>`);
   } else {
     const entries = toArray(data[day][today]);
     for (const entry of entries) {
       const key = entry[0];
       const value = entry[1];
       if (value.type === "Lecture" && value.position === pos) {
-        conv.ask(
+        conv.close(
           new SimpleResponse({
             speech: `${pos} lecture is at ${timeConvert(
               parseInt(key.substring(1))
