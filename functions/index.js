@@ -218,8 +218,27 @@ function timeConvert(t) {
   }`;
 }
 function add1Day(day) {
-  return moment(day).add("days", 1);
+  return moment(day).add(1, "days");
 }
+
+app.intent("Default Welcome Intent", conv => {
+  conv.ask(
+    "<speak>Good Day! What can I do for you today?</speak>",
+    /* 
+    Hi! How are you doing?
+    Hello! How I can help you?
+    Good day! What can I do for you today?
+    Greetings! How can I assist? */
+    new Suggestions([
+      `Show Monday's schedule`,
+      `next lecture please?`,
+      `Whose lecture is it?`,
+      `whose last lecture is it?`,
+      `whose first lecture is it?`
+    ])
+  );
+});
+
 app.intent("showFullSchedule", conv => {
   let day = moment(conv.body.queryResult.parameters.date).day();
   let today = moment(conv.body.queryResult.parameters.date).format("dddd");
@@ -326,6 +345,7 @@ app.intent("getPositionOfLecture", conv => {
             )} of ${value.name} by ${value.Professor}`
           })
         );
+        break;
       }
     }
   }
