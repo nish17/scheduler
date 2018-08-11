@@ -9,6 +9,7 @@
   "author": "Nimesh Solanki",
   "license": "MIT",
   "dependencies": {
+    "firebase-functions": "^2.0.4",
     "moment": "^2.22.2"
   }
 }
