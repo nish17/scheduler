@@ -221,20 +221,25 @@ function add1Day(day) {
   return moment(day).add(1, "days");
 }
 
-app.intent("Default Welcome Intent", conv => {
+app.intent("New Welcome Intent", conv => {
   conv.ask(
-    "<speak>Good Day! What can I do for you today?</speak>",
-    /* 
-    Hi! How are you doing?
-    Hello! How I can help you?
-    Good day! What can I do for you today?
-    Greetings! How can I assist? */
+    new SimpleResponse({
+      speech: `Good Day! What can I do for you today?`,
+      text: `Good Day! What can I do for you today?`
+    }),
+    //     "<speak>Good Day! What can I do for you today?</speak>",
+    //     /*
+
+    //     Hello! How I can help you?
+    //     Good day! What can I do for you today?
+    //     Greetings! How can I assist? */
     new Suggestions([
       `Show Monday's schedule`,
       `next lecture please?`,
       `Whose lecture is it?`,
       `whose last lecture is it?`,
-      `whose first lecture is it?`
+      `first lecture today?`,
+      `any lecture of GPP today?`
     ])
   );
 });
