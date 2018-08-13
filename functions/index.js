@@ -78,11 +78,11 @@ app.intent("findLectureIntent", conv => {
       ) {
         const t = parseInt(entries[i][0].substring(1));
         conv.close(
-          `<speak>Yes there ${
-            indianTimeMoment.hour() > t ? "was" : "is"
-          } a lecture by ${profName} of ${entries[i][1].name} at ${
-            t - 12 > 0 ? `${t - 12} PM` : `${t} AM`
-          } ${isToday(today)}.</speak>`
+          `<speak>Yes there is a lecture by ${profName} of ${
+            entries[i][1].name
+          } at ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} ${isToday(
+            today
+          )}.</speak>`
         );
         break;
       } else {
@@ -223,16 +223,16 @@ function add1Day(day) {
 }
 
 app.intent("New Welcome Intent", conv => {
+  const indianTimeMoment = setTimeZone();
   conv.ask(
-    new Randomization(
-      `Good Day! What can I do for you today?`,
-      "<speak>Good Day! What can I do for you today?</speak>",
-      "Hello! How I can help you?",
-      "Good day! What can I do for you today?",
-      "Greetings! How can I assist? "
-    ),
+    // new Randomization(
+    "<speak>Good Day! What can I do for you today?</speak>",
+    // "Hello! How I can help you?",
+    // "Good day! What can I do for you today?",
+    // "Greetings! How can I assist? "
+    // ),
     new Suggestions([
-      `Show ${moment().format("dddd")}'s schedule`,
+      `Show ${indianTimeMoment.format("dddd")}'s schedule`,
       `next lecture please?`,
       `Whose lecture is it?`,
       `whose last lecture is it?`,
