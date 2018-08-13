@@ -8,7 +8,7 @@ It's a Google Assistant action 🤖 that tells you about which classes and labs 
 
 ## Must Try: PDPU Scheduler's Phone Gateway 📞 +1 201-298-3936
 
-Speak `test` once it receives the call.
+Respond with `test` once it receives the call.
 
 ⚠️ Carrier charges may apply.
 
