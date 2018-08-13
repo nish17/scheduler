@@ -19,6 +19,7 @@ function setTimeZone() {
   return indianTimeZone;
 }
 
+console.log("hour", moment().hour());
 // function findLectureIntent(x) {
 //   const indianTimeMoment = setTimeZone();
 //   // const currentHour = indianTimeMoment.hour();

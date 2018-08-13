@@ -7,8 +7,9 @@ const {
   SimpleResponse,
   Permission
 } = require("actions-on-google");
+const { randomize, Randomization } = require("randomize");
 const functions = require("firebase-functions");
-const app = dialogflow({ debug: true });
+const app = dialogflow(); //.use(randomize);
 const moment = require("moment");
 var data = require("./data/5th-sem.json");
 function workingHours(time) {
@@ -61,7 +62,7 @@ app.intent("findLectureIntent", conv => {
   const today = moment(conv.body.queryResult.parameters["date"][0]).format(
     "dddd"
   );
-
+  const indianTimeMoment = setTimeZone();
   if (today === "Saturday" || today === "Sunday") {
     conv.close(
       `<speak>Enjoy your weekend buddy! There aren't any lectures of ${profName} on weekends</speak>`
@@ -77,11 +78,11 @@ app.intent("findLectureIntent", conv => {
       ) {
         const t = parseInt(entries[i][0].substring(1));
         conv.close(
-          `<speak>Yes there is a lecture by ${profName} of ${
-            entries[i][1].name
-          } at ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} ${isToday(
-            today
-          )}.</speak>`
+          `<speak>Yes there ${
+            indianTimeMoment.hour() > t ? "was" : "is"
+          } a lecture by ${profName} of ${entries[i][1].name} at ${
+            t - 12 > 0 ? `${t - 12} PM` : `${t} AM`
+          } ${isToday(today)}.</speak>`
         );
         break;
       } else {
@@ -223,18 +224,15 @@ function add1Day(day) {
 
 app.intent("New Welcome Intent", conv => {
   conv.ask(
-    new SimpleResponse({
-      speech: `Good Day! What can I do for you today?`,
-      text: `Good Day! What can I do for you today?`
-    }),
-    //     "<speak>Good Day! What can I do for you today?</speak>",
-    //     /*
-
-    //     Hello! How I can help you?
-    //     Good day! What can I do for you today?
-    //     Greetings! How can I assist? */
+    new Randomization(
+      `Good Day! What can I do for you today?`,
+      "<speak>Good Day! What can I do for you today?</speak>",
+      "Hello! How I can help you?",
+      "Good day! What can I do for you today?",
+      "Greetings! How can I assist? "
+    ),
     new Suggestions([
-      `Show Monday's schedule`,
+      `Show ${moment().format("dddd")}'s schedule`,
       `next lecture please?`,
       `Whose lecture is it?`,
       `whose last lecture is it?`,
@@ -328,9 +326,10 @@ app.intent("getPositionOfLecture", conv => {
     // conv.close(new Suggestions("Suggestion Chips"));
     conv.ask(
       new Suggestions([
-        "whose first lecture is it tomorrow?",
-        "whose last lecture is it today?",
-        "whose last lecture is it tomorrow?"
+        "first lecture on Monday?",
+        "last lecture today?",
+        "last lecture today?",
+        "first lecture tomorrow?"
       ])
     );
     conv.close(`<speak>Enjoy your weekend buddy!</speak>`);
