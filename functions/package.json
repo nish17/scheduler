@@ -12,8 +12,9 @@
   "dependencies": {
     "actions-on-google": "^2.2.0",
     "firebase-admin": "^5.12.1",
-    "firebase-functions": "2.0.2",
-    "moment": "^2.22.2"
+    "firebase-functions": "^2.0.4",
+    "moment": "^2.22.2",
+    "randomize": "^0.0.4"
   },
   "devDependencies": {
     "eslint": "^5.2.0",
