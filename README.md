@@ -6,7 +6,7 @@
 
 It's a Google Assistant action 🤖 that tells you about which classes and labs you have today.
 
-## Must Try: PDPU Scheduler's Phone Gateway 📞 +12012983936
+## Must Try: PDPU Scheduler's Phone Gateway 📞 +1 201-298-3936
 
 Speak `test` once it receives the call.
 
