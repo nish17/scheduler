@@ -224,6 +224,7 @@ function add1Day(day) {
 
 app.intent("New Welcome Intent", conv => {
   const indianTimeMoment = setTimeZone();
+  console.log(conv.responses);
   conv.ask(
     // new Randomization(
     "<speak>Good Day! What can I do for you today?</speak>",
