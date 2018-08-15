@@ -19,7 +19,18 @@ function setTimeZone() {
   return indianTimeZone;
 }
 
-console.log("hour", moment().hour());
+function findLectureIntent() {
+  let jday = "Monday";
+  const profName = "Santosh Kumar Bharti";
+  let res = Object.entries(data[1].jday).find(
+    ([key, value]) => value.Professor === profName
+  )[0];
+  if (res === undefined) console.log(`No lectures today of ${profName}`);
+  else console.log(`There is a Lecture of ${profName} at ${res}`);
+}
+
+findLectureIntent();
+// console.log("hour", moment().hour());
 // function findLectureIntent(x) {
 //   const indianTimeMoment = setTimeZone();
 //   // const currentHour = indianTimeMoment.hour();
@@ -53,17 +64,17 @@ console.log("hour", moment().hour());
 // }
 // console.log(profName.toLowerCase().includes("Santosh Bharti".toLowerCase()));
 
-const test = require("./test.json");
+// const test = require("./test.json");
 
-let day = moment("2018-07-27T12:00:00+05:30").format("dddd");
-console.log(day);
-let dayCode = moment("2018-07-27T12:00:00+05:30").day();
-console.log(dayCode);
-let time = moment("2018-07-27T09:00:00+05:30").hour();
-console.log(time);
-let hourCode = "L" + time;
-console.log(hourCode);
+// let day = moment("2018-07-27T12:00:00+05:30").format("dddd");
+// console.log(day);
+// let dayCode = moment("2018-07-27T12:00:00+05:30").day();
+// console.log(dayCode);
+// let time = moment("2018-07-27T09:00:00+05:30").hour();
+// console.log(time);
+// let hourCode = "L" + time;
+// console.log(hourCode);
 
-// console.log(data[dayCode][day][hourCode]);
+// // console.log(data[dayCode][day][hourCode]);
 
-console.log(test.queryResult.parameters.time);
+// console.log(test.queryResult.parameters.time);

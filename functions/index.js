@@ -85,15 +85,11 @@ app.intent("findLectureIntent", conv => {
           )}.</speak>`
         );
         break;
-      } else {
-        if (entries[i][1].Professor === "Lecture" && entries[i][0] === "L17") {
-          conv.close(
-            `<speak>There is no lecture by ${profName} ${isToday(
-              today
-            )}</speak>`
-          );
-          break;
-        }
+      } else if (entries[i][1].type === "Lecture" && entries[i][0] === "L17") {
+        conv.close(
+          `<speak>There is no lecture by ${profName} ${isToday(today)}</speak>`
+        );
+        break;
       }
     }
   }
@@ -226,8 +222,11 @@ app.intent("New Welcome Intent", conv => {
   const indianTimeMoment = setTimeZone();
   console.log(conv.responses);
   conv.ask(
+    new SimpleResponse({
+      speech: "Good Day! What can I do for you today?",
+      text: "Good Day! What can I do for you today?"
+    }),
     // new Randomization(
-    "<speak>Good Day! What can I do for you today?</speak>",
     // "Hello! How I can help you?",
     // "Good day! What can I do for you today?",
     // "Greetings! How can I assist? "
