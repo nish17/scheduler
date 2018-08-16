@@ -73,7 +73,6 @@ app.intent("findLectureIntent", conv => {
     for (let i = 0; i < entries.length; i++) {
       if (
         entries[i][1].type === "Lecture" &&
-        entries[i][1].Professor !== undefined &&
         entries[i][1].Professor === profName
       ) {
         const t = parseInt(entries[i][0].substring(1));
@@ -85,7 +84,7 @@ app.intent("findLectureIntent", conv => {
           )}.</speak>`
         );
         break;
-      } else if (entries[i][1].type === "Lecture" && entries[i][0] === "L17") {
+      } else if (entries[i][1].type === "Free" && entries[i][0] === "L17") {
         conv.close(
           `<speak>There is no lecture by ${profName} ${isToday(today)}</speak>`
         );
@@ -162,7 +161,7 @@ app.intent("currentLectureIntent", conv => {
           }</speak>`
         );
       } else if (classs.type === "Free") {
-        conv.close(`<speak>It's your free time</speak>`);
+        conv.close(`<speak>It's your free time buddy.</speak>`);
       }
     }
   } else {
