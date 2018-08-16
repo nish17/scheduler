@@ -245,19 +245,11 @@ app.intent("New Welcome Intent", conv => {
 app.intent("showFullSchedule", conv => {
   let day = moment(conv.body.queryResult.parameters.date).day();
   let today = moment(conv.body.queryResult.parameters.date).format("dddd");
-  if (!isItToday(today, conv.body.queryResult.intent.displayName)) {
-    today = add1Day(conv.body.queryResult.parameters.date).format("dddd");
-    day++;
-  }
+  // if (!isItToday(today, conv.body.queryResult.intent.displayName)) {
+  //   today = add1Day(conv.body.queryResult.parameters.date).format("dddd");
+  //   day++;
+  // }
   if (today === "Saturday" || today === "Sunday") {
-    // conv.close(new Suggestions("Suggestion Chips"));
-    // conv.ask(
-    //   new Suggestions([
-    //     "Show Monday's Schedule",
-    //     "show today's Schedule",
-    //     "Show Tuesday's Schedule"
-    //   ])
-    // );
     conv.ask(`<speak>Enjoy your weekend buddy!</speak>`);
     conv.ask(
       new Suggestions([
@@ -282,7 +274,9 @@ app.intent("showFullSchedule", conv => {
         result.items[
           `${value.name} at ${timeConvert(parseInt(key.substring(1)))}`
         ] = {
-          synonyms: [`${value.name}`],
+          synonyms: [
+            `${value.name} at ${timeConvert(parseInt(key.substring(1)))}`
+          ],
           title: `At  ${timeConvert(parseInt(key.substring(1)))}: ${
             value.name
           }`,
@@ -315,6 +309,15 @@ app.intent("showFullSchedule", conv => {
     }
     conv.close(`<speak>Here is ${result.title}</speak>`);
     conv.close(new List(result));
+    conv.ask(
+      new Suggestions([
+        `next lecture please?`,
+        `whose last lecture is it?`,
+        `Show Monday's schedule`,
+        `first lecture today?`,
+        `Whose lecture is it?`
+      ])
+    );
   }
 });
 
