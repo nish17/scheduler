@@ -3,11 +3,9 @@ const {
   dialogflow,
   List,
   Suggestions,
-  BasicCard,
-  SimpleResponse,
-  Permission
+  SimpleResponse
 } = require("actions-on-google");
-const { randomize, Randomization } = require("randomize");
+// const { randomize, Randomization } = require("randomize");
 const functions = require("firebase-functions");
 const app = dialogflow(); //.use(randomize);
 const moment = require("moment");
@@ -356,9 +354,44 @@ app.intent("getPositionOfLecture", conv => {
     }
   }
 });
-/* 
-* Masum's idea
-app.intent("countLectures", conv => {});
- */
+
+app.intent("countLectures", conv => {
+  const prof = conv.body.queryResult.parameters.profName;
+  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  let day = 1;
+  let countLect = 0;
+  const result = {
+    title: `Lectures of ${prof}`,
+    items: {}
+  };
+  console.log(`Lectures of ${prof}`);
+  for (var i = 0; i <= 4; i++) {
+    // console.log(days[i]);
+    const entries = toArray(data[day][days[i]]);
+    day++;
+    for (const entry of entries) {
+      const key = entry[0];
+      const value = entry[1];
+      if (value.type === "Lecture" && value.Professor === prof) {
+        countLect++;
+        const t = parseInt(entries[j][0].substring(1));
+        result.items[
+          `At ${timeConvert(parseInt(key.substring(1)))} on ${days[i]}`
+        ] = {
+          synonyms: [
+            `At ${timeConvert(parseInt(key.substring(1)))} on ${days[i]}`
+          ],
+          title: `At  ${timeConvert(parseInt(key.substring(1)))}`,
+          description: `on ${days[i]}.`
+        };
+
+        console.log(
+          `at ${t - 12 > 0 ? `${t - 12} PM` : `${t} AM`} on ${days[i]}`
+        );
+      }
+    }
+  }
+  conv.close(`Total ${countLect} Lectures`);
+});
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);

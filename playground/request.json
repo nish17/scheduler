@@ -65,8 +65,7 @@
                   "title": "At 12 PM: Free"
                 },
                 {
-                  "description":
-                    "For H1: RF Engineering Lab by Ganga Prasad Pandey, For H2: OS Lab by R Jothi, For H3: DBMS Lab by Reema Patel.",
+                  "description": "For H1: RF Engineering Lab by Ganga Prasad Pandey, For H2: OS Lab by R Jothi, For H3: DBMS Lab by Reema Patel.",
                   "optionInfo": {
                     "synonyms": ["RF Engineering Lab OS Lab DBMS Lab"],
                     "key": "RF Engineering Lab, OS Lab, DBMS Lab"
@@ -114,8 +113,7 @@
     },
     "outputContexts": [
       {
-        "name":
-          "projects/daily-schedule-a07e5/agent/sessions/737542c3-a93d-a12b-96f2-1321edd6ef0a/contexts/_actions_on_google",
+        "name": "projects/daily-schedule-a07e5/agent/sessions/737542c3-a93d-a12b-96f2-1321edd6ef0a/contexts/_actions_on_google",
         "lifespanCount": 99,
         "parameters": {
           "data": "{}"
@@ -123,8 +121,7 @@
       }
     ],
     "intent": {
-      "name":
-        "projects/daily-schedule-a07e5/agent/intents/0c4ccac0-6120-465c-9b68-30e27632812d",
+      "name": "projects/daily-schedule-a07e5/agent/intents/0c4ccac0-6120-465c-9b68-30e27632812d",
       "displayName": "showFullSchedule"
     },
     "intentDetectionConfidence": 1,
