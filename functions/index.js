@@ -223,11 +223,6 @@ app.intent("New Welcome Intent", conv => {
       speech: "Good Day! What can I do for you today?",
       text: "Good Day! What can I do for you today?"
     }),
-    // new Randomization(
-    // "Hello! How I can help you?",
-    // "Good day! What can I do for you today?",
-    // "Greetings! How can I assist? "
-    // ),
     new Suggestions([
       `Show ${indianTimeMoment.format("dddd")}'s schedule`,
       `next lecture please?`,
