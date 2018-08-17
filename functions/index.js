@@ -356,5 +356,9 @@ app.intent("getPositionOfLecture", conv => {
     }
   }
 });
+/* 
+* Masum's idea
+app.intent("countLectures", conv => {});
+ */
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
