@@ -361,7 +361,7 @@ app.intent("countLectures", conv => {
   let day = 1;
   let countLect = 0;
   const result = {
-    title: `Lectures of ${prof}`,
+    title: `Lectures of ${prof} in a week`,
     items: {}
   };
   console.log(`Lectures of ${prof}`);
@@ -392,6 +392,16 @@ app.intent("countLectures", conv => {
     }
   }
   conv.close(`Total ${countLect} Lectures`);
+  conv.close(new List(result));
+  conv.ask(
+    new Suggestions([
+      `next lecture please?`,
+      `whose last lecture is it?`,
+      `Show Monday's schedule`,
+      `first lecture today?`,
+      `Whose lecture is it?`
+    ])
+  );
 });
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
