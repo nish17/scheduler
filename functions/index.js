@@ -374,7 +374,7 @@ app.intent("countLectures", conv => {
       const value = entry[1];
       if (value.type === "Lecture" && value.Professor === prof) {
         countLect++;
-        const t = parseInt(entries[j][0].substring(1));
+        const t = parseInt(key.substring(1));
         result.items[
           `At ${timeConvert(parseInt(key.substring(1)))} on ${days[i]}`
         ] = {
