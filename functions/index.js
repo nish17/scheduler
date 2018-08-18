@@ -317,11 +317,7 @@ function sayDepartandSuggestions(conv, option) {
       text: `That's great! You have selected ${option} batch.`
     })
   );
-  conv.close(
-    `<speak>Stored in the memory at conv.user.storage.class ${
-      conv.user.storage.class
-    }</speak>`
-  );
+  conv.close(`<speak>Showing results for ${conv.user.storage.class}</speak>`);
   conv.ask(
     new Suggestions([
       `Change Department`,
