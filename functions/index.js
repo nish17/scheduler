@@ -315,7 +315,14 @@ function sayDepartandSuggestions(conv, option) {
     new SimpleResponse({
       speech: `That's great! You have selected ${option} batch.`,
       text: `That's great! You have selected ${option} batch.`
-    }),
+    })
+  );
+  conv.close(
+    `<speak>Stored in the memory at conv.user.storage.class ${
+      conv.user.storage.class
+    }</speak>`
+  );
+  conv.ask(
     new Suggestions([
       `Change Department`,
       `Show ${
@@ -331,11 +338,6 @@ function sayDepartandSuggestions(conv, option) {
       `number of lectures of SKB`,
       `number of lectures of RJO`
     ])
-  );
-  conv.close(
-    `<speak>Stored in the memory at conv.user.storage.class ${
-      conv.user.storage.class
-    }</speak>`
   );
 }
 
