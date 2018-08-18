@@ -224,8 +224,10 @@ app.intent("New Welcome Intent", conv => {
     // console.log(`userStorage: ${conv.user.userStorage}`);
     conv.ask(
       new SimpleResponse({
-        speech: "Hey, Welcome Back! What can I do for you today?",
-        text: "Hey, Welcome Back! What can I do for you today?"
+        speech:
+          "Hey, Welcome Back to PDPU's scheduler App! What can I do for you today?",
+        text:
+          "Hey, Welcome Back to PDPU's scheduler App! What can I do for you today?"
       }),
       new Suggestions([
         `Show ${
@@ -244,56 +246,86 @@ app.intent("New Welcome Intent", conv => {
   } else {
     conv.ask(
       new SimpleResponse({
-        speech: "Good Day! Please select your department.",
-        text: "Good Day! Please select your department."
-        // }),
-        // new List({
-        //   title: "Select your department",
-        //   items: {
-        //     ICT_16: {
-        //       synonyms: ["SOT ICT 16", "ICT batch 16", "ICT", "16BIT"],
-        //       title: "ICT-16",
-        //       description: "Information and Communication Technology, Batch'16"
-        //     },
-        //     CE_16: {
-        //       synonyms: ["SOT CE 16", "CE batch 16", "CE", "16BCP"],
-        //       title: "CE-16",
-        //       description: "Computer Science Engineering, Batch'16"
-        //     },
-        //     PE_16: {
-        //       synonyms: ["SOT PE 16", "PE batch 16", "PE", "16BPE"],
-        //       title: "PE-16",
-        //       description: "Petroleum Engineering, Batch'16"
-        //     },
-        //     EE_16: {
-        //       synonyms: ["SOT EE 16", "EE batch 16", "EE", "16BPE"],
-        //       title: "EE-16",
-        //       description: "Electrical Engineering, Batch'16"
-        //     },
-        //     CV_16: {
-        //       synonyms: ["SOT CV 16", "CV batch 16", "CV", "16BCV"],
-        //       title: "CV-16",
-        //       description: "Civil Engineering, Batch'16"
-        //     },
-        //     CH_16: {
-        //       synonyms: ["SOT CH 16", "CH batch 16", "CH", "16BCH"],
-        //       title: "CH-16",
-        //       description: "Chemical Engineering, Batch'16"
-        //     },
-        //     MC_16: {
-        //       synonyms: ["SOT MC 16", "MC batch 16", "MC", "16BCH"],
-        //       title: "MC-16",
-        //       description: "Mechanical Engineering, Batch'16"
-        //     },
-        //     IE_16: {
-        //       synonyms: ["SOT IE 16", "IE batch 16", "IE", "16BIE"],
-        //       title: "IE-16",
-        //       description: "Industrial Engineering, Batch'16"
-        //     }
-        //   }
-        // }
+        speech: "Good Day! Welcome to PDPU's scheduler App",
+        text: "Good Day! Welcome to PDPU's scheduler App."
       })
     );
+  }
+});
+app.intent("actions.intent.OPTION	", conv => {
+  conv.ask(
+    new List({
+      title: "Select your department",
+      items: {
+        ICT_16: {
+          synonyms: ["SOT ICT 16", "ICT batch 16", "ICT", "16BIT"],
+          title: "ICT-16",
+          description: "Information and Communication Technology, Batch'16"
+        },
+        CE_16: {
+          synonyms: ["SOT CE 16", "CE batch 16", "CE", "16BCP"],
+          title: "CE-16",
+          description: "Computer Science Engineering, Batch'16"
+        },
+        PE_16: {
+          synonyms: ["SOT PE 16", "PE batch 16", "PE", "16BPE"],
+          title: "PE-16",
+          description: "Petroleum Engineering, Batch'16"
+        },
+        EE_16: {
+          synonyms: ["SOT EE 16", "EE batch 16", "EE", "16BPE"],
+          title: "EE-16",
+          description: "Electrical Engineering, Batch'16"
+        },
+        CV_16: {
+          synonyms: ["SOT CV 16", "CV batch 16", "CV", "16BCV"],
+          title: "CV-16",
+          description: "Civil Engineering, Batch'16"
+        },
+        CH_16: {
+          synonyms: ["SOT CH 16", "CH batch 16", "CH", "16BCH"],
+          title: "CH-16",
+          description: "Chemical Engineering, Batch'16"
+        },
+        MC_16: {
+          synonyms: ["SOT MC 16", "MC batch 16", "MC", "16BCH"],
+          title: "MC-16",
+          description: "Mechanical Engineering, Batch'16"
+        },
+        IE_16: {
+          synonyms: ["SOT IE 16", "IE batch 16", "IE", "16BIE"],
+          title: "IE-16",
+          description: "Industrial Engineering, Batch'16"
+        }
+      }
+    })
+  );
+});
+
+app.intent("ask_with_list_confirmation", (conv, params, option) => {
+  // Get the user's selection
+  // Compare the user's selections to each of the item's keys
+  if (!option) {
+    conv.ask("You did not select any department");
+  } else if (option === "ICT_16") {
+    conv.user.storage.class = "ICT_16";
+    conv.ask("That's great! You have selected ICT'16 Batch");
+  } else if (option === "CE_16") {
+    conv.ask("That's great! You have selected CE'16 Batch");
+  } else if (option === "PE_16") {
+    conv.ask("That's great! You have selected PE'16 Batch");
+  } else if (option === "EE_16") {
+    conv.ask("That's great! You have selected EE'16 Batch");
+  } else if (option === "CV_16") {
+    conv.ask("That's great! You have selected CV'16 Batch");
+  } else if (option === "CH_16") {
+    conv.ask("That's great! You have selected CH'16 Batch");
+  } else if (option === "MC_16") {
+    conv.ask("That's great! You have selected MC'16 Batch");
+  } else if (option === "IE_16") {
+    conv.ask("That's great! You have selected IE'16 Batch");
+  } else {
+    conv.ask("You selected an unknown department");
   }
 });
 
