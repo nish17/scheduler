@@ -9,7 +9,7 @@ const {
 const functions = require("firebase-functions");
 const app = dialogflow(); //.use(randomize);
 const moment = require("moment");
-var data = require("./data/5th-sem.json");
+var data = require("./data/ICT16_5th-sem.json");
 function workingHours(time) {
   if (time >= 9 && time <= 18) return true;
   else return false;
@@ -485,9 +485,13 @@ app.intent("countLectures", conv => {
   conv.close(new List(result));
   conv.ask(
     new Suggestions([
+      `number of lectures of NTD`,
+      `number of lectures of SKB`,
+      `number of lectures of GPP`,
+      `number of lectures of RJO`,
       `next lecture please?`,
-      `whose last lecture is it?`,
       `Show Monday's schedule`,
+      `whose last lecture is it?`,
       `first lecture today?`,
       `Whose lecture is it?`
     ])
