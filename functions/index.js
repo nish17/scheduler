@@ -217,45 +217,48 @@ function add1Day(day) {
 
 app.intent("New Welcome Intent", conv => {
   const indianTimeMoment = setTimeZone();
-  if (conv.user.last.seen) {
-    // console.log(`last.seen: ${conv.user.last.seen}`);
-    // console.log(`lastSeen: ${conv.user.lastSeen}`);
-    // console.log(`user.storage: ${conv.user.user.storage}`);
-    // console.log(`userStorage: ${conv.user.userStorage}`);
-    conv.ask(
-      new SimpleResponse({
-        speech:
-          "Hey, Welcome Back to PDPU's scheduler App! What can I do for you today?",
-        text:
-          "Hey, Welcome Back to PDPU's scheduler App! What can I do for you today?"
-      }),
-      new Suggestions([
-        `Show ${
-          indianTimeMoment.format("dddd") === "Saturday" ||
-          indianTimeMoment.format("dddd") === "Sunday"
-            ? "Monday"
-            : `${indianTimeMoment.format("dddd")}`
-        }'s schedule`,
-        `next lecture please?`,
-        `Whose lecture is it?`,
-        `whose last lecture is it?`,
-        `first lecture today?`,
-        `any lecture of GPP today?`
-      ])
-    );
-  } else {
-    conv.ask(
-      new SimpleResponse({
-        speech: "Good Day! Welcome to PDPU's scheduler App",
-        text: "Good Day! Welcome to PDPU's scheduler App."
-      })
-    );
-  }
+  // if (conv.user.last.seen) {
+  //   // console.log(`last.seen: ${conv.user.last.seen}`);
+  //   // console.log(`lastSeen: ${conv.user.lastSeen}`);
+  //   // console.log(`user.storage: ${conv.user.user.storage}`);
+  //   // console.log(`userStorage: ${conv.user.userStorage}`);
+  //   conv.ask(
+  //     new SimpleResponse({
+  //       speech:
+  //         "Hey, Welcome Back to PDPU's scheduler App! What can I do for you today?",
+  //       text:
+  //         "Hey, Welcome Back to PDPU's scheduler App! What can I do for you today?"
+  //     }),
+  //     new Suggestions([
+  //       `Show ${
+  //         indianTimeMoment.format("dddd") === "Saturday" ||
+  //         indianTimeMoment.format("dddd") === "Sunday"
+  //           ? "Monday"
+  //           : `${indianTimeMoment.format("dddd")}`
+  //       }'s schedule`,
+  //       `next lecture please?`,
+  //       `Whose lecture is it?`,
+  //       `whose last lecture is it?`,
+  //       `first lecture today?`,
+  //       `any lecture of GPP today?`
+  //     ])
+  //   );
+  // } else {
+  conv.ask(
+    new SimpleResponse({
+      speech:
+        "Good Day! Welcome to PDPU's scheduler App. Please select your Department first.",
+      text:
+        "Good Day! Welcome to PDPU's scheduler App. Please select your Department first."
+    }),
+    new Suggestions([`Show Department List`])
+  );
+  // }
 });
-app.intent("actions.intent.OPTION	", conv => {
+app.intent("ask_with_list", conv => {
   conv.ask(
     new List({
-      title: "Select your department",
+      title: "Please select your department",
       items: {
         ICT_16: {
           synonyms: ["SOT ICT 16", "ICT batch 16", "ICT", "16BIT"],
@@ -273,7 +276,7 @@ app.intent("actions.intent.OPTION	", conv => {
           description: "Petroleum Engineering, Batch'16"
         },
         EE_16: {
-          synonyms: ["SOT EE 16", "EE batch 16", "EE", "16BPE"],
+          synonyms: ["SOT EE 16", "EE batch 16", "EE", "16BEE"],
           title: "EE-16",
           description: "Electrical Engineering, Batch'16"
         },
@@ -288,7 +291,7 @@ app.intent("actions.intent.OPTION	", conv => {
           description: "Chemical Engineering, Batch'16"
         },
         MC_16: {
-          synonyms: ["SOT MC 16", "MC batch 16", "MC", "16BCH"],
+          synonyms: ["SOT MC 16", "MC batch 16", "MC", "16BMC"],
           title: "MC-16",
           description: "Mechanical Engineering, Batch'16"
         },
@@ -307,22 +310,29 @@ app.intent("ask_with_list_confirmation", (conv, params, option) => {
   // Compare the user's selections to each of the item's keys
   if (!option) {
     conv.ask("You did not select any department");
-  } else if (option === "ICT_16") {
-    conv.user.storage.class = "ICT_16";
+  } else if (option === "ICT-16") {
+    conv.user.storage.class = "ICT16";
     conv.ask("That's great! You have selected ICT'16 Batch");
-  } else if (option === "CE_16") {
+  } else if (option === "CE-16") {
+    conv.user.storage.class = "CE16";
     conv.ask("That's great! You have selected CE'16 Batch");
-  } else if (option === "PE_16") {
+  } else if (option === "PE-16") {
+    conv.user.storage.class = "PE16";
     conv.ask("That's great! You have selected PE'16 Batch");
-  } else if (option === "EE_16") {
+  } else if (option === "EE-16") {
+    conv.user.storage.class = "EE16";
     conv.ask("That's great! You have selected EE'16 Batch");
-  } else if (option === "CV_16") {
+  } else if (option === "CV-16") {
+    conv.user.storage.class = "CV16";
     conv.ask("That's great! You have selected CV'16 Batch");
-  } else if (option === "CH_16") {
+  } else if (option === "CH-16") {
+    conv.user.storage.class = "CH16";
     conv.ask("That's great! You have selected CH'16 Batch");
-  } else if (option === "MC_16") {
+  } else if (option === "MC-16") {
+    conv.user.storage.class = "MC16";
     conv.ask("That's great! You have selected MC'16 Batch");
-  } else if (option === "IE_16") {
+  } else if (option === "IE-16") {
+    conv.user.storage.class = "IE16";
     conv.ask("That's great! You have selected IE'16 Batch");
   } else {
     conv.ask("You selected an unknown department");
