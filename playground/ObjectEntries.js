@@ -1,3 +1,12 @@
+/* const today = "Modnay";
+
+console.log(
+  `Show ${
+    today === "Saturday" || today === "Sunday" ? "Monday" : `${today}`
+  }'s schedule`
+);
+ */
+/* Count Lecuters of Faculty intent
 const data = require("../functions/data/5th-sem.json");
 
 function toArray(moData) {
@@ -32,3 +41,4 @@ for (var i = 0; i <= 4; i++) {
   }
 }
 console.log(`Total ${countLect} Lectures`);
+ */
