@@ -257,6 +257,10 @@ app.intent("New Welcome Intent", conv => {
 });
 app.intent("ask_with_list", conv => {
   conv.ask(
+    new SimpleResponse({
+      speech: "Here's Departments list",
+      text: "Here's Departments list."
+    }),
     new List({
       title: "Please select your department",
       items: {
@@ -305,38 +309,71 @@ app.intent("ask_with_list", conv => {
   );
 });
 
-app.intent("ask_with_list_confirmation", (conv, params, option) => {
+function sayDepartandSuggestions(conv, option) {
+  const indianTimeMoment = setTimeZone();
+  conv.ask(
+    new SimpleResponse({
+      speech: `That's great! You have selected ${option} batch.`,
+      text: `That's great! You have selected ${option} batch.`
+    }),
+    new Suggestions([
+      `Change Department`,
+      `Show ${
+        indianTimeMoment.format("dddd") === "Saturday" ||
+        indianTimeMoment.format("dddd") === "Sunday"
+          ? "Monday"
+          : `${indianTimeMoment.format("dddd")}`
+      }'s schedule`,
+      `next lecture please?`,
+      `Whose lecture is it?`,
+      `any lecture of GPP today?`,
+      `number of lectures of NTD`,
+      `number of lectures of SKB`,
+      `number of lectures of RJO`
+    ])
+  );
+  conv.close(
+    `<speak>Stored in the memory at conv.user.storage.class ${
+      conv.user.storage.class
+    }</speak>`
+  );
+}
+
+app.intent("ask_with_list_confirmation", conv => {
   // Get the user's selection
   // Compare the user's selections to each of the item's keys
+  const option = conv.body.queryResult.parameters.departmentsList;
+  // conv.close(`<speak>${option}</speak>`);
   if (!option) {
-    conv.ask("You did not select any department");
-  } else if (option === "ICT-16") {
+    conv.ask("You did not select any department</speak>");
+  } else if (option === "ICT16") {
     conv.user.storage.class = "ICT16";
-    conv.ask("That's great! You have selected ICT'16 Batch");
-  } else if (option === "CE-16") {
+    sayDepartandSuggestions(conv, option);
+  } else if (option === "CE16") {
     conv.user.storage.class = "CE16";
-    conv.ask("That's great! You have selected CE'16 Batch");
-  } else if (option === "PE-16") {
+    sayDepartandSuggestions(conv, option);
+  } else if (option === "PE16") {
     conv.user.storage.class = "PE16";
-    conv.ask("That's great! You have selected PE'16 Batch");
-  } else if (option === "EE-16") {
+    sayDepartandSuggestions(conv, option);
+  } else if (option === "EE16") {
     conv.user.storage.class = "EE16";
-    conv.ask("That's great! You have selected EE'16 Batch");
-  } else if (option === "CV-16") {
+    sayDepartandSuggestions(conv, option);
+  } else if (option === "CV16") {
     conv.user.storage.class = "CV16";
-    conv.ask("That's great! You have selected CV'16 Batch");
-  } else if (option === "CH-16") {
+    sayDepartandSuggestions(conv, option);
+  } else if (option === "CH16") {
     conv.user.storage.class = "CH16";
-    conv.ask("That's great! You have selected CH'16 Batch");
-  } else if (option === "MC-16") {
+    sayDepartandSuggestions(conv, option);
+  } else if (option === "MC16") {
     conv.user.storage.class = "MC16";
-    conv.ask("That's great! You have selected MC'16 Batch");
-  } else if (option === "IE-16") {
+    sayDepartandSuggestions(conv, option);
+  } else if (option === "IE16") {
     conv.user.storage.class = "IE16";
-    conv.ask("That's great! You have selected IE'16 Batch");
+    sayDepartandSuggestions(conv, option);
   } else {
-    conv.ask("You selected an unknown department");
+    conv.ask("<speak>You selected an unknown department</speak>");
   }
+  // conv.ask(new Suggestions([`${option}?`, `Change Department`]));
 });
 
 app.intent("showFullSchedule", conv => {
