@@ -9,7 +9,12 @@ const {
 const functions = require("firebase-functions");
 const app = dialogflow(); //.use(randomize);
 const moment = require("moment");
-var data = require("./data/ICT16_5th-sem.json");
+var data = undefined;
+
+function requireDateFile(depart) {
+  data = require(`./data/${depart}_5th-sem.json`);
+}
+
 function workingHours(time) {
   if (time >= 9 && time <= 18) return true;
   else return false;
@@ -218,6 +223,7 @@ function add1Day(day) {
 app.intent("New Welcome Intent", conv => {
   const indianTimeMoment = setTimeZone();
   if (conv.user.storage.class !== undefined) {
+    requireDateFile(conv.user.storage.class);
     conv.ask(
       new SimpleResponse({
         speech: `Hey, Welcome Back to ${
