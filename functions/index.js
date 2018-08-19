@@ -217,43 +217,42 @@ function add1Day(day) {
 
 app.intent("New Welcome Intent", conv => {
   const indianTimeMoment = setTimeZone();
-  // if (conv.user.last.seen) {
-  //   // console.log(`last.seen: ${conv.user.last.seen}`);
-  //   // console.log(`lastSeen: ${conv.user.lastSeen}`);
-  //   // console.log(`user.storage: ${conv.user.user.storage}`);
-  //   // console.log(`userStorage: ${conv.user.userStorage}`);
-  //   conv.ask(
-  //     new SimpleResponse({
-  //       speech:
-  //         "Hey, Welcome Back to PDPU's scheduler App! What can I do for you today?",
-  //       text:
-  //         "Hey, Welcome Back to PDPU's scheduler App! What can I do for you today?"
-  //     }),
-  //     new Suggestions([
-  //       `Show ${
-  //         indianTimeMoment.format("dddd") === "Saturday" ||
-  //         indianTimeMoment.format("dddd") === "Sunday"
-  //           ? "Monday"
-  //           : `${indianTimeMoment.format("dddd")}`
-  //       }'s schedule`,
-  //       `next lecture please?`,
-  //       `Whose lecture is it?`,
-  //       `whose last lecture is it?`,
-  //       `first lecture today?`,
-  //       `any lecture of GPP today?`
-  //     ])
-  //   );
-  // } else {
-  conv.ask(
-    new SimpleResponse({
-      speech:
-        "Good Day! Welcome to PDPU's scheduler App. Please select your Department first.",
-      text:
-        "Good Day! Welcome to PDPU's scheduler App. Please select your Department first."
-    }),
-    new Suggestions([`Show Department List`])
-  );
-  // }
+  if (conv.user.storage.class !== undefined) {
+    conv.ask(
+      new SimpleResponse({
+        speech: `Hey, Welcome Back to ${
+          conv.user.storage.class
+        } department! What can I do for you today?`,
+        text: `Hey, Welcome Back ${
+          conv.user.storage.class
+        } department! What can I do for you today?`
+      }),
+      new Suggestions([
+        `Show ${
+          indianTimeMoment.format("dddd") === "Saturday" ||
+          indianTimeMoment.format("dddd") === "Sunday"
+            ? "Monday"
+            : `${indianTimeMoment.format("dddd")}`
+        }'s schedule`,
+        `Change Department`,
+        `next lecture please?`,
+        `Whose lecture is it?`,
+        `whose last lecture is it?`,
+        `first lecture today?`,
+        `any lecture of GPP today?`
+      ])
+    );
+  } else {
+    conv.ask(
+      new SimpleResponse({
+        speech:
+          "Good Day! Welcome to PDPU's scheduler App. Please select your Department first.",
+        text:
+          "Good Day! Welcome to PDPU's scheduler App. Please select your Department first."
+      }),
+      new Suggestions([`Show Department List`])
+    );
+  }
 });
 app.intent("ask_with_list", conv => {
   conv.ask(
@@ -305,7 +304,17 @@ app.intent("ask_with_list", conv => {
           description: "Industrial Engineering, Batch'16"
         }
       }
-    })
+    }),
+    new Suggestions([
+      `ICT16`,
+      `CE16`,
+      `PE16`,
+      `EE16`,
+      `CH16`,
+      `CV16`,
+      `MC16`,
+      `IE16`
+    ])
   );
 });
 
