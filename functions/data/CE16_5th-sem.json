@@ -1,0 +1,242 @@
+[
+  {
+    "Sunday": {
+      "L*": {
+        "type": "Free"
+      }
+    }
+  },
+  {
+    "Monday": {
+      "L9": {
+        "type": "Free"
+      },
+      "L10": {
+        "type": "Lecture",
+        "position": "first",
+        "name": "Information Security",
+        "Professor": "Reema Patel"
+      },
+      "L11": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Theory of Computation",
+        "Professor": "R Jothi"
+      },
+      "L12": {
+        "type": "Free"
+      },
+      "L13": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Operating System",
+        "Professor": "Samir Patel"
+      },
+      "L14": {
+        "type": "Lecture",
+        "position": "last",
+        "name": "Software Engineering",
+        "Professor": "Santosh Kumar Bharti"
+      },
+      "L15": {
+        "type": "LAB",
+        "g1": {
+          "name": "Web Technology Lab",
+          "Professor": "Reema Patel"
+        },
+        "g2": {
+          "name": "Operating System Lab",
+          "Professor": "Samir Patel"
+        }
+      },
+      "L17": {
+        "type": "Free"
+      }
+    }
+  },
+  {
+    "Tuesday": {
+      "L9": {
+        "type": "Lecture",
+        "position": "first",
+        "name": "Information Security",
+        "Professor": "Reema Patel"
+      },
+      "L10": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Theory of Computation",
+        "Professor": "R Jothi"
+      },
+      "L11": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Web Technology",
+        "Professor": "Reema Patel"
+      },
+      "L12": {
+        "type": "Free"
+      },
+      "L13": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Principle of Economics",
+        "Professor": "Manoj Sahu"
+      },
+      "L14": {
+        "type": "Lecture",
+        "position": "last",
+        "name": "Principle of Economics",
+        "Professor": "Manoj Sahu"
+      },
+      "L15": {
+        "type": "LAB",
+        "g2": {
+          "name": "Web Technology Lab",
+          "Professor": "Reema Patel"
+        },
+        "g3": {
+          "name": "Operating System Lab",
+          "Professor": "Samir Patel"
+        }
+      },
+      "L17": {
+        "type": "Free"
+      }
+    }
+  },
+  {
+    "Wednesday": {
+      "L9": {
+        "type": "Lecture",
+        "position": "first",
+        "name": "Principle of Economics",
+        "Professor": "Manoj Sahu"
+      },
+      "L10": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Information Security",
+        "Professor": "Reema Patel"
+      },
+      "L11": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Operating System",
+        "Professor": "Samir Patel"
+      },
+      "L12": {
+        "type": "Free"
+      },
+      "L13": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Web Technology",
+        "Professor": "Reema Patel"
+      },
+      "L14": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Theory of Computation",
+        "Professor": "R Jothi"
+      },
+      "L15": {
+        "type": "LAB",
+        "g3": {
+          "name": "Web Technology Lab",
+          "Professor": "Reema Patel"
+        },
+        "g1": {
+          "name": "Information Security Lab",
+          "Professor": "Samir Patel"
+        }
+      },
+      "L17": {
+        "type": "Free"
+      }
+    }
+  },
+  {
+    "Thursday": {
+      "L9": {
+        "type": "LAB",
+        "g1": {
+          "name": "Operating System Lab",
+          "Professor": "Samir Patel"
+        }
+      },
+      "L11": {
+        "type": "Lecture",
+        "position": "first",
+        "name": "Software Engineering",
+        "Professor": "Santosh Kumar Bharti"
+      },
+      "L12": {
+        "type": "Free"
+      },
+      "L13": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Operating System",
+        "Professor": "Samir Patel"
+      },
+      "L14": {
+        "type": "Lecture",
+        "position": "last",
+        "name": "Web Technology",
+        "Professor": "Reema Patel"
+      },
+      "L15": {
+        "type": "LAB",
+        "g2": {
+          "name": "Information Security Lab",
+          "Professor": "Samir Patel"
+        }
+      },
+      "L17": {
+        "type": "Free"
+      }
+    }
+  },
+  {
+    "Friday": {
+      "L9": {
+        "type": "LAB",
+        "g3": {
+          "name": "Information Security Lab",
+          "Professor": "Samir Patel"
+        }
+      },
+      "L11": {
+        "type": "Lecture",
+        "position": "first",
+        "name": "Theory of Computation",
+        "Professor": "R Jothi"
+      },
+      "L12": {
+        "type": "Free"
+      },
+      "L13": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Software Engineering",
+        "Professor": "Santosh Kumar Bharti"
+      },
+      "L14": {
+        "type": "Lecture",
+        "position": "last",
+        "name": "Operating System",
+        "Professor": "Samir Patel"
+      },
+      "L15": {
+        "type": "Lecture",
+        "position": "last",
+        "name": "Placement Preparation For Batch 1 & 2",
+        "Professor": "T&P cell"
+      },
+      "L17": {
+        "type": "Free"
+      }
+    }
+  }
+]
