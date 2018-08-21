@@ -10,9 +10,10 @@ const functions = require("firebase-functions");
 const app = dialogflow(); //.use(randomize);
 const moment = require("moment");
 var data = undefined;
-
+var sot = "";
 function requireDateFile(depart) {
   data = require(`./data/${depart}_5th-sem.json`);
+  sot = depart;
 }
 
 function workingHours(time) {
@@ -175,7 +176,7 @@ app.intent("currentLectureIntent", conv => {
       }
     } else {
       conv.close(
-        `<speak>Please come back during working college hours</speak>`
+        `<speak>Please come back during working college hours. Data Acessing from ${sot}</speak>`
       );
     }
   }
@@ -238,7 +239,7 @@ app.intent("New Welcome Intent", conv => {
         speech: `Hey, Welcome Back to ${
           conv.user.storage.class
         } department! What can I do for you today?`,
-        text: `Hey, Welcome Back ${
+        text: `Hey, Welcome Back to ${
           conv.user.storage.class
         } department! What can I do for you today?`
       }),
@@ -335,30 +336,39 @@ app.intent("ask_with_list", conv => {
 
 function sayDepartandSuggestions(conv, option) {
   const indianTimeMoment = setTimeZone();
-  conv.ask(
-    new SimpleResponse({
-      speech: `That's great! You have selected ${option} batch.`,
-      text: `That's great! You have selected ${option} batch.`
-    })
-  );
-  conv.close(`<speak>Showing results for ${conv.user.storage.class}</speak>`);
-  conv.ask(
-    new Suggestions([
-      `Change Department`,
-      `Show ${
-        indianTimeMoment.format("dddd") === "Saturday" ||
-        indianTimeMoment.format("dddd") === "Sunday"
-          ? "Monday"
-          : `${indianTimeMoment.format("dddd")}`
-      }'s schedule`,
-      `next lecture please?`,
-      `Whose lecture is it?`,
-      `any lecture of GPP today?`,
-      `number of lectures of NTD`,
-      `number of lectures of SKB`,
-      `number of lectures of RJO`
-    ])
-  );
+  if (option === "ICT16" || option === "CE16") {
+    conv.ask(
+      new SimpleResponse({
+        speech: `That's great! You have selected ${option} batch.`,
+        text: `That's great! You have selected ${option} batch.`
+      })
+    );
+    conv.close(`<speak>Showing results for ${conv.user.storage.class}</speak>`);
+    conv.ask(
+      new Suggestions([
+        `Change Department`,
+        `Show ${
+          indianTimeMoment.format("dddd") === "Saturday" ||
+          indianTimeMoment.format("dddd") === "Sunday"
+            ? "Monday"
+            : `${indianTimeMoment.format("dddd")}`
+        }'s schedule`,
+        `next lecture please?`,
+        `Whose lecture is it?`,
+        `any lecture of GPP today?`,
+        `number of lectures of NTD`,
+        `number of lectures of SKB`,
+        `number of lectures of RJO`
+      ])
+    );
+  } else {
+    conv.ask(
+      new SimpleResponse({
+        speech: `This app is still under development. ${option} department will be added soon.`,
+        text: `This app is still under development. ${option} department will be added soon :)`
+      })
+    );
+  }
 }
 
 app.intent("ask_with_list_confirmation", conv => {
@@ -375,22 +385,22 @@ app.intent("ask_with_list_confirmation", conv => {
     conv.user.storage.class = "CE16";
     sayDepartandSuggestions(conv, option);
   } else if (option === "PE16") {
-    conv.user.storage.class = "PE16";
+    // conv.user.storage.class = "PE16";
     sayDepartandSuggestions(conv, option);
   } else if (option === "EE16") {
-    conv.user.storage.class = "EE16";
+    // conv.user.storage.class = "EE16";
     sayDepartandSuggestions(conv, option);
   } else if (option === "CV16") {
-    conv.user.storage.class = "CV16";
+    // conv.user.storage.class = "CV16";
     sayDepartandSuggestions(conv, option);
   } else if (option === "CH16") {
-    conv.user.storage.class = "CH16";
+    // conv.user.storage.class = "CH16";
     sayDepartandSuggestions(conv, option);
   } else if (option === "MC16") {
-    conv.user.storage.class = "MC16";
+    // conv.user.storage.class = "MC16";
     sayDepartandSuggestions(conv, option);
   } else if (option === "IE16") {
-    conv.user.storage.class = "IE16";
+    // conv.user.storage.class = "IE16";
     sayDepartandSuggestions(conv, option);
   } else {
     conv.ask("<speak>You selected an unknown department</speak>");
