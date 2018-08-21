@@ -140,35 +140,44 @@ app.intent("currentLectureIntent", conv => {
   const hourCode = "L" + currentHour;
   const day = indianTimeMoment.day();
   const today = moment().format("dddd");
-  if (workingHours(currentHour)) {
-    if (weekdays(today)) {
-      conv.close(`<speak>Enjoy your weekend Buddy!</speak>`);
-    } else {
-      const classs = data[day][today][hourCode];
-      if (classs.type === "LAB") {
-        conv.close(
-          `<speak> Right Now you have LAB` +
-            ` For H1 Batch:` +
-            ` It's ${classs.h1.name} LAB taken by ${classs.h1.Professor}` +
-            ` For H2 Batch: ` +
-            ` It's ${classs.h2.name} LAB taken by ${classs.h2.Professor}` +
-            ` For H3 Batch: ` +
-            ` It's ${classs.h3.name} LAB taken by ${
-              classs.h3.Professor
-            }</speak>`
-        );
-      } else if (classs.type === "Lecture") {
-        conv.close(
-          `<speak>Current lecture is ${classs.name} taken by ${
-            classs.Professor
-          }</speak>`
-        );
-      } else if (classs.type === "Free") {
-        conv.close(`<speak>It's your free time buddy.</speak>`);
-      }
-    }
+  if (data === undefined) {
+    conv.ask(
+      `<speak>Please select your department first.</speak>`,
+      new Suggestions([`Show Department list`])
+    );
   } else {
-    conv.close(`<speak>Please come back during working college hours</speak>`);
+    if (workingHours(currentHour)) {
+      if (weekdays(today)) {
+        conv.close(`<speak>Enjoy your weekend Buddy!</speak>`);
+      } else {
+        const classs = data[day][today][hourCode];
+        if (classs.type === "LAB") {
+          conv.close(
+            `<speak> Right Now you have LAB` +
+              ` For H1 Batch:` +
+              ` It's ${classs.h1.name} LAB taken by ${classs.h1.Professor}` +
+              ` For H2 Batch: ` +
+              ` It's ${classs.h2.name} LAB taken by ${classs.h2.Professor}` +
+              ` For H3 Batch: ` +
+              ` It's ${classs.h3.name} LAB taken by ${
+                classs.h3.Professor
+              }</speak>`
+          );
+        } else if (classs.type === "Lecture") {
+          conv.close(
+            `<speak>Current lecture is ${classs.name} taken by ${
+              classs.Professor
+            }</speak>`
+          );
+        } else if (classs.type === "Free") {
+          conv.close(`<speak>It's your free time buddy.</speak>`);
+        }
+      }
+    } else {
+      conv.close(
+        `<speak>Please come back during working college hours</speak>`
+      );
+    }
   }
 });
 
