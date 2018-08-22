@@ -136,7 +136,7 @@
       },
       "L14": {
         "type": "Lecture",
-        "position": null,
+        "position": "last",
         "name": "Theory of Computation",
         "Professor": "R Jothi"
       },
@@ -224,7 +224,7 @@
       },
       "L14": {
         "type": "Lecture",
-        "position": "last",
+        "position": null,
         "name": "Operating System",
         "Professor": "Samir Patel"
       },
