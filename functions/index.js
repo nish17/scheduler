@@ -571,7 +571,9 @@ app.intent("countLectures", conv => {
     conv.close(`Total ${countLect} Lectures`);
     conv.close(new List(result));
   } else {
-    conv.close(`There aren't any lectures of ${prof} in ${sot} department`);
+    conv.close(
+      `In this semesters there aren't any lectures of ${prof} in ${sot} department`
+    );
   }
   conv.ask(
     new Suggestions([
