@@ -11,22 +11,22 @@ const app = dialogflow(); //.use(randomize);
 const moment = require("moment");
 var data = undefined;
 var sot = "";
+
 function requireDateFile(depart) {
   data = require(`./data/${depart}_5th-sem.json`);
   sot = depart;
 }
 
-const CE16_lab_batch = [`g1`, `g2`, `g3`];
-const ICT16_lab_batch = [`h1`, `h2`, `h3`];
-
 function workingHours(time) {
   if (time >= 9 && time <= 18) return true;
   else return false;
 }
+
 function weekdays(day) {
   if (day === "Saturday" || day === "Sunday") return true;
   else return false;
 }
+
 function setTimeZone() {
   const indianTimeZone = moment
     .utc()
@@ -54,6 +54,7 @@ function isToday(today) {
     return "tomorrow";
   } else return `on ${today}`;
 }
+
 function toArray(moData) {
   // console.log(Object.keys(moData));
   const ownProps = Object.keys(moData);
@@ -61,6 +62,16 @@ function toArray(moData) {
   var resArray = new Array(i);
   while (i--) resArray[i] = [ownProps[i], moData[ownProps[i]]];
   return resArray;
+}
+
+function timeConvert(t) {
+  return `${
+    t - 12 >= 0 ? `${t - 12 === 0 ? "12" : `${t - 12}`} PM` : `${t} AM`
+  }`;
+}
+
+function add1Day(day) {
+  return moment(day).add(1, "days");
 }
 
 app.intent("findLectureIntent", conv => {
@@ -116,12 +127,18 @@ app.intent("nextLectureIntent", conv => {
       if (classs.type === "LAB") {
         conv.close(
           `<speak> Next you have LAB` +
-            ` For H1 Batch:` +
-            ` ${classs.h1.name} will be taken by ${classs.h1.Professor}` +
-            ` For H2 Batch: ` +
-            ` ${classs.h2.name} will be taken by ${classs.h2.Professor}` +
-            ` For H3 Batch: ` +
-            ` ${classs.h3.name} will be taken by ${classs.h3.Professor}</speak>`
+            ` For ${data[6].batches[0].toUpperCase()} Batch:` +
+            ` ${classs.data[6].batches[0].name} will be taken by ${
+              classs.data[6].batches[0].Professor
+            }` +
+            ` For ${data[6].batches[1].toUpperCase()} Batch: ` +
+            ` ${classs.data[6].batches[1].name} will be taken by ${
+              classs.data[6].batches[1].Professor
+            }` +
+            ` For ${data[6].batches[2].toUpperCase()} Batch: ` +
+            ` ${classs.data[6].batches[2].name} will be taken by ${
+              classs.data[6].batches[2].Professor
+            }</speak>`
         );
       } else if (classs.type === "Lecture") {
         conv.close(
@@ -158,13 +175,17 @@ app.intent("currentLectureIntent", conv => {
         if (classs.type === "LAB") {
           conv.close(
             `<speak> Right Now you have LAB` +
-              ` For H1 Batch:` +
-              ` It's ${classs.h1.name} LAB taken by ${classs.h1.Professor}` +
-              ` For H2 Batch: ` +
-              ` It's ${classs.h2.name} LAB taken by ${classs.h2.Professor}` +
-              ` For H3 Batch: ` +
-              ` It's ${classs.h3.name} LAB taken by ${
-                classs.h3.Professor
+              ` For ${data[6].batches[0].toUpperCase()} Batch:` +
+              ` It's ${classs.data[6].batches[0].name} LAB taken by ${
+                classs.data[6].batches[0].Professor
+              }` +
+              ` For ${data[6].batches[1].toUpperCase()} Batch: ` +
+              ` It's ${classs.data[6].batches[1].name} LAB taken by ${
+                classs.data[6].batches[1].Professor
+              }` +
+              ` For ${data[6].batches[2].toUpperCase()} Batch: ` +
+              ` It's ${classs.data[6].batches[2].name} LAB taken by ${
+                classs.data[6].batches[2].Professor
               }</speak>`
           );
         } else if (classs.type === "Lecture") {
@@ -179,7 +200,7 @@ app.intent("currentLectureIntent", conv => {
       }
     } else {
       conv.close(
-        `<speak>Please come back during working college hours. Data Acessing from ${sot}</speak>`
+        `<speak>Please come back during working college hours.</speak>`
       );
     }
   }
@@ -224,14 +245,6 @@ app.intent("currentLectureIntent", conv => {
   }
 });
  */
-function timeConvert(t) {
-  return `${
-    t - 12 >= 0 ? `${t - 12 === 0 ? "12" : `${t - 12}`} PM` : `${t} AM`
-  }`;
-}
-function add1Day(day) {
-  return moment(day).add(1, "days");
-}
 
 app.intent("New Welcome Intent", conv => {
   const indianTimeMoment = setTimeZone();
@@ -452,15 +465,29 @@ app.intent("showFullSchedule", conv => {
           description: `By ${value.Professor}.`
         };
       } else if (value.type === "LAB") {
-        result.items[`${value.h1.name}, ${value.h2.name}, ${value.h3.name}`] = {
-          synonyms: [`${value.h1.name} ${value.h2.name} ${value.h3.name}`],
+        result.items[
+          `${value.data[6].batches[0].name}, ${
+            value.data[6].batches[0].name
+          }, ${value.data[6].batches[0].name}`
+        ] = {
+          synonyms: [
+            `${value.data[6].batches[0].name} ${
+              value.data[6].batches[0].name
+            } ${value.data[6].batches[0].name}`
+          ],
           title: `LAB Session from ${timeConvert(
             parseInt(key.substring(1))
           )} to ${timeConvert(parseInt(key.substring(1)) + 2)}`,
           description:
-            `For H1: ${value.h1.name} by ${value.h1.Professor}, ` +
-            `For H2: ${value.h2.name} by ${value.h2.Professor}, ` +
-            `For H3: ${value.h3.name} by ${value.h3.Professor}.`
+            `For ${data[6].batches[0].toUpperCase()}: ${
+              value.data[6].batches[0].name
+            } by ${value.data[6].batches[0].Professor}, ` +
+            `For ${data[6].batches[0].toUpperCase()}: ${
+              value.data[6].batches[0].name
+            } by ${value.data[6].batches[0].Professor}, ` +
+            `For ${data[6].batches[0].toUpperCase()}: ${
+              value.data[6].batches[0].name
+            } by ${value.data[6].batches[0].Professor}.`
         };
       } else if (value.type === "Free") {
         result.items[
@@ -572,7 +599,7 @@ app.intent("countLectures", conv => {
     conv.close(new List(result));
   } else {
     conv.close(
-      `In this semesters there aren't any lectures of ${prof} in ${sot} department`
+      `In this semester there aren't any lectures of ${prof} in ${sot} department`
     );
   }
   conv.ask(
