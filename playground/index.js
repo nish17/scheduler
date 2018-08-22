@@ -63,7 +63,9 @@ const result = {
 function getLabDescription(obj) {
   let finalString = "";
   for (const key of getListItems(obj)) {
-    finalString += `For ${key.toUpperCase()}: ${key.name} by ${key.Professor}`;
+    finalString += `For ${key.toUpperCase()}: ${key.name} by ${
+      key.Professor
+    }, `;
   }
   return finalString;
 }
@@ -72,7 +74,7 @@ function getListItems(obj) {
   let items = [];
   for (const key in obj) {
     if (key !== "type") {
-      // console.log(key);
+      console.log(key, key.name);
       items.push(key);
     }
   }
@@ -92,8 +94,8 @@ for (const entry of entries) {
       description: `By ${value.Professor}.`
     };
   } else if (value.type === "LAB") {
-    console.log("Here also it works " + value[data[6].batches[0]].name);
-    console.log("Here it works " + value[data[6].batches[0]].name);
+    // console.log("Here also it works " + value[data[6].batches[0]].name);
+    // console.log("Here it works " + value[data[6].batches[0]].name);
 
     // for (const key in value) {
     // console.log(key);
@@ -101,7 +103,7 @@ for (const entry of entries) {
     //   key !== "type" ? console.log(key.name, key.Professor) : "none"
     // );
     // }
-    console.log(getLabDescription(value));
+    // console.log(getLabDescription(value));
     result.items[
       // `a`
       `${getListItems(value)}`
