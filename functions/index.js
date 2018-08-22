@@ -466,14 +466,14 @@ app.intent("showFullSchedule", conv => {
         };
       } else if (value.type === "LAB") {
         result.items[
-          `${value.data[6].batches[0].name}, ${
-            value.data[6].batches[0].name
-          }, ${value.data[6].batches[0].name}`
+          `${value[data[6].batches[0]].name}, ${
+            value[data[6].batches[1]].name
+          }, ${value[data[6].batches[2]].name}`
         ] = {
           synonyms: [
-            `${value.data[6].batches[0].name} ${
-              value.data[6].batches[0].name
-            } ${value.data[6].batches[0].name}`
+            `${value[data[6].batches[0]].name} ${
+              value[data[6].batches[1]].name
+            } ${value[data[6].batches[2]].name}`
           ],
           title: `LAB Session from ${timeConvert(
             parseInt(key.substring(1))
@@ -482,12 +482,12 @@ app.intent("showFullSchedule", conv => {
             `For ${data[6].batches[0].toUpperCase()}: ${
               value.data[6].batches[0].name
             } by ${value.data[6].batches[0].Professor}, ` +
-            `For ${data[6].batches[0].toUpperCase()}: ${
-              value.data[6].batches[0].name
-            } by ${value.data[6].batches[0].Professor}, ` +
-            `For ${data[6].batches[0].toUpperCase()}: ${
-              value.data[6].batches[0].name
-            } by ${value.data[6].batches[0].Professor}.`
+            `For ${data[6].batches[1].toUpperCase()}: ${
+              value.data[6].batches[1].name
+            } by ${value.data[6].batches[1].Professor}, ` +
+            `For ${data[6].batches[2].toUpperCase()}: ${
+              value.data[6].batches[2].name
+            } by ${value.data[6].batches[2].Professor}.`
         };
       } else if (value.type === "Free") {
         result.items[
