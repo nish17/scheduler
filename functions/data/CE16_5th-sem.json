@@ -142,13 +142,13 @@
       },
       "L15": {
         "type": "LAB",
-        "g3": {
-          "name": "Web Technology Lab",
-          "Professor": "Reema Patel"
-        },
         "g1": {
           "name": "Information Security Lab",
           "Professor": "Samir Patel"
+        },
+        "g3": {
+          "name": "Web Technology Lab",
+          "Professor": "Reema Patel"
         }
       },
       "L17": {
