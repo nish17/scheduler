@@ -16,6 +16,9 @@ function requireDateFile(depart) {
   sot = depart;
 }
 
+const CE_lab_batch = [`g1`, `g2`, `g3`];
+const ICT_lab_batch = [`h1`, `h2`, `h3`];
+
 function workingHours(time) {
   if (time >= 9 && time <= 18) return true;
   else return false;
@@ -545,12 +548,16 @@ app.intent("countLectures", conv => {
         countLect++;
         const t = parseInt(key.substring(1));
         result.items[
-          `At ${timeConvert(parseInt(key.substring(1)))} on ${days[i]}`
+          `${countLect}. At ${timeConvert(parseInt(key.substring(1)))} on ${
+            days[i]
+          }`
         ] = {
           synonyms: [
-            `At ${timeConvert(parseInt(key.substring(1)))} on ${days[i]}`
+            `${countLect}. At ${timeConvert(parseInt(key.substring(1)))} on ${
+              days[i]
+            }`
           ],
-          title: `At  ${timeConvert(parseInt(key.substring(1)))}`,
+          title: `${countLect}. At  ${timeConvert(parseInt(key.substring(1)))}`,
           description: `on ${days[i]}.`
         };
 
@@ -566,7 +573,6 @@ app.intent("countLectures", conv => {
     new Suggestions([
       `number of lectures of NTD`,
       `number of lectures of SKB`,
-      `number of lectures of GPP`,
       `number of lectures of RJO`,
       `next lecture please?`,
       `Show Monday's schedule`,
