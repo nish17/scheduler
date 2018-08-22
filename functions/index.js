@@ -16,8 +16,8 @@ function requireDateFile(depart) {
   sot = depart;
 }
 
-const CE_lab_batch = [`g1`, `g2`, `g3`];
-const ICT_lab_batch = [`h1`, `h2`, `h3`];
+const CE16_lab_batch = [`g1`, `g2`, `g3`];
+const ICT16_lab_batch = [`h1`, `h2`, `h3`];
 
 function workingHours(time) {
   if (time >= 9 && time <= 18) return true;
@@ -567,8 +567,12 @@ app.intent("countLectures", conv => {
       }
     }
   }
-  conv.close(`Total ${countLect} Lectures`);
-  conv.close(new List(result));
+  if (countLect >= 1) {
+    conv.close(`Total ${countLect} Lectures`);
+    conv.close(new List(result));
+  } else {
+    conv.close(`There aren't any lectures of ${prof} in ${sot} department`);
+  }
   conv.ask(
     new Suggestions([
       `number of lectures of NTD`,
