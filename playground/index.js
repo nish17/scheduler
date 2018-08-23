@@ -78,8 +78,8 @@ function getListItems(obj) {
   Object.keys(obj).forEach(data => {
     if (obj[data] !== "LAB") labs.push(obj[data]);
   });
-  console.log(items);
-  console.log(labs);
+  // console.log(items);
+  // console.log(labs);
   return { items, labs };
 }
 
@@ -95,7 +95,7 @@ for (const entry of entries) {
       description: `By ${value.Professor}.`
     };
   } else if (value.type === "LAB") {
-    console.log(`Final string ` + getLabDescription(value));
+    console.log("=>" + getLabDescription(value));
     result.items[
       // `a`
       `${getListItems(value)}`
@@ -108,7 +108,7 @@ for (const entry of entries) {
       title: `LAB Session from ${timeConvert(
         parseInt(key.substring(1))
       )} to ${timeConvert(parseInt(key.substring(1)) + 2)}`,
-      description: getLabDescription(value)
+      description: `${getLabDescription(value)}`
     };
   } else if (value.type === "Free") {
     result.items[
