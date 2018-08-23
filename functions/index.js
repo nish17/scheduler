@@ -490,9 +490,19 @@ app.intent("showFullSchedule", conv => {
           // }`
         ] = {
           synonyms: [
-            `${value[data[6].batches[0]].name} ${
-              value[data[6].batches[0]].name
-            } ${value[data[6].batches[2]].name}`
+            `${
+              value[data[6].batches[0]] === undefined
+                ? ""
+                : value[data[6].batches[0]].name
+            },${
+              value[data[6].batches[1]] === undefined
+                ? ""
+                : value[data[6].batches[1]].name
+            },${
+              value[data[6].batches[2]] === undefined
+                ? ""
+                : value[data[6].batches[2]].name
+            }`
           ],
           title: `LAB Session from ${timeConvert(
             parseInt(key.substring(1))
