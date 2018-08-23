@@ -424,6 +424,29 @@ app.intent("ask_with_list_confirmation", conv => {
   // conv.ask(new Suggestions([`${option}?`, `Change Department`]));
 });
 
+function getLabDescription(obj) {
+  let finalString = "";
+  let list_of_batches = getListItems(obj);
+  for (let i = 0; i < list_of_batches.items.length; i++) {
+    finalString += `For ${list_of_batches.items[i].toUpperCase()}: ${
+      list_of_batches.labs[i].name
+    } by ${list_of_batches.labs[i].Professor} `;
+  }
+  return finalString;
+}
+
+function getListItems(obj) {
+  let items = Object.keys(obj);
+  let labs = [];
+  items.shift();
+  Object.keys(obj).forEach(data => {
+    if (obj[data] !== "LAB") labs.push(obj[data]);
+  });
+  console.log(items);
+  console.log(labs);
+  return { items, labs };
+}
+
 app.intent("showFullSchedule", conv => {
   let day = moment(conv.body.queryResult.parameters.date).day();
   let today = moment(conv.body.queryResult.parameters.date).format("dddd");
