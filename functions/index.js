@@ -443,18 +443,12 @@ function getListItems(obj) {
   Object.keys(obj).forEach(data => {
     if (obj[data] !== "LAB") labs.push(obj[data]);
   });
-  console.log(items);
-  console.log(labs);
   return { items, labs };
 }
 
 app.intent("showFullSchedule", conv => {
   let day = moment(conv.body.queryResult.parameters.date).day();
   let today = moment(conv.body.queryResult.parameters.date).format("dddd");
-  // if (!isItToday(today, conv.body.queryResult.intent.displayName)) {
-  //   today = add1Day(conv.body.queryResult.parameters.date).format("dddd");
-  //   day++;
-  // }
   if (today === "Saturday" || today === "Sunday") {
     conv.ask(`<speak>Enjoy your weekend buddy!</speak>`);
     conv.ask(
@@ -491,7 +485,9 @@ app.intent("showFullSchedule", conv => {
       } else if (value.type === "LAB") {
         result.items[
           // `a`
-          `${getListItems(value)}`
+          // `${
+          (() => getListItems(value))()
+          // }`
         ] = {
           synonyms: [
             `${value[data[6].batches[0]].name} ${
@@ -501,7 +497,7 @@ app.intent("showFullSchedule", conv => {
           title: `LAB Session from ${timeConvert(
             parseInt(key.substring(1))
           )} to ${timeConvert(parseInt(key.substring(1)) + 2)}`,
-          description: getLabDescription(value)
+          description: () => getLabDescription(value)()
         };
       } else if (value.type === "Free") {
         result.items[
@@ -536,7 +532,6 @@ app.intent("getPositionOfLecture", conv => {
   const day = moment(conv.body.queryResult.parameters.date).day();
   const today = moment(conv.body.queryResult.parameters.date).format("dddd");
   if (today === "Saturday" || today === "Sunday") {
-    // conv.close(new Suggestions("Suggestion Chips"));
     conv.ask(
       new Suggestions([
         "first lecture on Monday?",
