@@ -182,7 +182,7 @@
       },
       "L14": {
         "type": "Lecture",
-        "position": "last",
+        "position": null,
         "name": "Web Technology",
         "Professor": "Reema Patel"
       },
@@ -194,7 +194,10 @@
         }
       },
       "L17": {
-        "type": "Free"
+        "type": "Lecture",
+        "position": "last",
+        "name": "Placement Preparation For Batch 1",
+        "Professor": "T&P cell"
       }
     }
   },
@@ -231,7 +234,7 @@
       "L15": {
         "type": "Lecture",
         "position": "last",
-        "name": "Placement Preparation For Batch 1 & 2",
+        "name": "Placement Preparation For Batch 2",
         "Professor": "T&P cell"
       },
       "L17": {
