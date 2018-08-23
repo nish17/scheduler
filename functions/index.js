@@ -75,6 +75,7 @@ function add1Day(day) {
 }
 
 app.intent("findLectureIntent", conv => {
+  data = require(`./data/${conv.user.storage.class}_5th-sem.json`);
   const day = moment(conv.body.queryResult.parameters["date"][0]).day();
   const profName = conv.body.queryResult.parameters["profName"][0];
   const today = moment(conv.body.queryResult.parameters["date"][0]).format(
@@ -113,6 +114,7 @@ app.intent("findLectureIntent", conv => {
 });
 
 app.intent("nextLectureIntent", conv => {
+  data = require(`./data/${conv.user.storage.class}_5th-sem.json`);
   const indianTimeMoment = setTimeZone();
   const currentHour = indianTimeMoment.hour();
   const next = currentHour + 1;
@@ -156,6 +158,7 @@ app.intent("nextLectureIntent", conv => {
 });
 
 app.intent("currentLectureIntent", conv => {
+  data = require(`./data/${conv.user.storage.class}_5th-sem.json`);
   const indianTimeMoment = setTimeZone();
   const currentHour = indianTimeMoment.hour();
   const hourCode = "L" + currentHour;
@@ -447,6 +450,7 @@ function getListItems(obj) {
 }
 
 app.intent("showFullSchedule", conv => {
+  data = require(`./data/${conv.user.storage.class}_5th-sem.json`);
   let day = moment(conv.body.queryResult.parameters.date).day();
   let today = moment(conv.body.queryResult.parameters.date).format("dddd");
   if (today === "Saturday" || today === "Sunday") {
@@ -538,6 +542,7 @@ app.intent("showFullSchedule", conv => {
 });
 
 app.intent("getPositionOfLecture", conv => {
+  data = require(`./data/${conv.user.storage.class}_5th-sem.json`);
   const pos = conv.body.queryResult.parameters.position;
   const day = moment(conv.body.queryResult.parameters.date).day();
   const today = moment(conv.body.queryResult.parameters.date).format("dddd");
@@ -574,6 +579,7 @@ app.intent("getPositionOfLecture", conv => {
 });
 
 app.intent("countLectures", conv => {
+  data = require(`./data/${conv.user.storage.class}_5th-sem.json`);
   const prof = conv.body.queryResult.parameters.profName;
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
   let day = 1;
