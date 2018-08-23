@@ -487,12 +487,7 @@ app.intent("showFullSchedule", conv => {
           description: `By ${value.Professor}.`
         };
       } else if (value.type === "LAB") {
-        result.items[
-          // `a`
-          // `${
-          (() => getListItems(value))()
-          // }`
-        ] = {
+        result.items[(() => getListItems(value))()] = {
           synonyms: [
             `${
               value[data[6].batches[0]] === undefined
