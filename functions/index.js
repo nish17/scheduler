@@ -128,16 +128,16 @@ app.intent("nextLectureIntent", conv => {
         conv.close(
           `<speak> Next you have LAB` +
             ` For ${data[6].batches[0].toUpperCase()} Batch:` +
-            ` ${classs.data[6].batches[0].name} will be taken by ${
-              classs.data[6].batches[0].Professor
+            ` ${classs[data[6].batches[0]].name} will be taken by ${
+              classs[data[6].batches[0]].Professor
             }` +
             ` For ${data[6].batches[1].toUpperCase()} Batch: ` +
-            ` ${classs.data[6].batches[1].name} will be taken by ${
-              classs.data[6].batches[1].Professor
+            ` ${classs[data[6].batches[1]].name} will be taken by ${
+              classs[data[6].batches[1]].Professor
             }` +
             ` For ${data[6].batches[2].toUpperCase()} Batch: ` +
-            ` ${classs.data[6].batches[2].name} will be taken by ${
-              classs.data[6].batches[2].Professor
+            ` ${classs[data[6].batches[2]].name} will be taken by ${
+              classs[data[6].batches[2]].Professor
             }</speak>`
         );
       } else if (classs.type === "Lecture") {
@@ -176,16 +176,16 @@ app.intent("currentLectureIntent", conv => {
           conv.close(
             `<speak> Right Now you have LAB` +
               ` For ${data[6].batches[0].toUpperCase()} Batch:` +
-              ` It's ${classs.data[6].batches[0].name} LAB taken by ${
-                classs.data[6].batches[0].Professor
+              ` It's ${classs[data[6].batches[0]].name} LAB taken by ${
+                classs[data[6].batches[0]].Professor
               }` +
               ` For ${data[6].batches[1].toUpperCase()} Batch: ` +
-              ` It's ${classs.data[6].batches[1].name} LAB taken by ${
-                classs.data[6].batches[1].Professor
+              ` It's ${classs[data[6].batches[1]].name} LAB taken by ${
+                classs[data[6].batches[1]].Professor
               }` +
               ` For ${data[6].batches[2].toUpperCase()} Batch: ` +
-              ` It's ${classs.data[6].batches[2].name} LAB taken by ${
-                classs.data[6].batches[2].Professor
+              ` It's ${classs[data[6].batches[2]].name} LAB taken by ${
+                classs[data[6].batches[2]].Professor
               }</speak>`
           );
         } else if (classs.type === "Lecture") {
