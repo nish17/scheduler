@@ -489,28 +489,18 @@ app.intent("showFullSchedule", conv => {
         };
       } else if (value.type === "LAB") {
         result.items[
-          "Lab Timings"
-          // `${value[data[6].batches[0]][`name`]}`
-          // `${value[data[6].batches[0]].name}, ${
-          //   value[data[6].batches[1]].name
-          // }, ${value[data[6].batches[2]].name}`
+          // `a`
+          `${getListItems(value)}`
         ] = {
           synonyms: [
-            `${data[6].batches[0]} ${data[6].batches[1]} ${data[6].batches[2]}`
+            `${value[data[6].batches[0]].name} ${
+              value[data[6].batches[0]].name
+            } ${value[data[6].batches[2]].name}`
           ],
           title: `LAB Session from ${timeConvert(
             parseInt(key.substring(1))
           )} to ${timeConvert(parseInt(key.substring(1)) + 2)}`,
-          description:
-            `For ${data[6].batches[0].toUpperCase()}: ${
-              value[data[6].batches[0]].name
-            } by ${value[data[6].batches[0]].Professor}, ` +
-            `For ${data[6].batches[1].toUpperCase()}: ${
-              value[data[6].batches[1]].name
-            } by ${value[data[6].batches[1]].Professor}, ` +
-            `For ${data[6].batches[2].toUpperCase()}: ${
-              value[data[6].batches[2]].name
-            } by ${value[data[6].batches[2]].Professor}.`
+          description: getLabDescription(value)
         };
       } else if (value.type === "Free") {
         result.items[
