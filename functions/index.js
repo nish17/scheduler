@@ -382,7 +382,8 @@ function sayDepartandSuggestions(conv, option) {
       new SimpleResponse({
         speech: `This app is still under development. ${option} department will be added soon.`,
         text: `This app is still under development. ${option} department will be added soon :)`
-      })
+      }),
+      new Suggestions([`Change Department`])
     );
   }
 }
