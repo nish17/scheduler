@@ -55,13 +55,13 @@ function add1Day(day) {
   return moment(day).add(1, "days");
 }
 
-const entries = toArray(data[3]["Wednesday"]);
+const entries = toArray(data[4]["Thursday"]);
 const result = {
   title: `Wednesday's schedule`,
   items: {}
 };
 function getLabDescription(obj) {
-  let finalString = "";
+  var finalString = "";
   let list_of_batches = getListItems(obj);
   for (let i = 0; i < list_of_batches.items.length; i++) {
     finalString += `For ${list_of_batches.items[i].toUpperCase()}: ${
@@ -101,14 +101,24 @@ for (const entry of entries) {
       `${getListItems(value)}`
     ] = {
       synonyms: [
-        `${value[data[6].batches[0]].name} ${value[data[6].batches[0]].name} ${
-          value[data[6].batches[2]].name
+        `${
+          value[data[6].batches[0]] === undefined
+            ? ""
+            : value[data[6].batches[0]].name
+        } ${
+          value[data[6].batches[1]] === undefined
+            ? ""
+            : value[data[6].batches[1]].name
+        }${
+          value[data[6].batches[2]] === undefined
+            ? ""
+            : value[data[6].batches[2]].name
         }`
       ],
       title: `LAB Session from ${timeConvert(
         parseInt(key.substring(1))
       )} to ${timeConvert(parseInt(key.substring(1)) + 2)}`,
-      description: `${getLabDescription(value)}`
+      description: (() => getLabDescription(value))()
     };
   } else if (value.type === "Free") {
     result.items[
