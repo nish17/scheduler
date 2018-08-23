@@ -62,27 +62,28 @@ const result = {
 };
 function getLabDescription(obj) {
   let finalString = "";
-  for (const key of getListItems(obj)) {
-    finalString += `For ${key.toUpperCase()}: ${key.name} by ${
-      key.Professor
-    }, `;
+  let list_of_batches = getListItems(obj);
+  for (let i = 0; i < list_of_batches.items.length; i++) {
+    finalString += `For ${list_of_batches.items[i].toUpperCase()}: ${
+      list_of_batches.labs[i].name
+    } by ${list_of_batches.labs[i].Professor} `;
   }
   return finalString;
 }
 
 function getListItems(obj) {
-  let items = [];
-  for (const key in obj) {
-    if (key !== "type") {
-      console.log(key, key.name);
-      items.push(key);
-    }
-  }
-  return items;
+  let items = Object.keys(obj);
+  let labs = [];
+  items.shift();
+  Object.keys(obj).forEach(data => {
+    if (obj[data] !== "LAB") labs.push(obj[data]);
+  });
+  console.log(items);
+  console.log(labs);
+  return { items, labs };
 }
 
 for (const entry of entries) {
-  // console.log("entry.length", entry.length);
   const key = entry[0];
   const value = entry[1];
   if (value.type === "Lecture") {
@@ -94,16 +95,7 @@ for (const entry of entries) {
       description: `By ${value.Professor}.`
     };
   } else if (value.type === "LAB") {
-    // console.log("Here also it works " + value[data[6].batches[0]].name);
-    // console.log("Here it works " + value[data[6].batches[0]].name);
-
-    // for (const key in value) {
-    // console.log(key);
-    // console.log(
-    //   key !== "type" ? console.log(key.name, key.Professor) : "none"
-    // );
-    // }
-    // console.log(getLabDescription(value));
+    console.log(`Final string ` + getLabDescription(value));
     result.items[
       // `a`
       `${getListItems(value)}`
@@ -116,16 +108,7 @@ for (const entry of entries) {
       title: `LAB Session from ${timeConvert(
         parseInt(key.substring(1))
       )} to ${timeConvert(parseInt(key.substring(1)) + 2)}`,
-      description:
-        `For ${data[6].batches[0].toUpperCase()}: ${
-          value[data[6].batches[0]].name
-        } by ${value[data[6].batches[0]].Professor}, ` +
-        // `For ${data[6].batches[1].toUpperCase()}: ${
-        //   value[data[6].batches[1]].name
-        // } by ${value[data[6].batches[1]].Professor}, ` +
-        `For ${data[6].batches[2].toUpperCase()}: ${
-          value[data[6].batches[2]].name
-        } by ${value[data[6].batches[2]].Professor}.`
+      description: getLabDescription(value)
     };
   } else if (value.type === "Free") {
     result.items[
@@ -137,7 +120,7 @@ for (const entry of entries) {
     };
   }
 }
-// console.log("Result.items = " + result.items);
-// for (const key in result.items) {
-//   console.log(key);
-// }
+console.log("Result.items = " + result.items.description);
+for (const key in result.items) {
+  console.log(key);
+}
