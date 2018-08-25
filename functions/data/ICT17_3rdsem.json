@@ -1,0 +1,254 @@
+[
+  {
+    "Sunday": {
+      "L*": {
+        "type": "Free"
+      }
+    }
+  },
+  {
+    "Monday": {
+      "L9": {
+        "type": "Free"
+      },
+      "L10": {
+        "type": "Free"
+      },
+      "L11": {
+        "type": "Lecture",
+        "position": "first",
+        "name": "Database Management System",
+        "Professor": "Nishant Doshi"
+      },
+      "L12": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Mathematics-3",
+        "Professor": "Shobhit Nigam"
+      },
+      "L13": {
+        "type": "Free"
+      },
+      "L14": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Database Management System",
+        "Professor": "Nishant Doshi"
+      },
+      "L15": {
+        "type": "Lecture",
+        "position": "last",
+        "name": "Discrete Mathematics",
+        "Professor": "Manoj Sahani"
+      },
+      "L16": {
+        "type": "Free"
+      },
+      "L17": {
+        "type": "Free"
+      }
+    }
+  },
+  {
+    "Tuesday": {
+      "L9": {
+        "type": "Lecture",
+        "position": "first",
+        "name": "Data and File Structures",
+        "Professor": "Manish Chaturvedi"
+      },
+      "L10": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Data and File Structures",
+        "Professor": "Manish Chaturvedi"
+      },
+      "L11": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Mathematics-3",
+        "Professor": "Shobhit Nigam"
+      },
+      "L12": {
+        "type": "Free"
+      },
+      "L13": {
+        "type": "LAB",
+        "g1": {
+          "name": "Digital Logic and Design Lab",
+          "Professor": "Pawan Sharma"
+        },
+        "g2": {
+          "name": "Database Management System Lab",
+          "Professor": "Nishant Doshi"
+        },
+        "g3": {
+          "name": "Data and File Structures Lab",
+          "Professor": "Manish Chaturvedi"
+        }
+      },
+      "L15": {
+        "type": "Lecture",
+        "position": "last",
+        "name": "Digital Logic and Design",
+        "Professor": "JigarKumar Shah"
+      },
+      "L16": {
+        "type": "Free"
+      },
+      "L17": {
+        "type": "Free"
+      }
+    }
+  },
+  {
+    "Wednesday": {
+      "L9": {
+        "type": "Lecture",
+        "position": "first",
+        "name": "Mathematics-3",
+        "Professor": "Shobhit Nigam"
+      },
+      "L10": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Database Management System",
+        "Professor": "Nishant Doshi"
+      },
+      "L11": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Discrete Mathematics",
+        "Professor": "Manoj Sahani"
+      },
+      "L12": {
+        "type": "Free"
+      },
+      "L13": {
+        "type": "LAB",
+        "g1": {
+          "name": "Data and File Structures Lab",
+          "Professor": "Manish Chaturvedi"
+        },
+        "g2": {
+          "name": "Digital Logic and Design Lab",
+          "Professor": "Dushyant Sharma"
+        },
+        "g3": {
+          "name": "Database Management System Lab",
+          "Professor": "Nishant Doshi"
+        }
+      },
+      "L15": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Data and File Structures",
+        "Professor": "Manish Chaturvedi"
+      },
+      "L16": {
+        "type": "Lecture",
+        "position": "last",
+        "name": "Digital Logic and Design",
+        "Professor": "JigarKumar Shah"
+      }
+    }
+  },
+  {
+    "Thursday": {
+      "L9": {
+        "type": "Lecture",
+        "position": "first",
+        "name": "Data and File Structures",
+        "Professor": "Manish Chaturvedi"
+      },
+      "L10": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Digital Logic and Design",
+        "Professor": "JigarKumar Shah"
+      },
+      "L11": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Discrete Mathematics",
+        "Professor": "Manoj Sahani"
+      },
+      "L12": {
+        "type": "Free"
+      },
+      "L13": {
+        "type": "LAB",
+        "g1": {
+          "name": "Database Management System Lab",
+          "Professor": "Nishant Doshi"
+        },
+        "g2": {
+          "name": "Data and File Structures Lab",
+          "Professor": "Manish Chaturvedi"
+        },
+        "g3": {
+          "name": "Digital Logic and Design Lab",
+          "Professor": "Pawan Sharma"
+        }
+      },
+      "L14": {
+        "type": "Lecture",
+        "position": "last",
+        "name": "Mathematics-3",
+        "Professor": "Shobhit Nigam"
+      },
+      "L15": {
+        "type": "Free"
+      },
+      "L16": {
+        "type": "Free"
+      },
+      "L17": {
+        "type": "Free"
+      }
+    }
+  },
+  {
+    "Friday": {
+      "L9": {
+        "type": "Lecture",
+        "position": "first",
+        "name": "Digital Logic and Design",
+        "Professor": "JigarKumar Shah"
+      },
+      "L10": {
+        "type": "Lecture",
+        "position": "first",
+        "name": "Discrete Mathematics",
+        "Professor": "Manoj Sahani"
+      },
+      "L11": {
+        "type": "Free"
+      },
+      "L12": {
+        "type": "Free"
+      },
+      "L13": {
+        "type": "Lecture",
+        "position": "last",
+        "name": "Database Management System",
+        "Professor": "Nishant Doshi"
+      },
+      "L14": {
+        "type": "Free"
+      },
+      "L15": {
+        "type": "Free"
+      },
+      "L16": {
+        "type": "Free"
+      },
+      "L17": {
+        "type": "Free"
+      }
+    }
+  },
+  {
+    "batches": ["g1", "g2", "g3"]
+  }
+]
