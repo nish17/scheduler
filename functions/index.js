@@ -394,10 +394,20 @@ app.intent("ask_with_list", conv => {
           title: "ICT-16",
           description: "Information and Communication Technology, Batch'16"
         },
+        ICT_17: {
+          synonyms: ["SOT ICT 17", "ICT batch 17", "ICT", "17BIT"],
+          title: "ICT-17",
+          description: "Information and Communication Technology, Batch'17"
+        },
         CE_16: {
           synonyms: ["SOT CE 16", "CE batch 16", "CE", "16BCP"],
           title: "CE-16",
           description: "Computer Science Engineering, Batch'16"
+        },
+        CE_17: {
+          synonyms: ["SOT CE 17", "CE batch 17", "CE", "17BCP"],
+          title: "CE-17",
+          description: "Computer Science Engineering, Batch'17"
         },
         PE_16: {
           synonyms: ["SOT PE 16", "PE batch 16", "PE", "16BPE"],
@@ -433,7 +443,9 @@ app.intent("ask_with_list", conv => {
     }),
     new Suggestions([
       `ICT16`,
+      `ICT17`,
       `CE16`,
+      `CE17`,
       `PE16`,
       `EE16`,
       `CH16`,
@@ -446,7 +458,12 @@ app.intent("ask_with_list", conv => {
 
 function sayDepartandSuggestions(conv, option) {
   const indianTimeMoment = setTimeZone();
-  if (option === "ICT16" || option === "CE16") {
+  if (
+    option === "ICT16" ||
+    option === "CE16" ||
+    option === "ICT17" ||
+    option === "CE17"
+  ) {
     conv.ask(
       new SimpleResponse({
         speech: `That's great! You have selected ${option} batch.`,
