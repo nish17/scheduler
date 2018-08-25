@@ -3,6 +3,7 @@ const {
   dialogflow,
   List,
   Suggestions,
+  Confirmation,
   SimpleResponse
 } = require("actions-on-google");
 // const { randomize, Randomization } = require("randomize");
@@ -124,6 +125,16 @@ app.intent("nextLectureIntent", conv => {
   if (workingHours(next)) {
     if (weekdays(today)) {
       conv.close(`<speak>Enjoy your weekend Buddy!</speak>`);
+      conv.ask(
+        new Suggestions([
+          `next lecture please?`,
+          `Change Department`,
+          `any lecture of GPP today?`,
+          `Whose lecture is it?`,
+          `whose last lecture is it?`,
+          `first lecture today?`
+        ])
+      );
     } else {
       const classs = data[day][today][hourCode];
       if (classs.type === "LAB") {
@@ -142,18 +153,58 @@ app.intent("nextLectureIntent", conv => {
               classs[data[6].batches[2]].Professor
             }</speak>`
         );
+        conv.ask(
+          new Suggestions([
+            `next lecture please?`,
+            `first lecture today?`,
+            `Change Department`,
+            `any lecture of GPP today?`,
+            `Whose lecture is it?`,
+            `whose last lecture is it?`
+          ])
+        );
       } else if (classs.type === "Lecture") {
         conv.close(
           `<speak>Next lecture is ${classs.name} which will be taken by ${
             classs.Professor
           }</speak>`
         );
+        conv.ask(
+          new Suggestions([
+            `whose last lecture is it?`,
+            `next lecture please?`,
+            `Change Department`,
+            `any lecture of GPP today?`,
+            `Whose lecture is it?`,
+            `first lecture today?`
+          ])
+        );
       } else if (classs.type === "Free") {
         conv.close(`<speak>It's your free time</speak>`);
+        conv.ask(
+          new Suggestions([
+            `next lecture please?`,
+            `Change Department`,
+            `any lecture of GPP today?`,
+            `Whose lecture is it?`,
+            `whose last lecture is it?`,
+            `first lecture today?`
+          ])
+        );
       }
     }
   } else {
     conv.close(`<speak>Please come back during working college hours</speak>`);
+    conv.ask(
+      new Suggestions([
+        `next lecture please?`,
+        `Change Department`,
+        `any lecture of GPP today?`,
+        `Whose lecture is it?`,
+        `whose last lecture is it?`,
+        `first lecture today?`
+      ])
+    );
   }
 });
 
@@ -191,19 +242,59 @@ app.intent("currentLectureIntent", conv => {
                 classs[data[6].batches[2]].Professor
               }</speak>`
           );
+          conv.ask(
+            new Suggestions([
+              `next lecture please?`,
+              `Change Department`,
+              `first lecture today?`,
+              `any lecture of GPP today?`,
+              `Whose lecture is it?`,
+              `whose last lecture is it?`
+            ])
+          );
         } else if (classs.type === "Lecture") {
           conv.close(
             `<speak>Current lecture is ${classs.name} taken by ${
               classs.Professor
             }</speak>`
           );
+          conv.ask(
+            new Suggestions([
+              `whose last lecture is it?`,
+              `next lecture please?`,
+              `Change Department`,
+              `any lecture of GPP today?`,
+              `Whose lecture is it?`,
+              `first lecture today?`
+            ])
+          );
         } else if (classs.type === "Free") {
           conv.close(`<speak>It's your free time buddy.</speak>`);
+          conv.ask(
+            new Suggestions([
+              `any lecture of GPP today?`,
+              `next lecture please?`,
+              `Change Department`,
+              `Whose lecture is it?`,
+              `whose last lecture is it?`,
+              `first lecture today?`
+            ])
+          );
         }
       }
     } else {
       conv.close(
         `<speak>Please come back during working college hours.</speak>`
+      );
+      conv.ask(
+        new Suggestions([
+          `next lecture please?`,
+          `Change Department`,
+          `any lecture of GPP today?`,
+          `Whose lecture is it?`,
+          `whose last lecture is it?`,
+          `first lecture today?`
+        ])
       );
     }
   }
@@ -423,7 +514,10 @@ app.intent("ask_with_list_confirmation", conv => {
     // conv.user.storage.class = "IE16";
     sayDepartandSuggestions(conv, option);
   } else {
-    conv.ask("<speak>You selected an unknown department</speak>");
+    conv.ask(
+      "<speak>You selected an unknown department. Please try again</speak>"
+    );
+    conv.ask(new Suggestions([`Show Department List`]));
   }
   // conv.ask(new Suggestions([`${option}?`, `Change Department`]));
 });
@@ -559,7 +653,7 @@ app.intent("getPositionOfLecture", conv => {
       const key = entry[0];
       const value = entry[1];
       if (value.type === "Lecture" && value.position === pos) {
-        conv.close(
+        conv.ask(
           new SimpleResponse({
             speech: `${pos} lecture is at ${timeConvert(
               parseInt(key.substring(1))
@@ -567,7 +661,14 @@ app.intent("getPositionOfLecture", conv => {
             text: `${pos} lecture is at ${timeConvert(
               parseInt(key.substring(1))
             )} of ${value.name} by ${value.Professor}`
-          })
+          }),
+          new Suggestions([
+            `any lecture of NTD today?`,
+            `show today's schedule`,
+            `first lecture on Monday?`,
+            `last lecture today?`,
+            `last lecture today?`
+          ])
         );
         break;
       }
