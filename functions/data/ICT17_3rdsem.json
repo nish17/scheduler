@@ -9,22 +9,31 @@
   {
     "Monday": {
       "L9": {
-        "type": "Free"
-      },
-      "L10": {
-        "type": "Free"
-      },
-      "L11": {
         "type": "Lecture",
         "position": "first",
-        "name": "Database Management System",
-        "Professor": "Nishant Doshi"
+        "name": "Data and File Structures",
+        "Professor": "Manish Chaturvedi"
       },
-      "L12": {
+      "L10": {
         "type": "Lecture",
         "position": null,
-        "name": "Mathematics-3",
-        "Professor": "Shobhit Nigam"
+        "name": "Data and File Structures",
+        "Professor": "Manish Chaturvedi"
+      },
+      "L11": {
+        "type": "LAB",
+        "h1": {
+          "name": "Analog and Digital Electronics Lab",
+          "Professor": "Dushyant Sharma"
+        },
+        "h2": {
+          "name": "Signals and Systems Lab",
+          "Professor": "JigarKumar Shah"
+        },
+        "h3": {
+          "name": "Data and File Structures Lab",
+          "Professor": "Santosh Kumar Bharti"
+        }
       },
       "L13": {
         "type": "Free"
@@ -32,14 +41,14 @@
       "L14": {
         "type": "Lecture",
         "position": null,
-        "name": "Database Management System",
-        "Professor": "Nishant Doshi"
+        "name": "Discrete Mathematics",
+        "Professor": "Manoj Sahani"
       },
       "L15": {
         "type": "Lecture",
         "position": "last",
-        "name": "Discrete Mathematics",
-        "Professor": "Manoj Sahani"
+        "name": "Signals and Systems",
+        "Professor": "JigarKumar Shah"
       },
       "L16": {
         "type": "Free"
@@ -52,49 +61,43 @@
   {
     "Tuesday": {
       "L9": {
-        "type": "Lecture",
-        "position": "first",
-        "name": "Data and File Structures",
-        "Professor": "Manish Chaturvedi"
+        "type": "Free"
       },
       "L10": {
-        "type": "Lecture",
-        "position": null,
-        "name": "Data and File Structures",
-        "Professor": "Manish Chaturvedi"
-      },
-      "L11": {
-        "type": "Lecture",
-        "position": null,
-        "name": "Mathematics-3",
-        "Professor": "Shobhit Nigam"
+        "type": "LAB",
+        "h1": {
+          "name": "Data and File Structures Lab",
+          "Professor": "Santosh Kumar Bharti"
+        },
+        "h2": {
+          "name": "Analog and Digital Electronics Lab",
+          "Professor": "Dushyant Sharma"
+        },
+        "h3": {
+          "name": "Signals and Systems Lab",
+          "Professor": "JigarKumar Shah"
+        }
       },
       "L12": {
         "type": "Free"
       },
       "L13": {
-        "type": "LAB",
-        "g1": {
-          "name": "Digital Logic and Design Lab",
-          "Professor": "Pawan Sharma"
-        },
-        "g2": {
-          "name": "Database Management System Lab",
-          "Professor": "Nishant Doshi"
-        },
-        "g3": {
-          "name": "Data and File Structures Lab",
-          "Professor": "Manish Chaturvedi"
-        }
+        "type": "Lecture",
+        "position": null,
+        "name": "Signals and Systems",
+        "Professor": "JigarKumar Shah"
       },
       "L15": {
         "type": "Lecture",
-        "position": "last",
-        "name": "Digital Logic and Design",
-        "Professor": "JigarKumar Shah"
+        "position": null,
+        "name": "Analog and Digital Electronics",
+        "Professor": "Dushyant Sharma"
       },
       "L16": {
-        "type": "Free"
+        "type": "Lecture",
+        "position": "last",
+        "name": "Discrete Mathematics",
+        "Professor": "Manoj Sahani"
       },
       "L17": {
         "type": "Free"
@@ -106,99 +109,84 @@
       "L9": {
         "type": "Lecture",
         "position": "first",
-        "name": "Mathematics-3",
-        "Professor": "Shobhit Nigam"
+        "name": "Analog and Digital Electronics",
+        "Professor": "Dushyant Sharma"
       },
       "L10": {
-        "type": "Lecture",
-        "position": null,
-        "name": "Database Management System",
-        "Professor": "Nishant Doshi"
-      },
-      "L11": {
-        "type": "Lecture",
-        "position": null,
-        "name": "Discrete Mathematics",
-        "Professor": "Manoj Sahani"
+        "type": "LAB",
+        "h1": {
+          "name": "Signals and Systems Lab",
+          "Professor": "JigarKumar Shah"
+        },
+        "h2": {
+          "name": "Data and File Structures Lab",
+          "Professor": "Santosh Kumar Bharti"
+        },
+        "h3": {
+          "name": "Analog and Digital Electronics Lab",
+          "Professor": "Dushyant Sharma"
+        }
       },
       "L12": {
         "type": "Free"
       },
       "L13": {
         "type": "LAB",
-        "g1": {
-          "name": "Data and File Structures Lab",
-          "Professor": "Manish Chaturvedi"
-        },
-        "g2": {
-          "name": "Digital Logic and Design Lab",
-          "Professor": "Dushyant Sharma"
-        },
-        "g3": {
-          "name": "Database Management System Lab",
-          "Professor": "Nishant Doshi"
-        }
+        "position": null,
+        "name": "Signals and Systems",
+        "Professor": "JigarKumar Shah"
       },
-      "L15": {
+      "L14": {
         "type": "Lecture",
         "position": null,
-        "name": "Data and File Structures",
-        "Professor": "Manish Chaturvedi"
+        "name": "Mathematics-3",
+        "Professor": "Poonam Mishra"
       },
       "L16": {
         "type": "Lecture",
         "position": "last",
-        "name": "Digital Logic and Design",
-        "Professor": "JigarKumar Shah"
+        "name": "Discrete Mathematics",
+        "Professor": "Manoj Sahani"
+      },
+      "L17": {
+        "type": "Free"
       }
     }
   },
   {
     "Thursday": {
       "L9": {
+        "type": "Free"
+      },
+      "L10": {
+        "type": "Free"
+      },
+      "L11": {
         "type": "Lecture",
         "position": "first",
         "name": "Data and File Structures",
         "Professor": "Manish Chaturvedi"
       },
-      "L10": {
-        "type": "Lecture",
-        "position": null,
-        "name": "Digital Logic and Design",
-        "Professor": "JigarKumar Shah"
-      },
-      "L11": {
-        "type": "Lecture",
-        "position": null,
-        "name": "Discrete Mathematics",
-        "Professor": "Manoj Sahani"
-      },
       "L12": {
         "type": "Free"
       },
       "L13": {
-        "type": "LAB",
-        "g1": {
-          "name": "Database Management System Lab",
-          "Professor": "Nishant Doshi"
-        },
-        "g2": {
-          "name": "Data and File Structures Lab",
-          "Professor": "Manish Chaturvedi"
-        },
-        "g3": {
-          "name": "Digital Logic and Design Lab",
-          "Professor": "Pawan Sharma"
-        }
+        "type": "Lecture",
+        "position": null,
+        "name": "Mathematics-3",
+        "Professor": "Poonam Mishra"
       },
       "L14": {
         "type": "Lecture",
         "position": "last",
-        "name": "Mathematics-3",
-        "Professor": "Shobhit Nigam"
+        "name": "Discrete Mathematics",
+        "Professor": "Manoj Sahani"
       },
       "L15": {
-        "type": "Free"
+        "type": "Lecture",
+        "position": null,
+        "name": "Analog and Digital Electronics",
+        "Professor": "Dushyant Sharma"
       },
       "L16": {
         "type": "Free"
@@ -213,29 +201,35 @@
       "L9": {
         "type": "Lecture",
         "position": "first",
-        "name": "Digital Logic and Design",
-        "Professor": "JigarKumar Shah"
+        "name": "Data and File Structures",
+        "Professor": "Manish Chaturvedi"
       },
       "L10": {
         "type": "Lecture",
-        "position": "first",
-        "name": "Discrete Mathematics",
-        "Professor": "Manoj Sahani"
+        "position": null,
+        "name": "Mathematics-3",
+        "Professor": "Poonam Mishra"
       },
       "L11": {
-        "type": "Free"
+        "type": "Lecture",
+        "position": null,
+        "name": "Signals and Systems",
+        "Professor": "JigarKumar Shah"
       },
       "L12": {
         "type": "Free"
       },
       "L13": {
         "type": "Lecture",
-        "position": "last",
-        "name": "Database Management System",
-        "Professor": "Nishant Doshi"
+        "position": null,
+        "name": "Analog and Digital Electronics",
+        "Professor": "Dushyant Sharma"
       },
       "L14": {
-        "type": "Free"
+        "type": "Lecture",
+        "position": "last",
+        "name": "Mathematics-3",
+        "Professor": "Poonam Mishra"
       },
       "L15": {
         "type": "Free"
@@ -249,6 +243,6 @@
     }
   },
   {
-    "batches": ["g1", "g2", "g3"]
+    "batches": ["h1", "h2", "h3"]
   }
 ]
