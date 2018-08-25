@@ -61,7 +61,7 @@ const result = {
   items: {}
 };
 function getLabDescription(obj) {
-  var finalString = "";
+  var finalString = ``;
   let list_of_batches = getListItems(obj);
   for (let i = 0; i < list_of_batches.items.length; i++) {
     finalString += `For ${list_of_batches.items[i].toUpperCase()}: ${
@@ -95,7 +95,7 @@ for (const entry of entries) {
       description: `By ${value.Professor}.`
     };
   } else if (value.type === "LAB") {
-    console.log("=>" + getLabDescription(value));
+    console.log("=>" + typeof getLabDescription(value));
     result.items[
       // `a`
       `${getListItems(value)}`
@@ -118,7 +118,9 @@ for (const entry of entries) {
       title: `LAB Session from ${timeConvert(
         parseInt(key.substring(1))
       )} to ${timeConvert(parseInt(key.substring(1)) + 2)}`,
-      description: (() => getLabDescription(value))()
+      description: function() {
+        return "" + getLabDescription(value);
+      }
     };
   } else if (value.type === "Free") {
     result.items[
@@ -132,5 +134,5 @@ for (const entry of entries) {
 }
 console.log("Result.items = " + result.items.description);
 for (const key in result.items) {
-  console.log(key);
+  console.log(`typeOf: ${typeof key}, value of key: ${key}`);
 }
