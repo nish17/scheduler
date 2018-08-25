@@ -82,8 +82,8 @@ function getListItems(obj) {
   // console.log(labs);
   return { items, labs };
 }
-
 for (const entry of entries) {
+  console.log("entries:" + entry[1]);
   const key = entry[0];
   const value = entry[1];
   if (value.type === "Lecture") {
@@ -132,7 +132,7 @@ for (const entry of entries) {
     };
   }
 }
-console.log("Result.items = " + result.items.description);
-for (const key in result.items) {
+console.log("Result.items = " + JSON.stringify(result));
+for (const key in result) {
   console.log(`typeOf: ${typeof key}, value of key: ${key}`);
 }
