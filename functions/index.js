@@ -487,7 +487,9 @@ app.intent("showFullSchedule", conv => {
           description: `By ${value.Professor}.`
         };
       } else if (value.type === "LAB") {
-        result.items[(() => getListItems(value))()] = {
+        const details = getLabDescription(value);
+        const keysInResult = getListItems(value);
+        result.items[(keysInResult.labs, keysInResult.items)] = {
           synonyms: [
             `${
               value[data[6].batches[0]] === undefined
@@ -506,7 +508,7 @@ app.intent("showFullSchedule", conv => {
           title: `LAB Session from ${timeConvert(
             parseInt(key.substring(1))
           )} to ${timeConvert(parseInt(key.substring(1)) + 2)}`,
-          description: () => getLabDescription(value)()
+          description: details
         };
       } else if (value.type === "Free") {
         result.items[
