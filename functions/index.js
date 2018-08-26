@@ -11,11 +11,18 @@ const functions = require("firebase-functions");
 const app = dialogflow(); //.use(randomize);
 const moment = require("moment");
 var data = undefined;
-var sot = "";
 
-function requireDateFile(depart) {
-  data = require(`./data/${depart}.json`);
-  sot = depart;
+function requireDataFile(conv) {
+  requireDataFile(conv);
+  if (data === undefined) {
+    conv.ask(
+      new SimpleResponse({
+        speech: "Please select your Department first",
+        text: "Please select your Departmnet first."
+      }),
+      new Suggestions([`Show Department List`])
+    );
+  }
 }
 
 function workingHours(time) {
@@ -76,7 +83,7 @@ function add1Day(day) {
 }
 
 app.intent("findLectureIntent", conv => {
-  data = require(`./data/${conv.user.storage.class}.json`);
+  requireDataFile(conv);
   const day = moment(conv.body.queryResult.parameters["date"][0]).day();
   const profName = conv.body.queryResult.parameters["profName"][0];
   const today = moment(conv.body.queryResult.parameters["date"][0]).format(
@@ -115,7 +122,7 @@ app.intent("findLectureIntent", conv => {
 });
 
 app.intent("nextLectureIntent", conv => {
-  data = require(`./data/${conv.user.storage.class}.json`);
+  requireDataFile(conv);
   const indianTimeMoment = setTimeZone();
   const currentHour = indianTimeMoment.hour();
   const next = currentHour + 1;
@@ -209,7 +216,7 @@ app.intent("nextLectureIntent", conv => {
 });
 
 app.intent("currentLectureIntent", conv => {
-  data = require(`./data/${conv.user.storage.class}.json`);
+  requireDataFile(conv);
   const indianTimeMoment = setTimeZone();
   const currentHour = indianTimeMoment.hour();
   const hourCode = "L" + currentHour;
@@ -343,7 +350,7 @@ app.intent("currentLectureIntent", conv => {
 app.intent("New Welcome Intent", conv => {
   const indianTimeMoment = setTimeZone();
   if (conv.user.storage.class !== undefined) {
-    requireDateFile(conv.user.storage.class);
+    requireDataFile(conv);
     conv.ask(
       new SimpleResponse({
         speech: `Hey, Welcome Back to ${
@@ -567,7 +574,7 @@ function getListItems(obj) {
 }
 
 app.intent("showFullSchedule", conv => {
-  data = require(`./data/${conv.user.storage.class}.json`);
+  requireDataFile(conv);
   let day = moment(conv.body.queryResult.parameters.date).day();
   let today = moment(conv.body.queryResult.parameters.date).format("dddd");
   if (today === "Saturday" || today === "Sunday") {
@@ -584,7 +591,7 @@ app.intent("showFullSchedule", conv => {
   } else {
     const entries = toArray(data[day][today]);
     const result = {
-      title: `${today}'s schedule`,
+      title: `${today}'s schedule of ${conv.user.storage.class}`,
       items: {}
     };
     for (const entry of entries) {
@@ -656,7 +663,7 @@ app.intent("showFullSchedule", conv => {
 });
 
 app.intent("getPositionOfLecture", conv => {
-  data = require(`./data/${conv.user.storage.class}.json`);
+  requireDataFile(conv);
   const pos = conv.body.queryResult.parameters.position;
   const day = moment(conv.body.queryResult.parameters.date).day();
   const today = moment(conv.body.queryResult.parameters.date).format("dddd");
@@ -700,7 +707,7 @@ app.intent("getPositionOfLecture", conv => {
 });
 
 app.intent("countLectures", conv => {
-  data = require(`./data/${conv.user.storage.class}.json`);
+  requireDataFile(conv);
   const prof = conv.body.queryResult.parameters.profName;
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
   let day = 1;
