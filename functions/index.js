@@ -13,7 +13,7 @@ const moment = require("moment");
 var data = undefined;
 
 function requireDataFile(conv) {
-  requireDataFile(conv);
+  data = require(`./data/${conv.user.storage.class}.json`);
   if (data === undefined) {
     conv.ask(
       new SimpleResponse({
@@ -94,6 +94,16 @@ app.intent("findLectureIntent", conv => {
     conv.close(
       `<speak>Enjoy your weekend buddy! There aren't any lectures of ${profName} on weekends</speak>`
     );
+    conv.ask(
+      new Suggestions([
+        `next lecture please?`,
+        `any lecture of GPP today?`,
+        `any lecture of NTD today?`,
+        `any lecture of SKB today?`,
+        `Whose lecture is it?`,
+        `whose last lecture is it?`
+      ])
+    );
   } else {
     const entries = toArray(data[day][today]);
 
@@ -110,10 +120,30 @@ app.intent("findLectureIntent", conv => {
             today
           )}.</speak>`
         );
+        conv.ask(
+          new Suggestions([
+            `next lecture please?`,
+            `any lecture of GPP today?`,
+            `any lecture of NTD today?`,
+            `any lecture of SKB today?`,
+            `Whose lecture is it?`,
+            `whose last lecture is it?`
+          ])
+        );
         break;
       } else if (entries[i][1].type === "Free" && entries[i][0] === "L17") {
         conv.close(
           `<speak>There is no lecture by ${profName} ${isToday(today)}</speak>`
+        );
+        conv.ask(
+          new Suggestions([
+            `next lecture please?`,
+            `any lecture of GPP today?`,
+            `any lecture of NTD today?`,
+            `any lecture of SKB today?`,
+            `Whose lecture is it?`,
+            `whose last lecture is it?`
+          ])
         );
         break;
       }
@@ -397,52 +427,52 @@ app.intent("ask_with_list", conv => {
       title: "Please select your department",
       items: {
         ICT_16: {
-          synonyms: ["SOT ICT 16", "ICT batch 16", "ICT", "16BIT"],
+          synonyms: ["SOT ICT 16", "ICT batch 16", "16BIT"],
           title: "ICT-16",
           description: "Information and Communication Technology, Batch'16"
         },
         ICT_17: {
-          synonyms: ["SOT ICT 17", "ICT batch 17", "ICT", "17BIT"],
+          synonyms: ["SOT ICT 17", "ICT batch 17", "17BIT"],
           title: "ICT-17",
           description: "Information and Communication Technology, Batch'17"
         },
         CE_16: {
-          synonyms: ["SOT CE 16", "CE batch 16", "CE", "16BCP"],
+          synonyms: ["SOT CE 16", "CE batch 16", "16BCP"],
           title: "CE-16",
           description: "Computer Science Engineering, Batch'16"
         },
         CE_17: {
-          synonyms: ["SOT CE 17", "CE batch 17", "CE", "17BCP"],
+          synonyms: ["SOT CE 17", "CE batch 17", "17BCP"],
           title: "CE-17",
           description: "Computer Science Engineering, Batch'17"
         },
         PE_16: {
-          synonyms: ["SOT PE 16", "PE batch 16", "PE", "16BPE"],
+          synonyms: ["SOT PE 16", "PE batch 16", "16BPE"],
           title: "PE-16",
           description: "Petroleum Engineering, Batch'16"
         },
         EE_16: {
-          synonyms: ["SOT EE 16", "EE batch 16", "EE", "16BEE"],
+          synonyms: ["SOT EE 16", "EE batch 16", "16BEE"],
           title: "EE-16",
           description: "Electrical Engineering, Batch'16"
         },
         CV_16: {
-          synonyms: ["SOT CV 16", "CV batch 16", "CV", "16BCV"],
+          synonyms: ["SOT CV 16", "CV batch 16", "16BCV"],
           title: "CV-16",
           description: "Civil Engineering, Batch'16"
         },
         CH_16: {
-          synonyms: ["SOT CH 16", "CH batch 16", "CH", "16BCH"],
+          synonyms: ["SOT CH 16", "CH batch 16", "16BCH"],
           title: "CH-16",
           description: "Chemical Engineering, Batch'16"
         },
         MC_16: {
-          synonyms: ["SOT MC 16", "MC batch 16", "MC", "16BMC"],
+          synonyms: ["SOT MC 16", "MC batch 16", "16BMC"],
           title: "MC-16",
           description: "Mechanical Engineering, Batch'16"
         },
         IE_16: {
-          synonyms: ["SOT IE 16", "IE batch 16", "IE", "16BIE"],
+          synonyms: ["SOT IE 16", "IE batch 16", "16BIE"],
           title: "IE-16",
           description: "Industrial Engineering, Batch'16"
         }
@@ -668,15 +698,14 @@ app.intent("getPositionOfLecture", conv => {
   const day = moment(conv.body.queryResult.parameters.date).day();
   const today = moment(conv.body.queryResult.parameters.date).format("dddd");
   if (today === "Saturday" || today === "Sunday") {
+    conv.close(`<speak>Enjoy your weekend buddy!</speak>`);
     conv.ask(
       new Suggestions([
         "first lecture on Monday?",
         "last lecture today?",
-        "last lecture today?",
         "first lecture tomorrow?"
       ])
     );
-    conv.close(`<speak>Enjoy your weekend buddy!</speak>`);
   } else {
     const entries = toArray(data[day][today]);
     for (const entry of entries) {
@@ -696,7 +725,6 @@ app.intent("getPositionOfLecture", conv => {
             `any lecture of NTD today?`,
             `show today's schedule`,
             `first lecture on Monday?`,
-            `last lecture today?`,
             `last lecture today?`
           ])
         );
