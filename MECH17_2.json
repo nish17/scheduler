@@ -1,0 +1,253 @@
+[
+    {
+        "Sunday": {
+            "L*": {
+                "type": "Free"
+            }
+        }
+    },
+    {
+        "Monday": {
+            "L9": {
+                "type": "LAB",
+                "position":"first",
+                "h1": {
+                    "name": "Manufacturing Process-2 Lab",
+                    "Professor": "Kush Mehta"
+                },
+                "h2": {
+                    "name": "Dynamics of Machines Lab",
+                    "Professor": "Krunal Mehta"
+                },
+            },
+            "L12": {
+                "type":"LAB",
+                "p1":{
+                    "name":"Seimens Lab",
+                    "Professor":"V Faculty",
+                }
+            },
+            "L13": {
+                "type": "Free",
+            },
+            "L14": {
+                "type":"Lecture",
+                "position":null,
+                "name": "Manufacturing Process-2",
+                "Professor": "Kush Mehta"
+            },
+            "L15": {
+                "type": "LAB",
+                "position":null,
+                "h3": {
+                    "name": "Industrial Orientation Lab",
+                    "Professor": "Kush Mehta"
+                },
+            },
+            "L17": {
+                "type": "LAB",
+                "position":"last",
+                "p2": {
+                    "name": "Seimens Lab",
+                    "Professor": "Varying Faculty",
+                }
+            }
+        }
+    },
+    {
+        "Tuesday": {
+            "L9": {
+                "type": "Lecture",
+                "position": "first",
+                "name": "Non Conventional Energy Resources",
+                "Professor": "Jatin Ravjibhai Patel"
+            },
+            "L10": {
+                "type": "Lecture",
+                "position": null,
+                "name": "Product and Operation Management",
+                "Professor": "Kush Mehta"
+            },
+            "L11": {
+                "type": "Lecture",
+                "position": null,
+                "name": "Heat and Mass Transfer",
+                "Professor": "Surinder Kachhwaha"
+            },
+            "L12": {
+                "type": "Lecture",
+                "position": null,
+                "name": "Heat and Mass Transfer",
+                "Professor": "Surinder Kachhwaha"
+            },
+            "L13": {
+                "type": "Free",
+            },
+            "L14": {
+                "type": "Lecture",
+                "position": null,
+                "name": "Dynamics of Machines",
+                "Professor": "Garlapati Nagababu"
+            },
+            "L15": {
+                "type": "Lecture",
+                "position":null,
+                "name": "Manufacturing Process-2",
+                "Professor": "Pankaj Sahlot"
+            },
+            "L16": {
+                "type": "LAB",
+                "position":"last",
+                "h1": {
+                    "name": "Industrial Orientation Lab",
+                    "Professor": "Varying Faculty"
+                },
+            }
+        }
+    },
+    {
+        "Wednesday": {
+            "L9": {
+                "type": "Lecture",
+                "position": "first",
+                "name": "Heat and Mass Transfer",
+                "Professor": "Surinder Kachhwaha"
+            },
+            "L10": {
+                "type": "Lecture",
+                "position": null,
+                "name": "Heat and Mass Transfer",
+                "Professor": "Surinder Kachhwaha"
+            },
+            "L11": {
+                "type": "Lecture",
+                "position": null,
+                "name": "Product and Operation Management",
+                "Professor": "Kush Mehta"
+            },
+            "L12": {
+                "type": "Lecture",
+                "position": null,
+                "name": "Manufacturing Process-2",
+                "Professor": "Kush Mehta"
+            },
+            "L13": {
+                "type": "Free",
+            },
+            "L14": {
+                "type": "LAB",
+                "position":"last",
+                "h3": {
+                    "name": "Manufacturing Process-2 Lab",
+                    "Professor": "Kush Mehta"
+                },
+                "h1": {
+                    "name": "Dynamics of Machines Lab",
+                    "Professor": "Garlapati Nagababu"
+                },
+            },
+            "L17": {
+                "type": "Free"
+            }
+        }
+    },
+    {
+        "Thursday": {
+            "L9": {
+                "type": "Lecture",
+                "position": "first",
+                "name": "Dynamics of Machines",
+                "Professor": "Garlapati Nagababu"
+            },
+            "L10": {
+                "type": "Lecture",
+                "position": null,
+                "name": "Non Conventional Energy Resources",
+                "Professor": "Jatin Ravjibhai Patel"
+            },
+            "L11": {
+                "type": "Lecture",
+                "position": null,
+                "name": "Product and Operation Management",
+                "Professor": "Jay Vora"
+            },
+            "L12": {
+                "type": "Lecture",
+                "position": null,
+                "name": "Non Conventional Energy Resources",
+                "Professor": "Abhinaya Srinivas"
+            },
+            "L13": {
+                "type": "Free",
+            },
+            "L14": {
+                "type": "Lecture",
+                "position": null,
+                "name": "Dynamics of Machines",
+                "Professor": "Krunal Mehta"
+            },
+            "L15": {
+                "type": "Lecture",
+                "position": null,
+                "name": "Manufacturing Process-2",
+                "Professor": "Pankaj Sahlot"
+            },
+            "L16": {
+                "type": "LAB",
+                "position": "last",
+                "h2": {
+                    "name": "Industrial Orientation Lab",
+                    "Professor": "Varying Faculty"
+                },
+            }
+        }
+    },
+    {
+        "Friday": {
+            "L9": {
+                "type": "LAB",
+                "position": "first",
+                "h2": {
+                    "name": "Manufacturing Process-2 Lab",
+                    "Professor": "Pankaj Sahlot"
+                },
+                "h3": {
+                    "name": "Dynamics of Machines Lab",
+                    "Professor": "Garlapati Nagababu"
+                },
+            },
+            "L12": {
+                "type": "Free",
+            },
+            "L13": {
+                "type": "Lecture",
+                "position": null,
+                "name": "Product and Operation Management",
+                "Professor": "Jay Vora"
+            },
+            "L14": {
+                "type": "LAB",
+                "position":"last",
+                "name": "Dynamics of Machines",
+                "Professor": "Krunal Mehta"
+                },
+            },
+            "L15": {
+                "type":"Free",
+            },
+            "L16": {
+                "type": "Free",
+            },
+            "L17": {
+                "type": "Free",
+            },
+        }
+    },
+    {
+        "batches": [
+            "h1",
+            "h2",
+            "h3"
+        ]
+    }
+]
