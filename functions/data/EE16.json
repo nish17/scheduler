@@ -163,7 +163,7 @@
       },
       "L12": {
         "type": "Lecture",
-        "position": null,
+        "position": "last",
         "name": "MicroProcessor and Controller",
         "Professor": "Vipin Shukla"
       },
