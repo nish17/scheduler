@@ -446,62 +446,45 @@ app.intent("ask_with_list", conv => {
           title: "CE-17",
           description: "Computer Science Engineering, Batch'17"
         },
-        PE_16: {
-          synonyms: ["SOT PE 16", "PE batch 16", "16BPE"],
-          title: "PE-16",
-          description: "Petroleum Engineering, Batch'16"
-        },
+        // PE_16: {
+        //   synonyms: ["SOT PE 16", "PE batch 16", "16BPE"],
+        //   title: "PE-16",
+        //   description: "Petroleum Engineering, Batch'16"
+        // },
         EE_16: {
           synonyms: ["SOT EE 16", "EE batch 16", "16BEE"],
           title: "EE-16",
           description: "Electrical Engineering, Batch'16"
         },
-        CV_16: {
-          synonyms: ["SOT CV 16", "CV batch 16", "16BCV"],
-          title: "CV-16",
-          description: "Civil Engineering, Batch'16"
-        },
+        // CV_16: {
+        //   synonyms: ["SOT CV 16", "CV batch 16", "16BCV"],
+        //   title: "CV-16",
+        //   description: "Civil Engineering, Batch'16"
+        // },
         CH_16: {
           synonyms: ["SOT CH 16", "CH batch 16", "16BCH"],
           title: "CH-16",
           description: "Chemical Engineering, Batch'16"
         },
-        MC_16: {
-          synonyms: ["SOT MC 16", "MC batch 16", "16BMC"],
-          title: "MC-16",
-          description: "Mechanical Engineering, Batch'16"
-        },
-        IE_16: {
-          synonyms: ["SOT IE 16", "IE batch 16", "16BIE"],
-          title: "IE-16",
-          description: "Industrial Engineering, Batch'16"
+        MC_17: {
+          synonyms: ["SOT MC 17", "MC batch 17", "17BMC"],
+          title: "MC-17",
+          description: "Mechanical Engineering, Batch'17"
         }
+        // IE_16: {
+        //   synonyms: ["SOT IE 16", "IE batch 16", "16BIE"],
+        //   title: "IE-16",
+        //   description: "Industrial Engineering, Batch'16"
+        // }
       }
     }),
-    new Suggestions([
-      `ICT16`,
-      `ICT17`,
-      `CE16`,
-      `CE17`,
-      `PE16`,
-      `EE16`,
-      `CH16`,
-      `CV16`,
-      `MC16`,
-      `IE16`
-    ])
+    new Suggestions([`ICT16`, `ICT17`, `CE16`, `CE17`, `EE16`, `CH16`, `MC17`])
   );
 });
 
 function sayDepartandSuggestions(conv, option) {
   const indianTimeMoment = setTimeZone();
-  if (
-    option === "ICT16" ||
-    option === "CE16" ||
-    option === "ICT17" ||
-    option === "CE17" ||
-    option === "EE16"
-  ) {
+  if (option) {
     conv.ask(
       new SimpleResponse({
         speech: `That's great! You have selected ${option} batch.`,
@@ -560,7 +543,7 @@ app.intent("ask_with_list_confirmation", conv => {
     // conv.user.storage.class = "PE16";
     sayDepartandSuggestions(conv, option);
   } else if (option === "EE16") {
-    // conv.user.storage.class = "EE16";
+    conv.user.storage.class = "EE16";
     sayDepartandSuggestions(conv, option);
   } else if (option === "CV16") {
     // conv.user.storage.class = "CV16";
