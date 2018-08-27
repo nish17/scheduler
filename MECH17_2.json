@@ -10,12 +10,11 @@
         "Monday": {
             "L9": {
                 "type": "LAB",
-                "position":"first",
-                "h1": {
+                "p1": {
                     "name": "Manufacturing Process-2 Lab",
                     "Professor": "Kush Mehta"
                 },
-                "h2": {
+                "p2": {
                     "name": "Dynamics of Machines Lab",
                     "Professor": "Krunal Mehta"
                 },
@@ -32,21 +31,19 @@
             },
             "L14": {
                 "type":"Lecture",
-                "position":null,
+                "position":"first",
                 "name": "Manufacturing Process-2",
                 "Professor": "Kush Mehta"
             },
             "L15": {
                 "type": "LAB",
-                "position":null,
-                "h3": {
+                "p3": {
                     "name": "Industrial Orientation Lab",
                     "Professor": "Kush Mehta"
                 },
             },
             "L17": {
                 "type": "LAB",
-                "position":"last",
                 "p2": {
                     "name": "Seimens Lab",
                     "Professor": "Varying Faculty",
@@ -91,14 +88,13 @@
             },
             "L15": {
                 "type": "Lecture",
-                "position":null,
+                "position":"last",
                 "name": "Manufacturing Process-2",
                 "Professor": "Pankaj Sahlot"
             },
             "L16": {
                 "type": "LAB",
-                "position":"last",
-                "h1": {
+                "p1": {
                     "name": "Industrial Orientation Lab",
                     "Professor": "Varying Faculty"
                 },
@@ -127,7 +123,7 @@
             },
             "L12": {
                 "type": "Lecture",
-                "position": null,
+                "position":"last",
                 "name": "Manufacturing Process-2",
                 "Professor": "Kush Mehta"
             },
@@ -136,12 +132,11 @@
             },
             "L14": {
                 "type": "LAB",
-                "position":"last",
-                "h3": {
+                "p3": {
                     "name": "Manufacturing Process-2 Lab",
                     "Professor": "Kush Mehta"
                 },
-                "h1": {
+                "p1": {
                     "name": "Dynamics of Machines Lab",
                     "Professor": "Garlapati Nagababu"
                 },
@@ -188,14 +183,13 @@
             },
             "L15": {
                 "type": "Lecture",
-                "position": null,
+                "position": "last",
                 "name": "Manufacturing Process-2",
                 "Professor": "Pankaj Sahlot"
             },
             "L16": {
                 "type": "LAB",
-                "position": "last",
-                "h2": {
+                "p2": {
                     "name": "Industrial Orientation Lab",
                     "Professor": "Varying Faculty"
                 },
@@ -206,12 +200,11 @@
         "Friday": {
             "L9": {
                 "type": "LAB",
-                "position": "first",
-                "h2": {
+                "p2": {
                     "name": "Manufacturing Process-2 Lab",
                     "Professor": "Pankaj Sahlot"
                 },
-                "h3": {
+                "p3": {
                     "name": "Dynamics of Machines Lab",
                     "Professor": "Garlapati Nagababu"
                 },
@@ -221,7 +214,7 @@
             },
             "L13": {
                 "type": "Lecture",
-                "position": null,
+                "position": "first",
                 "name": "Product and Operation Management",
                 "Professor": "Jay Vora"
             },
@@ -245,9 +238,9 @@
     },
     {
         "batches": [
-            "h1",
-            "h2",
-            "h3"
+            "p1",
+            "p2",
+            "p3"
         ]
     }
 ]
