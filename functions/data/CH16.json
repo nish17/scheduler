@@ -1,0 +1,225 @@
+[
+  {
+    "Sunday": {
+      "L*": {
+        "type": "Free"
+      }
+    }
+  },
+  {
+    "Monday": {
+      "L9": {
+        "type": "Lecture",
+        "position": "first",
+        "name": "Chemical Reaction Engineering-1",
+        "Professor": "Ashish Unnarkat"
+      },
+      "L10": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Mass Transfer-1",
+        "Professor": "Manish Sinha"
+      },
+      "L11": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Process Equipment Design-1",
+        "Professor": "Sukanta Dash"
+      },
+      "L12": {
+        "type": "Free"
+      },
+      "L13": {
+        "type": "Lecture",
+        "position": "last",
+        "name": "Fuel and Energy Technology",
+        "Professor": "Suverna Trivedi"
+      },
+      "L14": {
+        "type": "LAB",
+        "e1": {
+          "name": "Chemical Process Technology Lab",
+          "Professor": "Bharti Saini"
+        },
+        "e2": {
+          "name": "Process Equipment Design Lab",
+          "Professor": "Lubhani Mishra"
+        }
+      },
+      "L17": {
+        "type": "LAB",
+        "e1": {
+          "name": "Logic Academy",
+          "Professor": "New Faculty"
+        }
+      }
+    }
+  },
+  {
+    "Tuesday": {
+      "L9": {
+        "type": "Lecture",
+        "position": "first",
+        "name": "Power Electronics",
+        "Professor": "Amit Sant"
+      },
+      "L10": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Power System-2",
+        "Professor": "Visiting Faculty"
+      },
+      "L11": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Instrumentation and Control",
+        "Professor": "Anilkumar Markana"
+      },
+      "L12": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Instrumentation and Control",
+        "Professor": "Anilkumar Markana"
+      },
+      "L13": {
+        "type": "Free"
+      },
+      "L14": {
+        "type": "Lecture",
+        "position": null,
+        "name": "MicroProcessor and Microcontroller",
+        "Professor": "Vima Mali"
+      },
+      "L15": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Electromagnetics",
+        "Professor": "Satyam Shinde"
+      },
+      "L16": {
+        "type": "Lecture",
+        "position": "last",
+        "name": "Placement Preparation For Batch 1",
+        "Professor": "T&P cell"
+      }
+    }
+  },
+  {
+    "Wednesday": {
+      "L9": {
+        "type": "Lecture",
+        "position": "first",
+        "name": "Power Electronics",
+        "Professor": "Amit Sant"
+      },
+      "L10": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Power System-2",
+        "Professor": "Visiting Faculty"
+      },
+      "L11": {
+        "type": "Lecture",
+        "position": null,
+        "name": "MicroProcessor and Controller",
+        "Professor": "Vipin Shukla"
+      },
+      "L12": {
+        "type": "Lecture",
+        "position": "last",
+        "name": "Electromagnetics",
+        "Professor": "Satyam Shinde"
+      },
+      "L13": {
+        "type": "Free"
+      },
+      "L14": {
+        "type": "LAB",
+        "c3": {
+          "name": "Control Instrumentation",
+          "Professor": "Nirav Karelia"
+        }
+      },
+      "L17": {
+        "type": "Free"
+      }
+    }
+  },
+  {
+    "Thursday": {
+      "L9": {
+        "type": "Lecture",
+        "position": "first",
+        "name": "Power Electronics-2",
+        "Professor": "Visiting Faculty"
+      },
+      "L10": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Power Electronics",
+        "Professor": "Amit Sant"
+      },
+      "L11": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Electromagnetics",
+        "Professor": "Satyam Shinde"
+      },
+      "L12": {
+        "type": "Lecture",
+        "position": "last",
+        "name": "MicroProcessor and Controller",
+        "Professor": "Vipin Shukla"
+      },
+      "L13": {
+        "type": "Free"
+      },
+      "L14": {
+        "type": "LAB",
+        "c3": {
+          "name": "Power Electronics and Controller",
+          "Professor": "Vima Mali"
+        }
+      },
+      "L17": {
+        "type": "Free"
+      }
+    }
+  },
+  {
+    "Friday": {
+      "L9": {
+        "type": "Lab",
+        "c1": {
+          "name": "Controle Instrumentation and Simulation",
+          "Professor": "AnilKumar Markana"
+        },
+        "c2": {
+          "name": "Controle Instrumentation and Simulation",
+          "Professor": "Visitin Faculty"
+        }
+      },
+      "L12": {
+        "type": "Lecture",
+        "position": "first",
+        "name": "Instrumentation Control",
+        "Professor": "AnilKumar Markana"
+      },
+      "L13": {
+        "type": "Free"
+      },
+      "L14": {
+        "type": "Lecture",
+        "position": "last",
+        "name": "Placement Preparation For Batch 2",
+        "Professor": "T&P cell"
+      },
+      "L17": {
+        "type": "Free"
+      }
+    }
+  },
+  {
+    "batches": ["e1", "e2", "e3"]
+  }
+]
