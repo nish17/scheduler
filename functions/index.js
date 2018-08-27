@@ -499,7 +499,8 @@ function sayDepartandSuggestions(conv, option) {
     option === "ICT16" ||
     option === "CE16" ||
     option === "ICT17" ||
-    option === "CE17"
+    option === "CE17" ||
+    option === "EE16"
   ) {
     conv.ask(
       new SimpleResponse({
