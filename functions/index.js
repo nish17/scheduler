@@ -467,9 +467,9 @@ app.intent("ask_with_list", conv => {
           description: "Chemical Engineering, Batch'16"
         },
         MC_17: {
-          synonyms: ["SOT MC 17", "MC batch 17", "17BMC"],
-          title: "MC-17",
-          description: "Mechanical Engineering, Batch'17"
+          synonyms: ["SOT MC 16", "MC batch 16", "16BMC"],
+          title: "MC-16",
+          description: "Mechanical Engineering, Batch'16"
         }
         // IE_16: {
         //   synonyms: ["SOT IE 16", "IE batch 16", "16BIE"],
@@ -478,7 +478,7 @@ app.intent("ask_with_list", conv => {
         // }
       }
     }),
-    new Suggestions([`ICT16`, `ICT17`, `CE16`, `CE17`, `EE16`, `CH16`, `MC17`])
+    new Suggestions([`ICT16`, `ICT17`, `CE16`, `CE17`, `EE16`, `CH16`, `MC16`])
   );
 });
 
@@ -539,8 +539,8 @@ app.intent("ask_with_list_confirmation", conv => {
   } else if (option === "CE17") {
     conv.user.storage.class = "CE17";
     sayDepartandSuggestions(conv, option);
-  } else if (option === "PE16") {
-    // conv.user.storage.class = "PE16";
+  } else if (option === "MC16") {
+    conv.user.storage.class = "MC16";
     sayDepartandSuggestions(conv, option);
   } else if (option === "EE16") {
     conv.user.storage.class = "EE16";
