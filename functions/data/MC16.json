@@ -21,7 +21,7 @@
       },
       "L12": {
         "type": "LAB",
-        "a1": {
+        "p1": {
           "name": "Seimens Lab",
           "Professor": "V Faculty"
         }
@@ -44,7 +44,7 @@
       },
       "L17": {
         "type": "LAB",
-        "a2": {
+        "p2": {
           "name": "Seimens Lab",
           "Professor": "Varying Faculty"
         }
