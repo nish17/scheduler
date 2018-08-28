@@ -13,12 +13,13 @@ const moment = require("moment");
 var data = undefined;
 
 function requireDataFile(conv) {
-  data = require(`./data/${conv.user.storage.class}.json`);
+  if (conv.user.storage.class)
+    data = require(`./data/${conv.user.storage.class}.json`);
   if (data === undefined) {
     conv.ask(
       new SimpleResponse({
-        speech: "Please select your Department first",
-        text: "Please select your Departmnet first."
+        speech: "Please select your Department first. ",
+        text: "Please select your Departmnet first. "
       }),
       new Suggestions([`Show Department List`])
     );
@@ -84,6 +85,12 @@ function add1Day(day) {
 
 app.intent("findLectureIntent", conv => {
   requireDataFile(conv);
+  // conv.user.storage.class = "ICT16";
+  if (data === undefined) {
+    data = require("./data/ICT16.json");
+    conv.user.storage.class = "ICT16";
+  }
+  data = require(`./data/${conv.user.storage.class}.json`);
   const day = moment(conv.body.queryResult.parameters["date"][0]).day();
   const profName = conv.body.queryResult.parameters["profName"][0];
   const today = moment(conv.body.queryResult.parameters["date"][0]).format(
@@ -153,6 +160,10 @@ app.intent("findLectureIntent", conv => {
 
 app.intent("nextLectureIntent", conv => {
   requireDataFile(conv);
+  if (data === undefined) {
+    data = require("./data/ICT16.json");
+    conv.user.storage.class = "ICT16";
+  }
   const indianTimeMoment = setTimeZone();
   const currentHour = indianTimeMoment.hour();
   const next = currentHour + 1;
@@ -247,6 +258,10 @@ app.intent("nextLectureIntent", conv => {
 
 app.intent("currentLectureIntent", conv => {
   requireDataFile(conv);
+  if (data === undefined) {
+    data = require("./data/ICT16.json");
+    conv.user.storage.class = "ICT16";
+  }
   const indianTimeMoment = setTimeZone();
   const currentHour = indianTimeMoment.hour();
   const hourCode = "L" + currentHour;
@@ -409,9 +424,9 @@ app.intent("New Welcome Intent", conv => {
     conv.ask(
       new SimpleResponse({
         speech:
-          "Good Day! Welcome to PDPU's scheduler App. Please select your Department first.",
+          "Good Day! Welcome to PDPU's scheduler App. By Default it will show results for ICT16 department.",
         text:
-          "Good Day! Welcome to PDPU's scheduler App. Please select your Department first."
+          "Good Day! Welcome to PDPU's scheduler App. By Default it will show results for ICT16 department."
       }),
       new Suggestions([`Show Department List`])
     );
@@ -467,8 +482,8 @@ app.intent("ask_with_list", conv => {
           description: "Chemical Engineering, Batch'16"
         },
         MC_17: {
-          synonyms: ["SOT MC 16", "MC batch 16", "16BMC"],
-          title: "MC-16",
+          synonyms: ["SOT ME 16", "ME batch 16", "16BME"],
+          title: "ME-16",
           description: "Mechanical Engineering, Batch'16"
         }
         // IE_16: {
@@ -478,7 +493,7 @@ app.intent("ask_with_list", conv => {
         // }
       }
     }),
-    new Suggestions([`ICT16`, `ICT17`, `CE16`, `CE17`, `EE16`, `CH16`, `MC16`])
+    new Suggestions([`ICT16`, `ICT17`, `CE16`, `CE17`, `EE16`, `CH16`, `ME16`])
   );
 });
 
@@ -539,23 +554,20 @@ app.intent("ask_with_list_confirmation", conv => {
   } else if (option === "CE17") {
     conv.user.storage.class = "CE17";
     sayDepartandSuggestions(conv, option);
-  } else if (option === "MC16") {
-    conv.user.storage.class = "MC16";
+  } else if (option === "ME16") {
+    conv.user.storage.class = "ME16";
     sayDepartandSuggestions(conv, option);
   } else if (option === "EE16") {
     conv.user.storage.class = "EE16";
     sayDepartandSuggestions(conv, option);
   } else if (option === "CV16") {
-    // conv.user.storage.class = "CV16";
+    conv.user.storage.class = "CV16";
     sayDepartandSuggestions(conv, option);
   } else if (option === "CH16") {
-    // conv.user.storage.class = "CH16";
-    sayDepartandSuggestions(conv, option);
-  } else if (option === "MC16") {
-    // conv.user.storage.class = "MC16";
+    conv.user.storage.class = "CH16";
     sayDepartandSuggestions(conv, option);
   } else if (option === "IE16") {
-    // conv.user.storage.class = "IE16";
+    conv.user.storage.class = "IE16";
     sayDepartandSuggestions(conv, option);
   } else {
     conv.ask(
@@ -589,6 +601,10 @@ function getListItems(obj) {
 
 app.intent("showFullSchedule", conv => {
   requireDataFile(conv);
+  if (data === undefined) {
+    data = require("./data/ICT16.json");
+    conv.user.storage.class = "ICT16";
+  }
   let day = moment(conv.body.queryResult.parameters.date).day();
   let today = moment(conv.body.queryResult.parameters.date).format("dddd");
   if (today === "Saturday" || today === "Sunday") {
@@ -678,6 +694,10 @@ app.intent("showFullSchedule", conv => {
 
 app.intent("getPositionOfLecture", conv => {
   requireDataFile(conv);
+  if (data === undefined) {
+    data = require("./data/ICT16.json");
+    conv.user.storage.class = "ICT16";
+  }
   const pos = conv.body.queryResult.parameters.position;
   const day = moment(conv.body.queryResult.parameters.date).day();
   const today = moment(conv.body.queryResult.parameters.date).format("dddd");
@@ -720,6 +740,10 @@ app.intent("getPositionOfLecture", conv => {
 
 app.intent("countLectures", conv => {
   requireDataFile(conv);
+  if (data === undefined) {
+    data = require("./data/ICT16.json");
+    conv.user.storage.class = "ICT16";
+  }
   const prof = conv.body.queryResult.parameters.profName;
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
   let day = 1;
