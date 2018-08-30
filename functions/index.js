@@ -19,7 +19,7 @@ function requireDataFile(conv) {
     conv.ask(
       new SimpleResponse({
         speech: "Please select your Department first. ",
-        text: "Please select your Departmnet first. "
+        text: "Please select your Department first. "
       }),
       new Suggestions([`Show Department List`])
     );
@@ -560,16 +560,20 @@ app.intent("ask_with_list_confirmation", conv => {
   } else if (option === "EE16") {
     conv.user.storage.class = "EE16";
     sayDepartandSuggestions(conv, option);
-  } else if (option === "CV16") {
-    conv.user.storage.class = "CV16";
-    sayDepartandSuggestions(conv, option);
-  } else if (option === "CH16") {
+  }
+  // else if (option === "CV16") {
+  //   conv.user.storage.class = "CV16";
+  //   sayDepartandSuggestions(conv, option);
+  // }
+  else if (option === "CH16") {
     conv.user.storage.class = "CH16";
     sayDepartandSuggestions(conv, option);
-  } else if (option === "IE16") {
-    conv.user.storage.class = "IE16";
-    sayDepartandSuggestions(conv, option);
-  } else {
+  }
+  //  else if (option === "IE16") {
+  //   // conv.user.storage.class = "IE16";
+  //   sayDepartandSuggestions(conv, option);
+  // }
+  else {
     conv.ask(
       "<speak>You selected an unknown department. Please try again</speak>"
     );
@@ -788,7 +792,7 @@ app.intent("countLectures", conv => {
     conv.close(new List(result));
   } else {
     conv.close(
-      `In this semester there aren't any lectures of ${prof} in ${sot} department`
+      `In this semester there aren't any lectures of ${prof} in your department`
     );
   }
   conv.ask(
