@@ -840,17 +840,19 @@ app.intent("freeSlots", conv => {
         countFreeSlots++;
         const t = parseInt(key.substring(1));
         result.items[
-          `${countLect}. At ${timeConvert(parseInt(key.substring(1)))}`
+          `${countFreeSlots}. At ${timeConvert(parseInt(key.substring(1)))}`
         ] = {
           synonyms: [
-            `${countLect}. At ${timeConvert(parseInt(key.substring(1)))}`
+            `${countFreeSlots}. At ${timeConvert(parseInt(key.substring(1)))}`
           ],
-          title: `${countLect}. At  ${timeConvert(parseInt(key.substring(1)))}`,
+          title: `${countFreeSlots}. At  ${timeConvert(
+            parseInt(key.substring(1))
+          )}`,
           description: `on ${today}.`
         };
       }
     }
-    conv.close(`Total ${countLect} Slots`);
+    conv.close(`Total ${countFreeSlots} Slots`);
     conv.close(new List(result));
     conv.ask(
       new Suggestions([
