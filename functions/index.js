@@ -809,6 +809,64 @@ app.intent("countLectures", conv => {
   );
 });
 
+app.intent("freeSlots", conv => {
+  requireDataFile(conv);
+  if (data === undefined) {
+    data = require("./data/ICT16.json");
+    conv.user.storage.class = "ICT16";
+  }
+  let countFreeSlots = 0;
+  const day = moment(conv.body.queryResult.parameters.date).day();
+  const today = moment(conv.body.queryResult.parameters.date).format("dddd");
+  const result = {
+    title: `Free slots`,
+    items: {}
+  };
+  if (today === "Saturday" || today === "Sunday") {
+    conv.close(`<speak>Enjoy your weekend buddy!</speak>`);
+    conv.ask(
+      new Suggestions([
+        "first lecture on Monday?",
+        "last lecture today?",
+        "first lecture tomorrow?"
+      ])
+    );
+  } else {
+    const entries = toArray(data[day][today]);
+    for (const entry of entries) {
+      const key = entry[0];
+      const value = entry[1];
+      if (value.type === "Free") {
+        countFreeSlots++;
+        const t = parseInt(key.substring(1));
+        result.items[
+          `${countLect}. At ${timeConvert(parseInt(key.substring(1)))}`
+        ] = {
+          synonyms: [
+            `${countLect}. At ${timeConvert(parseInt(key.substring(1)))}`
+          ],
+          title: `${countLect}. At  ${timeConvert(parseInt(key.substring(1)))}`,
+          description: `on ${today}.`
+        };
+      }
+    }
+    conv.close(`Total ${countLect} Slots`);
+    conv.close(new List(result));
+    conv.ask(
+      new Suggestions([
+        `number of lectures of NTD`,
+        `number of lectures of SKB`,
+        `number of lectures of RJO`,
+        `next lecture please?`,
+        `Show Monday's schedule`,
+        `whose last lecture is it?`,
+        `first lecture today?`,
+        `Whose lecture is it?`
+      ])
+    );
+  }
+});
+
 app.intent("setup_push", conv => {
   conv.ask(new UpdatePermission({ intent: "nextLectureIntent" }));
 });
