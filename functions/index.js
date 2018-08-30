@@ -809,4 +809,18 @@ app.intent("countLectures", conv => {
   );
 });
 
+app.intent("setup_push", conv => {
+  conv.ask(new UpdatePermission({ intent: "nextLectureIntent" }));
+});
+
+app.intent("finish_push_setup", conv => {
+  if (conv.arguments.get("PERMISSION")) {
+    const userID = conv.arguments.get("UPDATES_USER_ID");
+    // code to save intent and userID in your db
+    conv.close(`Ok, I'll start alerting you.`);
+  } else {
+    conv.close(`Ok, I won't alert you.`);
+  }
+});
+
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
