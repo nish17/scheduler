@@ -1,6 +1,6 @@
 "use strict";
 const moment = require("moment");
-const data = require(`../functions/data/CE16_5th-sem.json`);
+const data = require(`../functions/data/ICT16.json`);
 
 function workingHours(time) {
   if (time >= 9 && time <= 18) return true;
@@ -82,57 +82,73 @@ function getListItems(obj) {
   // console.log(labs);
   return { items, labs };
 }
+// Object.value(key);
+// console.log(Object.entries(data[5]["Friday"]));
+let x = 0;
+let lab_timings = [];
 for (const entry of entries) {
-  console.log("entries:" + entry[1]);
+  // console.log("entries:" + entry[1]);
   const key = entry[0];
   const value = entry[1];
-  if (value.type === "Lecture") {
-    result.items[
-      `${value.name} at ${timeConvert(parseInt(key.substring(1)))}`
-    ] = {
-      synonyms: [`${value.name} at ${timeConvert(parseInt(key.substring(1)))}`],
-      title: `At  ${timeConvert(parseInt(key.substring(1)))}: ${value.name}`,
-      description: `By ${value.Professor}.`
-    };
-  } else if (value.type === "LAB") {
-    console.log("=>" + typeof getLabDescription(value));
-    result.items[
-      // `a`
-      `${getListItems(value)}`
-    ] = {
-      synonyms: [
-        `${
-          value[data[6].batches[0]] === undefined
-            ? ""
-            : value[data[6].batches[0]].name
-        } ${
-          value[data[6].batches[1]] === undefined
-            ? ""
-            : value[data[6].batches[1]].name
-        }${
-          value[data[6].batches[2]] === undefined
-            ? ""
-            : value[data[6].batches[2]].name
-        }`
-      ],
-      title: `LAB Session from ${timeConvert(
-        parseInt(key.substring(1))
-      )} to ${timeConvert(parseInt(key.substring(1)) + 2)}`,
-      description: function() {
-        return "" + getLabDescription(value);
-      }
-    };
-  } else if (value.type === "Free") {
-    result.items[
-      `${value.name} at ${timeConvert(parseInt(key.substring(1)))}`
-    ] = {
-      synonyms: [`${value.type} at ${timeConvert(parseInt(key.substring(1)))}`],
-      title: `At ${timeConvert(parseInt(key.substring(1)))}: ${value.type}`,
-      description: `No lecture at ${timeConvert(parseInt(key.substring(1)))}`
-    };
+  lab_timings.push(key);
+  console.log(lab_timings);
+  if (value.type === "LAB") {
+    // x = key.substring(1);
+    x = key;
   }
 }
-console.log("Result.items = " + JSON.stringify(result));
-for (const key in result) {
-  console.log(`typeOf: ${typeof key}, value of key: ${key}`);
-}
+console.log(parseInt(x.substring(1)));
+// lab_timings.find((x)=>{
+//   if(x === lab_timings)
+// });
+// console.log(`${Object.values(value)} , ${Object.values(value)}`);
+// if (value.type === "Lecture") {
+//   result.items[
+//     `${value.name} at ${timeConvert(parseInt(key.substring(1)))}`
+//   ] = {
+//     synonyms: [`${value.name} at ${timeConvert(parseInt(key.substring(1)))}`],
+//     title: `At  ${timeConvert(parseInt(key.substring(1)))}: ${value.name}`,
+//     description: `By ${value.Professor}.`
+//   };
+// } else if (value.type === "LAB") {
+//   console.log("=>" + typeof getLabDescription(value));
+//   result.items[
+//     // `a`
+//     `${getListItems(value)}`
+//   ] = {
+//     synonyms: [
+//       `${
+//         value[data[6].batches[0]] === undefined
+//           ? ""
+//           : value[data[6].batches[0]].name
+//       } ${
+//         value[data[6].batches[1]] === undefined
+//           ? ""
+//           : value[data[6].batches[1]].name
+//       }${
+//         value[data[6].batches[2]] === undefined
+//           ? ""
+//           : value[data[6].batches[2]].name
+//       }`
+//     ],
+//     title: `LAB Session from ${timeConvert(
+//       parseInt(key.substring(1))
+//     )} to ${timeConvert(parseInt(key.substring(1)) + 2)}`,
+//     description: function() {
+//       return "" + getLabDescription(value);
+//     }
+//   };
+// } else if (value.type === "Free") {
+//   result.items[
+//     `${value.name} at ${timeConvert(parseInt(key.substring(1)))}`
+//   ] = {
+//     synonyms: [`${value.type} at ${timeConvert(parseInt(key.substring(1)))}`],
+//     title: `At ${timeConvert(parseInt(key.substring(1)))}: ${value.type}`,
+//     description: `No lecture at ${timeConvert(parseInt(key.substring(1)))}`
+//   };
+// }
+// }
+// console.log("Result.items = " + JSON.stringify(result));
+// for (const key in result) {
+// console.log(`typeOf: ${typeof key}, value of key: ${key}`);
+// }
