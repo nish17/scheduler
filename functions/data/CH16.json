@@ -33,25 +33,28 @@
         "type": "Lecture",
         "position": "last",
         "name": "Fuel and Energy Technology",
-        "Professor": "Suverna Trivedi"
+        "Professor": "Anirban Dey"
       },
       "L14": {
         "type": "LAB",
         "e1": {
-          "name": "Chemical Process Technology Lab",
+          "name": "Chemical Process Technology",
           "Professor": "Bharti Saini"
         },
         "e2": {
           "name": "Process Equipment Design Lab",
           "Professor": "Lubhani Mishra"
+        },
+        "e3": {
+          "name": "Mass Transfer and Reaction Engineering Lab",
+          "Professor": "Manish Sinha"
         }
       },
       "L17": {
-        "type": "LAB",
-        "e1": {
-          "name": "Logic Academy",
-          "Professor": "New Faculty"
-        }
+        "type": "Lecture",
+        "position": "last",
+        "name": "Nanomaterials",
+        "Professor": "Dadi V suriapparao"
       }
     }
   },
@@ -60,47 +63,50 @@
       "L9": {
         "type": "Lecture",
         "position": "first",
-        "name": "Power Electronics",
-        "Professor": "Amit Sant"
+        "name": "Process Equipment Design-1",
+        "Professor": "Sukanta Dash"
       },
       "L10": {
         "type": "Lecture",
         "position": null,
-        "name": "Power System-2",
-        "Professor": "Visiting Faculty"
+        "name": "Mass Transfer-1",
+        "Professor": "Manish Sinha"
       },
       "L11": {
         "type": "Lecture",
         "position": null,
-        "name": "Instrumentation and Control",
-        "Professor": "Anilkumar Markana"
+        "name": "Fuel and Energy Technology",
+        "Professor": "Anirban Dey"
       },
       "L12": {
-        "type": "Lecture",
-        "position": null,
-        "name": "Instrumentation and Control",
-        "Professor": "Anilkumar Markana"
-      },
-      "L13": {
         "type": "Free"
       },
+      "L13": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Chemical Reaction Engineering-1",
+        "Professor": "Ashish Unnarkat"
+      },
       "L14": {
-        "type": "Lecture",
-        "position": null,
-        "name": "MicroProcessor and Microcontroller",
-        "Professor": "Vima Mali"
+        "type": "LAB",
+        "e1": {
+          "name": "Mass Transfer and Reaction Engineering Lab",
+          "Professor": "Ashish Unnarkat"
+        },
+        "e2": {
+          "name": "Chemical Process Technology Lab",
+          "Professor": "Bharti Saini"
+        },
+        "e3": {
+          "name": "Process Equipment Design Lab",
+          "Professor": "Lubhani Mishra"
+        }
       },
-      "L15": {
-        "type": "Lecture",
-        "position": null,
-        "name": "Electromagnetics",
-        "Professor": "Satyam Shinde"
-      },
-      "L16": {
+      "L17": {
         "type": "Lecture",
         "position": "last",
-        "name": "Placement Preparation For Batch 1",
-        "Professor": "T&P cell"
+        "name": "Nanomaterials",
+        "Professor": "Dadi V suriapparao"
       }
     }
   },
@@ -109,39 +115,50 @@
       "L9": {
         "type": "Lecture",
         "position": "first",
-        "name": "Power Electronics",
-        "Professor": "Amit Sant"
+        "name": "Mass Transfer-1",
+        "Professor": "Manish Sinha"
       },
       "L10": {
         "type": "Lecture",
         "position": null,
-        "name": "Power System-2",
-        "Professor": "Visiting Faculty"
+        "name": "Chemical Reaction Engineering-1",
+        "Professor": "Ashish Unnarkat"
       },
       "L11": {
         "type": "Lecture",
         "position": null,
-        "name": "MicroProcessor and Controller",
-        "Professor": "Vipin Shukla"
+        "name": "Fuel and Energy Technology",
+        "Professor": "Anirban Dey"
       },
       "L12": {
-        "type": "Lecture",
-        "position": "last",
-        "name": "Electromagnetics",
-        "Professor": "Satyam Shinde"
+        "type": "Free"
       },
       "L13": {
-        "type": "Free"
+        "type": "Lecture",
+        "position": null,
+        "name": "Chemical Process Technology-2",
+        "Professor": "Bharti Saini"
       },
       "L14": {
         "type": "LAB",
-        "c3": {
-          "name": "Control Instrumentation",
-          "Professor": "Nirav Karelia"
+        "e1": {
+          "name": "Process Equipment Design Lab",
+          "Professor": "Lubhani Mishra"
+        },
+        "e2": {
+          "name": "Mass Transfer and Reaction Engineering Lab",
+          "Professor": "Ashish Unnarkat"
+        },
+        "e3": {
+          "name": "Chemical Process Technology Lab",
+          "Professor": "Suvema Trivedi"
         }
       },
       "L17": {
-        "type": "Free"
+        "type": "Lecture",
+        "position": "last",
+        "name": "Nanomaterials",
+        "Professor": "Dadi V suriapparao"
       }
     }
   },
@@ -150,69 +167,78 @@
       "L9": {
         "type": "Lecture",
         "position": "first",
-        "name": "Power Electronics-2",
-        "Professor": "Visiting Faculty"
+        "name": "Mass Transfer-1",
+        "Professor": "Manish Sinha"
       },
       "L10": {
         "type": "Lecture",
         "position": null,
-        "name": "Power Electronics",
-        "Professor": "Amit Sant"
+        "name": "Chemical Process Technology-2",
+        "Professor": "Bharti Saini"
       },
       "L11": {
         "type": "Lecture",
         "position": null,
-        "name": "Electromagnetics",
-        "Professor": "Satyam Shinde"
+        "name": "Process Equipment Design-1",
+        "Professor": "Sukanta Dash"
       },
       "L12": {
-        "type": "Lecture",
-        "position": "last",
-        "name": "MicroProcessor and Controller",
-        "Professor": "Vipin Shukla"
+        "type": "Free"
       },
       "L13": {
-        "type": "Free"
+        "type": "Lecture",
+        "position": null,
+        "name": "Fuel and Energy Technology",
+        "Professor": "Anirban Dey"
       },
       "L14": {
-        "type": "LAB",
-        "c3": {
-          "name": "Power Electronics and Controller",
-          "Professor": "Vima Mali"
-        }
+        "type": "Lecture",
+        "position": null,
+        "name": "Logic Academy for batch-1",
+        "Professor": "P-New Faculty-1"
       },
-      "L17": {
-        "type": "Free"
+      "L16": {
+        "type": "Lecture",
+        "position": "last",
+        "name": "Logic Academy for batch-2",
+        "Professor": "P-New Faculty-2"
       }
     }
   },
   {
     "Friday": {
       "L9": {
-        "type": "Lab",
-        "c1": {
-          "name": "Controle Instrumentation and Simulation",
-          "Professor": "AnilKumar Markana"
-        },
-        "c2": {
-          "name": "Controle Instrumentation and Simulation",
-          "Professor": "Visitin Faculty"
-        }
-      },
-      "L12": {
-        "type": "Lecture",
-        "position": "first",
-        "name": "Instrumentation Control",
-        "Professor": "AnilKumar Markana"
-      },
-      "L13": {
         "type": "Free"
       },
-      "L14": {
+      "L10": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Chemical Process Technology-2",
+        "Professor": "Bharti Saini"
+      },
+      "L11": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Chemical Reaction Engineering-1",
+        "Professor": "Ashish Unnarkat"
+      },
+      "L12": {
+        "type": "Free"
+      },
+      "L13": {
         "type": "Lecture",
         "position": "last",
-        "name": "Placement Preparation For Batch 2",
-        "Professor": "T&P cell"
+        "name": "Process Equipment Design-1",
+        "Professor": "Sukanta Dash"
+      },
+      "L14": {
+        "type": "Free"
+      },
+      "L15": {
+        "type": "Free"
+      },
+      "L16": {
+        "type": "Free"
       },
       "L17": {
         "type": "Free"
