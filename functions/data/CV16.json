@@ -1,0 +1,239 @@
+[
+  {
+    "Sunday": {
+      "L*": {
+        "type": "Free"
+      }
+    }
+  },
+  {
+    "Monday": {
+      "L9": {
+        "type": "Lecture",
+        "position": "first",
+        "name": "Geotechnical Engineering-1",
+        "Professor": "Manas Bhoi"
+      },
+      "L10": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Structural Analysis-2",
+        "Professor": "Apurva Dave"
+      },
+      "L11": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Structural Analysis-2",
+        "Professor": "Apurva Dave"
+      },
+      "L12": {
+        "type": "Free"
+      },
+      "L13": {
+        "type": "Lecture",
+        "position": "last",
+        "name": "Enivronment Engineering-1",
+        "Professor": "Dayashankar Kaul"
+      },
+      "L14": {
+        "type": "LAB",
+        "d1": {
+          "name": "Geology and Soil Mechanics Lab",
+          "Professor": "Manivel"
+        },
+        "d3": {
+          "name": "Advance Surveying and Geomatic Engineering Lab",
+          "Professor": "Vasudeva"
+        }
+      },
+      "L16": {
+        "type": "Free"
+      },
+      "L17": {
+        "type": "Free"
+      }
+    }
+  },
+  {
+    "Tuesday": {
+      "L9": {
+        "type": "Lecture",
+        "position": "first",
+        "name": "Enivronment Engineering-1",
+        "Professor": "Dayashankar Kaul"
+      },
+      "L10": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Geotechnical Engineering-1",
+        "Professor": "Manas Bhoi"
+      },
+      "L11": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Hydrology and Water Resource Engineering",
+        "Professor": "Dhruvesh Patel"
+      },
+      "L12": {
+        "type": "Free"
+      },
+      "L13": {
+        "type": "Lecture",
+        "position": "last",
+        "name": "Advance Surveying and Geometic Engineering",
+        "Professor": "Akshay Jain"
+      },
+      "L14": {
+        "type": "LAB",
+        "d1": {
+          "name": "Advance Surveying and Geomatic Engineering Lab",
+          "Professor": "Dayashankar Kaul"
+        },
+        "d2": {
+          "name": "Geology and Soil Mechanics Lab",
+          "Professor": "Manivel"
+        }
+      },
+      "L16": {
+        "type": "Free"
+      },
+      "L17": {
+        "type": "Free"
+      }
+    }
+  },
+  {
+    "Wednesday": {
+      "L9": {
+        "type": "Lecture",
+        "position": "first",
+        "name": "Advance Surveying and Geometic Engineering",
+        "Professor": "Akshay Jain"
+      },
+      "L10": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Geotechnical Engineering-1",
+        "Professor": "Manas Bhoi"
+      },
+      "L11": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Hydrology and Water Resource Engineering",
+        "Professor": "Dhruvesh Patel"
+      },
+      "L12": {
+        "type": "Free"
+      },
+      "L13": {
+        "type": "Lecture",
+        "position": "last",
+        "name": "Enivronment Engineering-1",
+        "Professor": "Dayashankar Kaul"
+      },
+      "L14": {
+        "type": "LAB",
+        "d2": {
+          "name": "Advance Surveying and Geomatic Engineering Lab",
+          "Professor": "Naimish Bhatt"
+        },
+        "d3": {
+          "name": "Geology and Soil Mechanics Lab",
+          "Professor": "Manas Bhoi"
+        }
+      },
+      "L16": {
+        "type": "Free"
+      },
+      "L17": {
+        "type": "Free"
+      }
+    }
+  },
+  {
+    "Thursday": {
+      "L9": {
+        "type": "Lecture",
+        "position": "first",
+        "name": "Hydrology and Water Resource Engineering",
+        "Professor": "Naimish Bhatt"
+      },
+      "L10": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Geotechnical Engineering-1",
+        "Professor": "Manas Bhoi"
+      },
+      "L11": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Environment Engineering – I",
+        "Professor": "Dayashankar Kaul"
+      },
+      "L12": {
+        "type": "Free"
+      },
+      "L13": {
+        "type": "Lecture",
+        "position": "last",
+        "name": "Advance Surveying and Geometic Engineering",
+        "Professor": "Akshay Jain"
+      },
+      "L14": {
+        "type": "Free"
+      },
+      "L15": {
+        "type": "Free"
+      },
+      "L16": {
+        "type": "Free"
+      },
+      "L17": {
+        "type": "Free"
+      }
+    }
+  },
+  {
+    "Friday": {
+      "L9": {
+        "type": "Lecture",
+        "position": "first",
+        "name": "Hydrology and Water Resource Engineering",
+        "Professor": "Dhruvesh Patel"
+      },
+      "L10": {
+        "type": "Lecture",
+        "position": null,
+        "name": "Structural Analysis – II",
+        "Professor": "Apurva Dave"
+      },
+      "L11": {
+        "type": "Lecture",
+        "position": "last",
+        "name": "Structural Analysis – II",
+        "Professor": "Apurva Dave"
+      },
+      "L12": {
+        "type": "Free"
+      },
+      "L13": {
+        "type": "Free"
+      },
+      "L14": {
+        "type": "Free"
+      },
+      "L15": {
+        "type": "Free"
+      },
+      "L16": {
+        "type": "Free"
+      },
+      "L17": {
+        "type": "Free"
+      }
+    }
+  },
+  {
+    "batches": ["d1", "d2", "d3"]
+  }
+]
