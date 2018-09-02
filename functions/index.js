@@ -471,11 +471,11 @@ app.intent("ask_with_list", conv => {
           title: "EE-16",
           description: "Electrical Engineering, Batch'16"
         },
-        // CV_16: {
-        //   synonyms: ["SOT CV 16", "CV batch 16", "16BCV"],
-        //   title: "CV-16",
-        //   description: "Civil Engineering, Batch'16"
-        // },
+        CV_16: {
+          synonyms: ["SOT CV 16", "CV batch 16", "16BCV"],
+          title: "CV-16",
+          description: "Civil Engineering, Batch'16"
+        },
         CH_16: {
           synonyms: ["SOT CH 16", "CH batch 16", "16BCH"],
           title: "CH-16",
@@ -493,7 +493,16 @@ app.intent("ask_with_list", conv => {
         // }
       }
     }),
-    new Suggestions([`ICT16`, `ICT17`, `CE16`, `CE17`, `EE16`, `CH16`, `ME16`])
+    new Suggestions([
+      `ICT16`,
+      `ICT17`,
+      `CE16`,
+      `CE17`,
+      `EE16`,
+      `CH16`,
+      `ME16`,
+      `CV16`
+    ])
   );
 });
 
@@ -560,12 +569,10 @@ app.intent("ask_with_list_confirmation", conv => {
   } else if (option === "EE16") {
     conv.user.storage.class = "EE16";
     sayDepartandSuggestions(conv, option);
-  }
-  // else if (option === "CV16") {
-  //   conv.user.storage.class = "CV16";
-  //   sayDepartandSuggestions(conv, option);
-  // }
-  else if (option === "CH16") {
+  } else if (option === "CV16") {
+    conv.user.storage.class = "CV16";
+    sayDepartandSuggestions(conv, option);
+  } else if (option === "CH16") {
     conv.user.storage.class = "CH16";
     sayDepartandSuggestions(conv, option);
   }
