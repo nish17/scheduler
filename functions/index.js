@@ -3,7 +3,6 @@ const {
   dialogflow,
   List,
   Suggestions,
-  Confirmation,
   SimpleResponse
 } = require("actions-on-google");
 // const { randomize, Randomization } = require("randomize");
@@ -44,15 +43,6 @@ function setTimeZone() {
   return indianTimeZone;
 }
 
-function isItToday(today, intentName) {
-  const indianTimeMoment = setTimeZone();
-  const day = indianTimeMoment.format("dddd");
-  const nextDay = indianTimeMoment.add(1, "days").format("dddd");
-  if (intentName === "showFullSchedule" && today === day) {
-    return true;
-  } else return false;
-}
-
 function isToday(today) {
   const indianTimeMoment = setTimeZone();
   const day = indianTimeMoment.format("dddd");
@@ -77,10 +67,6 @@ function timeConvert(t) {
   return `${
     t - 12 >= 0 ? `${t - 12 === 0 ? "12" : `${t - 12}`} PM` : `${t} AM`
   }`;
-}
-
-function add1Day(day) {
-  return moment(day).add(1, "days");
 }
 
 app.intent("findLectureIntent", conv => {
